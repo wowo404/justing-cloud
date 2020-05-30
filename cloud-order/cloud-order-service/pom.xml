@@ -7,7 +7,7 @@
         <artifactId>cloud-order</artifactId>
         <version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>cloud-order</artifactId>
+	<artifactId>cloud-order-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<dependencies>

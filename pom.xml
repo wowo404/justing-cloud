@@ -8,6 +8,16 @@
 		<version>2.3.0.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
+	<modules>
+		<module>cloud-common</module>
+		<module>cloud-config-server</module>
+		<module>cloud-eureka</module>
+		<module>cloud-order</module>
+		<module>cloud-user</module>
+		<module>cloud-zuul</module>
+	</modules>
+
 	<groupId>org.liu</groupId>
 	<artifactId>justing-cloud</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
