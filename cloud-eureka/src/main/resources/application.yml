@@ -1,0 +1,13 @@
+server:
+  port: 7410
+  shutdown: graceful
+
+spring:
+  application:
+    name: cloud-eureka
+
+eureka:
+  client:
+    service-url:
+      #如果要让eureka高可用，部署多个，如部署了ABC三个，则注册方式为A注册到B，B注册到C
+      defaultZone: http://localhost:7410/eureka

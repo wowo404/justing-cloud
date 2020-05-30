@@ -1,0 +1,22 @@
+server:
+  port: 7411
+  shutdown: graceful
+
+spring:
+  application:
+    name: cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@e.coding.net:wowo404/spring-cloud-config.git #注意：如果git地址第一次在本机上使用，fingerprint还没有加如到~/.ssh/known_hosts文件中，则会访问失败
+          #username: 如果本地是使用ssh访问的可以不用配置
+          #password:
+          #default-label: master #配置文件分支
+          #search-paths: config  #配置文件所在根目录
+          #现在这种最简单的配置方式，配置文件访问规则是application.yml是给所有项目公用的且不分环境，application-dev.yml是给所有项目的dev环境公用的
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7410/eureka #如果eureka是集群，这里要用逗号分隔开来配置多个
