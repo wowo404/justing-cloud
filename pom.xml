@@ -10,7 +10,7 @@
 	</parent>
 
 	<modules>
-		<module>cloud-common</module>
+		<module>cloud-public</module>
 		<module>cloud-config-server</module>
 		<module>cloud-eureka</module>
 		<module>cloud-order</module>

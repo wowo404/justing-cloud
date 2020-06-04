@@ -8,14 +8,14 @@
 		<artifactId>justing-cloud</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>cloud-common</artifactId>
+    <artifactId>cloud-public</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-    	<module>cloud-common-service</module>
-    	<module>cloud-common-service-feign</module>
-    	<module>cloud-common-service-feign-pojo</module>
+    	<module>cloud-public-service</module>
+    	<module>cloud-public-service-feign</module>
+    	<module>cloud-public-service-feign-pojo</module>
     </modules>
 
 
