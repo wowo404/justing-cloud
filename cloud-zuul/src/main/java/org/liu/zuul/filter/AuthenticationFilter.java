@@ -5,6 +5,7 @@ import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpStatus;
+import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,12 +17,12 @@ public class AuthenticationFilter extends ZuulFilter {
     /**
      * pre-请求在被路由之前执行
      * route-在路由请求时调用
-     * post-在route和errror过滤器之后调用
+     * post-在route和error过滤器之后调用
      * error-处理请求时发生错误调用
      */
     @Override
     public String filterType() {
-        return "pre";
+        return FilterConstants.PRE_TYPE;
     }
 
     /**
