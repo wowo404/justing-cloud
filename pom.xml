@@ -16,6 +16,8 @@
 		<module>cloud-order</module>
 		<module>cloud-user</module>
 		<module>cloud-zuul</module>
+        <module>cloud-storage</module>
+		<module>cloud-storage-service</module>
 	</modules>
 
 	<groupId>org.liu</groupId>

@@ -1,0 +1,65 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: cloud-storage
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: cloud-config-server
+
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      label: master
+      profile: dev
+eureka:
+  client:
+    #registry-fetch-interval-seconds: 5 # 获取服务列表的周期：5s，默认是30s
+    service-url:
+      defaultZone: http://localhost:7410/eureka #如果eureka是集群模式，则这里要配置多个，用逗号分隔
+  instance:
+    lease-expiration-duration-in-seconds: 90 #如果超过90秒eureka没有收到心跳，eureka就认为该服务已停止，并从服务列表移除
+    lease-renewal-interval-in-seconds: 30 #每30秒向eureka发送一次心跳信息
+logging:
+  level:
+    root: debug
+
+---
+spring:
+  profiles: test
+  cloud:
+    config:
+      label: master
+      profile: test
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7410/eureka
+  instance:
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
+logging:
+  level:
+    root: debug
+
+---
+spring:
+  profiles: prod
+  cloud:
+    config:
+      label: master
+      profile: prod
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7410/eureka
+  instance:
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
+logging:
+  level:
+    root: info

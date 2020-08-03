@@ -10,7 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 @EnableRabbit
-@EnableFeignClients(basePackages = {"org.liu.order.feign.client"})
+@EnableFeignClients(basePackages = {"org.liu.order.feign.client"})//引入外部的feignClient才需要这个注解
 @EnableCircuitBreaker
 @EnableDiscoveryClient
 @SpringBootApplication

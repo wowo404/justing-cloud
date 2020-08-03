@@ -5,5 +5,8 @@
  3.http方式远程同步请求可以使用restTemplate，异步请求可以使用asyncRestTemplate，但现在使用了feign，如何做异步，在方法上加@Async注解？
  
 # TODO
-1.分布式事务：两阶段提交（2PC）、saga、TCC、本地消息表、本地消息表、尽最大努力通知
+1.分布式事务：XA协议（两阶段提交（2PC）、三阶段提交（3PC））、saga、TCC、本地消息表、本地消息表、尽最大努力通知
 2.zuul流量控制
+
+#思考
+1.zuul中需要为每一个微服务添加fallback provider吗？？

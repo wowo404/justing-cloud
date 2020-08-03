@@ -4,11 +4,13 @@ import org.justing.commons.model.Response;
 import org.justing.commons.util.CollectionConverterUtil;
 import org.liu.order.feign.pojo.OrderListResp;
 import org.liu.order.pojo.Order;
+import org.liu.order.service.OrderService;
+import org.liu.order.feign.pojo.AddOrderReq;
+import org.liu.order.feign.pojo.AddOrderResp;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -23,6 +25,8 @@ public class OrderController {
     private String globalConfig;//从全局配置文件中读取，即application.yml
     @Value("${custom.id}")
     private String globalProfileConfig;//从全局的根据环境区分的配置文件中读取，如dev环境是application-dev.yml
+    @Autowired
+    private OrderService orderService;
 
     @GetMapping("queryByUserId/{userId}")
     public Response<List<OrderListResp>> queryByUserId(@PathVariable("userId") Long userId){
@@ -39,6 +43,14 @@ public class OrderController {
 
         //转成对外部接口开放的对象
         return Response.ok(CollectionConverterUtil.copyProperties(list, OrderListResp::new));
+    }
+
+    @PostMapping("addOrder")
+    public Response<AddOrderResp> addOrder(@RequestBody AddOrderReq req){
+        Order order = orderService.addOrder(req);
+        AddOrderResp resp = new AddOrderResp();
+        BeanUtils.copyProperties(order, resp);
+        return Response.ok(resp);
     }
 
     @GetMapping("testConfig")
