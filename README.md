@@ -13,17 +13,20 @@
     - 产品服务：spu，sku
     - 订单服务：
     - 流程审批服务：
-    - 优惠活动服务：
+    - 活动服务：
 
 #思考
 1. zuul中需要为每一个微服务添加fallback provider吗？？
 
 # 系统模块结构
+- cloud-activity：活动服务：含优惠券
 - cloud-common：公共聚合模块
 - cloud-config-server：配置中心
 - cloud-eureka：服务发现
-- cloud-order：订单服务
-- cloud-public：公共基础服务：诸如数据字典，消息等
+- cloud-flow：流程审批服务
+- cloud-order：订单服务：含支付服务
+- cloud-product：产品服务：spu，sku
+- cloud-public：公共基础服务：诸如数据字典，消息，短信等
 - cloud-storage：库存服务
 - cloud-user：用户服务
 - cloud-zuul：网关
