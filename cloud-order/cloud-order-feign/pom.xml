@@ -7,7 +7,6 @@
 		<artifactId>cloud-order</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>org.liu</groupId>
 	<artifactId>cloud-order-feign</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
@@ -29,7 +28,10 @@
 		<dependency>
 			<groupId>org.liu</groupId>
 			<artifactId>cloud-order-feign-pojo</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.liu</groupId>
+			<artifactId>cloud-common-core</artifactId>
 		</dependency>
 
 		<dependency>

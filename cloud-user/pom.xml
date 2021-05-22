@@ -12,6 +12,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <description>用户服务</description>
+
     <modules>
     	<module>cloud-user-service</module>
     	<module>cloud-user-feign</module>

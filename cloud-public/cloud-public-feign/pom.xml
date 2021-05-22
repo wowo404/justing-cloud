@@ -7,7 +7,7 @@
         <artifactId>cloud-public</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>cloud-public-service-feign</artifactId>
+    <artifactId>cloud-public-feign</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
@@ -18,8 +18,11 @@
 
         <dependency>
             <groupId>org.liu</groupId>
-            <artifactId>cloud-public-service-feign-pojo</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>cloud-public-feign-pojo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.liu</groupId>
+            <artifactId>cloud-common-core</artifactId>
         </dependency>
 
         <dependency>

@@ -12,10 +12,12 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <description>公共基础服务</description>
+
     <modules>
     	<module>cloud-public-service</module>
-    	<module>cloud-public-service-feign</module>
-    	<module>cloud-public-service-feign-pojo</module>
+    	<module>cloud-public-feign</module>
+    	<module>cloud-public-feign-pojo</module>
     </modules>
 
 

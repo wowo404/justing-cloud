@@ -12,6 +12,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <description>订单服务</description>
+
     <modules>
     	<module>cloud-order-service</module>
     	<module>cloud-order-feign</module>

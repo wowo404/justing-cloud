@@ -1,6 +1,7 @@
 package org.liu.order.feign.client;
 
 import org.justing.commons.model.Response;
+import org.liu.common.core.constants.ServiceNameConstants;
 import org.liu.order.feign.client.config.FeignConfig;
 import org.liu.order.feign.client.fallback.OrderClientFallback;
 import org.liu.order.feign.pojo.OrderListResp;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(value = "cloud-order", fallback = OrderClientFallback.class, configuration = FeignConfig.class)
+@FeignClient(value = ServiceNameConstants.CLOUD_ORDER, fallback = OrderClientFallback.class, configuration = FeignConfig.class)
 //@RequestMapping("order")//千万不要把此注解加上，不然就会出现Ambiguous mapping的错误
 public interface OrderClient {
 
