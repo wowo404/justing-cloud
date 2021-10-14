@@ -1,4 +1,4 @@
-package org.liu.commonservice;
+package org.liu.publicbase.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,10 +8,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableCircuitBreaker
 @EnableDiscoveryClient
 @SpringBootApplication
-public class CloudCommonServiceApplication {
+public class CloudPublicServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CloudCommonServiceApplication.class, args);
+		SpringApplication.run(CloudPublicServiceApplication.class, args);
 	}
 
 }

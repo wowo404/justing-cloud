@@ -1,13 +1,13 @@
 package org.liu.order.feign.client;
 
+import feign.Param;
+import feign.RequestLine;
 import org.justing.commons.model.Response;
 import org.liu.common.core.constants.ServiceNameConstants;
-import org.liu.order.feign.client.config.FeignConfig;
+import org.liu.common.feign.config.FeignConfig;
 import org.liu.order.feign.client.fallback.OrderClientFallback;
 import org.liu.order.feign.pojo.OrderListResp;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
 //@RequestMapping("order")//千万不要把此注解加上，不然就会出现Ambiguous mapping的错误
 public interface OrderClient {
 
-    @GetMapping("order/queryByUserId/{userId}")
-    Response<List<OrderListResp>> queryByUserId(@PathVariable("userId") Long userId);
+    @RequestLine("GET /order/queryByUserId/{userId}")
+    Response<List<OrderListResp>> queryByUserId(@Param("userId") Long userId);
 
 }

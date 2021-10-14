@@ -59,7 +59,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.liu</groupId>
-			<artifactId>cloud-common</artifactId>
+			<artifactId>cloud-common-core</artifactId>
 		</dependency>
 
 		<dependency>

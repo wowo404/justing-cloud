@@ -46,6 +46,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-stream-binder-rabbit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
 		<dependency>
@@ -73,18 +77,16 @@
 		</dependency>
 		<dependency>
 			<groupId>org.liu</groupId>
-			<artifactId>cloud-common</artifactId>
+			<artifactId>cloud-common-core</artifactId>
 		</dependency>
 		<!--引入外部的feign客户端-->
 		<dependency>
 			<groupId>org.liu</groupId>
 			<artifactId>cloud-user-feign</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.liu</groupId>
 			<artifactId>cloud-storage-feign</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>

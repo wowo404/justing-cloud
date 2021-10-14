@@ -1,10 +1,10 @@
-package org.liu.commonservice;
+package org.liu.publicbase.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CloudCommonServiceApplicationTests {
+class CloudPublicServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

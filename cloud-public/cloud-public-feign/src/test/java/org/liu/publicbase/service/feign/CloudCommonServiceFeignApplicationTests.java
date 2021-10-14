@@ -1,4 +1,4 @@
-package org.liu.commonservice.feign;
+package org.liu.publicbase.service.feign;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -12,8 +12,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
+			<groupId>org.liu</groupId>
+			<artifactId>cloud-common-feign</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.github.openfeign</groupId>

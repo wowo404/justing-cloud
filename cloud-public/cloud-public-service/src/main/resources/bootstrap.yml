@@ -2,7 +2,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: cloud-common-service
+    name: cloud-public-service
   cloud:
     config:
       discovery:
