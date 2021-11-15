@@ -31,7 +31,7 @@
 - cloud-flow：流程审批服务
 - cloud-order：订单服务：含支付服务
 - cloud-product：产品服务：spu，sku
-- cloud-public：公共基础服务：诸如全局公共配置，数据字典，消息，短信等
+- cloud-public：公共基础服务：诸如全局公共配置，数据字典，消息，短信，文件上传下载等
 - cloud-storage：库存服务
 - cloud-user：用户服务
 - cloud-zuul：网关
