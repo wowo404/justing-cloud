@@ -17,6 +17,7 @@
     <modules>
         <module>cloud-common-core</module>
         <module>cloud-common-feign</module>
+        <module>cloud-common-cache</module>
     </modules>
 
 </project>
