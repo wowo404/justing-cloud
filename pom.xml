@@ -204,7 +204,7 @@
 			<id>jxmx-nexus</id>
 			<name>jxmx nexus</name>
 			<layout>default</layout>
-			<url>http://172.16.5.201:8681/repository/maven-public/</url>
+			<url>http://192.168.0.201:8681/repository/maven-public/</url>
 			<snapshots>
 				<enabled>true</enabled>
 				<updatePolicy>always</updatePolicy>
@@ -218,7 +218,7 @@
 		<pluginRepository>
 			<id>public</id>
 			<name>aliyun nexus</name>
-			<url>http://172.16.5.201:8681/repository/maven-public/</url>
+			<url>http://192.168.0.201:8681/repository/maven-public/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -231,11 +231,11 @@
 	<distributionManagement>
 		<snapshotRepository>
 			<id>jxmx-snapshot</id>
-			<url>http://172.16.5.201:8681/repository/maven-snapshots/</url>
+			<url>http://192.168.0.201:8681/repository/maven-snapshots/</url>
 		</snapshotRepository>
 		<repository>
 			<id>jxmx-release</id>
-			<url>http://172.16.5.201:8681/repository/maven-releases/</url>
+			<url>http://192.168.0.201:8681/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
 

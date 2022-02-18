@@ -2,7 +2,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: cloud-public-service
+    name: cloud-public
   cloud:
     config:
       discovery:
@@ -23,9 +23,6 @@ eureka:
   instance:
     lease-expiration-duration-in-seconds: 90
     lease-renewal-interval-in-seconds: 30
-logging:
-  level:
-    root: debug
 
 ---
 spring:

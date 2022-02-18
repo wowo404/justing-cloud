@@ -10,7 +10,7 @@ spring:
       server:
         git:
           uri: git@e.coding.net:wowo404/spring-cloud-config.git #注意：如果git地址第一次在本机上使用，fingerprint还没有加如到~/.ssh/known_hosts文件中，则会访问失败
-          #username: 如果本地是使用ssh访问的可以不用配置
+          #username: #如果本地是使用ssh访问的可以不用配置
           #password:
           #default-label: master #配置文件分支
           #search-paths: config  #配置文件所在根目录
