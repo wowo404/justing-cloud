@@ -23,9 +23,6 @@ eureka:
   instance:
     lease-expiration-duration-in-seconds: 90
     lease-renewal-interval-in-seconds: 30
-logging:
-  level:
-    root: debug
 
 ---
 spring:
@@ -41,9 +38,6 @@ eureka:
   instance:
     lease-expiration-duration-in-seconds: 90
     lease-renewal-interval-in-seconds: 30
-logging:
-  level:
-    root: debug
 
 ---
 spring:
@@ -59,6 +53,3 @@ eureka:
   instance:
     lease-expiration-duration-in-seconds: 90
     lease-renewal-interval-in-seconds: 30
-logging:
-  level:
-    root: info

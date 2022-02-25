@@ -8,10 +8,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableCircuitBreaker
 @EnableDiscoveryClient
 @SpringBootApplication
-public class CloudPublicServiceApplication {
+public class CloudPublicApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CloudPublicServiceApplication.class, args);
+		SpringApplication.run(CloudPublicApplication.class, args);
 	}
 
 }

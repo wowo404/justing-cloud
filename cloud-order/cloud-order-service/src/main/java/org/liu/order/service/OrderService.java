@@ -1,14 +1,14 @@
 package org.liu.order.service;
 
+import lombok.RequiredArgsConstructor;
 import org.justing.commons.util.SnowFlake;
-import org.liu.order.pojo.Order;
 import org.liu.order.feign.pojo.AddOrderReq;
+import org.liu.order.pojo.Order;
 import org.liu.storage.feign.client.StorageClient;
 import org.liu.storage.feign.pojo.OperateStorageReq;
 import org.liu.user.feign.client.UserClient;
 import org.liu.user.feign.pojo.BuyingBehaviorStatisticsReq;
 import org.liu.user.feign.pojo.OperateAccountReq;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,14 +17,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@RequiredArgsConstructor
 @Transactional
 @Service
 public class OrderService {
 
-    @Autowired
-    private UserClient userClient;
-    @Autowired
-    private StorageClient storageClient;
+    private final UserClient userClient;
+    private final StorageClient storageClient;
     private static final SnowFlake snowFlake = new SnowFlake(1L, 1L);
 
     public Order addOrder(AddOrderReq req) {

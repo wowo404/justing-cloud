@@ -1,42 +1,41 @@
 package org.liu.user.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.justing.commons.model.Response;
 import org.liu.order.feign.client.OrderClient;
 import org.liu.order.feign.pojo.OrderListResp;
 import org.liu.user.feign.pojo.BuyingBehaviorStatisticsReq;
 import org.liu.user.feign.pojo.OperateAccountReq;
 import org.liu.user.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RequestMapping("user")
 @RestController
 //使用了Feign后也不需要这个配置了
 //@DefaultProperties(defaultFallback = "defaultFallback")//defaultFallback方法要和熔断的方法同返回值类型，不需要参数
 public class UserController {
 
-    @Autowired
-    private OrderClient orderClient;
-    @Autowired
-    private UserService userService;
+    private final OrderClient orderClient;
+    private final UserService userService;
 
     @GetMapping("myOrder/{userId}")
-    public Response<List<OrderListResp>> myOrder(@PathVariable("userId") Long userId){
+    public Response<List<OrderListResp>> myOrder(@PathVariable("userId") Long userId) {
         //从会话中拿到当前登录用户的ID？？？微服务中有没有会话这个概念？？？
         userId = 1L;
         return orderClient.queryByUserId(userId);
     }
 
     @PostMapping("addBuyingBehaviorStatistics")
-    public Response<Void> addBuyingBehaviorStatistics(@RequestBody BuyingBehaviorStatisticsReq req){
+    public Response<Void> addBuyingBehaviorStatistics(@RequestBody BuyingBehaviorStatisticsReq req) {
         userService.addBuyingBehaviorStatistics(req);
         return Response.ok();
     }
 
     @PostMapping("operateAccount")
-    public Response<Void> operateAccount(@RequestBody OperateAccountReq req){
+    public Response<Void> operateAccount(@RequestBody OperateAccountReq req) {
         userService.operateAccount(req);
         return Response.ok();
     }
