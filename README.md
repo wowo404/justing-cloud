@@ -27,11 +27,13 @@
 - cloud-activity：活动服务：含优惠券
 - cloud-common：公共聚合模块
 - cloud-config-server：配置中心
+- cloud-coupon：优惠券服务
 - cloud-eureka：服务发现
 - cloud-flow：流程审批服务
+- cloud-gateway：以spring-cloud-starter-gateway为框架搭建的网关
 - cloud-order：订单服务：含支付服务
 - cloud-product：产品服务：spu，sku
 - cloud-public：公共基础服务：诸如全局公共配置，数据字典，消息，短信，文件上传下载等
 - cloud-storage：库存服务
 - cloud-user：用户服务
-- cloud-zuul：网关
+- cloud-zuul：以zuul为框架搭建的网关

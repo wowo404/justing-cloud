@@ -15,6 +15,7 @@
         <module>cloud-flow</module>
 		<module>cloud-activity</module>
 		<module>cloud-product</module>
+		<module>cloud-coupon</module>
 	</modules>
 
 	<groupId>org.liu</groupId>
@@ -65,10 +66,36 @@
 				<version>1.0-SNAPSHOT</version>
 			</dependency>
 			<!--**********项目自身的模块********start-->
+			<!--活动服务-->
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-activity</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-activity-feign</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-activity-feign-pojo</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-activity-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<!--项目内公共聚合模块-->
 			<dependency>
 				<groupId>org.liu</groupId>
 				<artifactId>cloud-common</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-common-cache</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -87,13 +114,61 @@
 				<artifactId>cloud-config-server</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<!--优惠券服务-->
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-coupon</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-coupon-feign</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-coupon-feign-pojo</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-coupon-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<!--服务发现-->
 			<dependency>
 				<groupId>org.liu</groupId>
 				<artifactId>cloud-eureka</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			<!--订单-->
+			<!--流程服务-->
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-flow</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-flow-feign</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-flow-feign-pojo</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-flow-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!--spring cloud gateway-->
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-gateway</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!--订单服务-->
 			<dependency>
 				<groupId>org.liu</groupId>
 				<artifactId>cloud-order</artifactId>
@@ -114,15 +189,31 @@
 				<artifactId>cloud-order-service</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			<!--基础服务-->
+			<!--产品服务-->
 			<dependency>
 				<groupId>org.liu</groupId>
-				<artifactId>cloud-public</artifactId>
+				<artifactId>cloud-product</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.liu</groupId>
-				<artifactId>cloud-public-service</artifactId>
+				<artifactId>cloud-product-feign</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-product-feign-pojo</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-product-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!--基础服务-->
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-public</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -135,15 +226,15 @@
 				<artifactId>cloud-public-feign-pojo</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-public-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<!--库存服务-->
 			<dependency>
 				<groupId>org.liu</groupId>
 				<artifactId>cloud-storage</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.liu</groupId>
-				<artifactId>cloud-storage-service</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -156,15 +247,15 @@
 				<artifactId>cloud-storage-feign-pojo</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-storage-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<!--用户服务-->
 			<dependency>
 				<groupId>org.liu</groupId>
 				<artifactId>cloud-user</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.liu</groupId>
-				<artifactId>cloud-user-service</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -175,6 +266,11 @@
 			<dependency>
 				<groupId>org.liu</groupId>
 				<artifactId>cloud-user-feign-pojo</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-user-service</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<!--zuul网关服务-->
