@@ -16,7 +16,8 @@
 		<module>cloud-activity</module>
 		<module>cloud-product</module>
 		<module>cloud-coupon</module>
-	</modules>
+        <module>cloud-auth</module>
+    </modules>
 
 	<groupId>org.liu</groupId>
 	<artifactId>justing-cloud</artifactId>
@@ -85,6 +86,12 @@
 			<dependency>
 				<groupId>org.liu</groupId>
 				<artifactId>cloud-activity-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!--授权服务-->
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-auth</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<!--项目内公共聚合模块-->
