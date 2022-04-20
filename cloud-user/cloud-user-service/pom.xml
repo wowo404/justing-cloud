@@ -61,6 +61,11 @@
 			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+			<version>${seata.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.9.4</version>
@@ -76,6 +81,7 @@
 			<groupId>org.liu</groupId>
 			<artifactId>cloud-user-feign-pojo</artifactId>
 		</dependency>
+		<!--引入外部的feign客户端-->
 		<dependency>
 			<groupId>org.liu</groupId>
 			<artifactId>cloud-common-core</artifactId>

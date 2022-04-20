@@ -2,7 +2,9 @@ package org.liu.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+@EnableDiscoveryClient
 @SpringCloudApplication
 public class CloudGatewayApplication {
 

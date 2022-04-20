@@ -14,17 +14,19 @@
     - 订单服务：
     - 流程审批服务：
     - 活动服务：
- 4. 编写默认的统一的fallback，先要读懂FeignAutoConfiguration，参考商城的base-common-security，此模块下有写
- 5. feign接口如何跳过安全权限校验
+4. 编写默认的统一的fallback，先要读懂FeignAutoConfiguration，参考商城的base-common-security，此模块下有写
+5. feign接口如何跳过安全权限校验，参考商城的base模块
     - url上加统一前缀或参数，在过滤器中跳过？
     - 添加head参数，在过滤器中拿到该参数，等于某个值时跳过？
+6. 接入分布式事务框架seata
+7. 引入链路追踪
 
 #思考
-
 1. zuul中需要为每一个微服务添加fallback provider吗？？
 
 # 系统模块结构
 - cloud-activity：活动服务：含优惠券
+- cloud-auth：认证及授权服务
 - cloud-common：公共聚合模块
 - cloud-config-server：配置中心
 - cloud-coupon：优惠券服务

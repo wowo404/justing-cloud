@@ -4,20 +4,21 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<modules>
+		<module>cloud-activity</module>
+		<module>cloud-auth</module>
 		<module>cloud-common</module>
-		<module>cloud-public</module>
 		<module>cloud-config-server</module>
+		<module>cloud-coupon</module>
 		<module>cloud-eureka</module>
+		<module>cloud-flow</module>
+		<module>cloud-gateway</module>
 		<module>cloud-order</module>
+		<module>cloud-product</module>
+		<module>cloud-public</module>
+		<module>cloud-storage</module>
 		<module>cloud-user</module>
 		<module>cloud-zuul</module>
-		<module>cloud-storage</module>
-        <module>cloud-flow</module>
-		<module>cloud-activity</module>
-		<module>cloud-product</module>
-		<module>cloud-coupon</module>
-        <module>cloud-auth</module>
-    </modules>
+	</modules>
 
 	<groupId>org.liu</groupId>
 	<artifactId>justing-cloud</artifactId>
@@ -30,6 +31,7 @@
 		<java.version>1.8</java.version>
 		<spring-boot.version>2.3.0.RELEASE</spring-boot.version>
 		<spring-cloud.version>Hoxton.SR4</spring-cloud.version>
+		<seata.version>2.1.0.RELEASE</seata.version>
 	</properties>
 
 	<dependencyManagement>
@@ -48,6 +50,12 @@
 				<version>${spring-cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<!--分布式事务-->
+			<dependency>
+				<groupId>com.alibaba.cloud</groupId>
+				<artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+				<version>${seata.version}</version>
 			</dependency>
 			<!--限流-->
 			<dependency>
@@ -302,34 +310,34 @@
 		</pluginManagement>
 	</build>
 
-	<repositories>
-		<repository>
-			<id>jxmx-nexus</id>
-			<name>jxmx nexus</name>
-			<layout>default</layout>
-			<url>http://192.168.0.201:8681/repository/maven-public/</url>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>public</id>
-			<name>aliyun nexus</name>
-			<url>http://192.168.0.201:8681/repository/maven-public/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
+<!--	<repositories>-->
+<!--		<repository>-->
+<!--			<id>jxmx-nexus</id>-->
+<!--			<name>jxmx nexus</name>-->
+<!--			<layout>default</layout>-->
+<!--			<url>http://192.168.0.201:8681/repository/maven-public/</url>-->
+<!--			<snapshots>-->
+<!--				<enabled>true</enabled>-->
+<!--				<updatePolicy>always</updatePolicy>-->
+<!--			</snapshots>-->
+<!--			<releases>-->
+<!--				<enabled>true</enabled>-->
+<!--			</releases>-->
+<!--		</repository>-->
+<!--	</repositories>-->
+<!--	<pluginRepositories>-->
+<!--		<pluginRepository>-->
+<!--			<id>jxmx-nexus-plugin</id>-->
+<!--			<name>jxmx nexus plugin</name>-->
+<!--			<url>http://192.168.0.201:8681/repository/maven-public/</url>-->
+<!--			<releases>-->
+<!--				<enabled>true</enabled>-->
+<!--			</releases>-->
+<!--			<snapshots>-->
+<!--				<enabled>false</enabled>-->
+<!--			</snapshots>-->
+<!--		</pluginRepository>-->
+<!--	</pluginRepositories>-->
 
 	<distributionManagement>
 		<snapshotRepository>
