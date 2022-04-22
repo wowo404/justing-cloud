@@ -20,6 +20,7 @@
     - 添加head参数，在过滤器中拿到该参数，等于某个值时跳过？
 6. 接入分布式事务框架seata
 7. 引入链路追踪
+8. 引入spring-cloud-starter-netflix-hystrix-dashboard
 
 #思考
 1. zuul中需要为每一个微服务添加fallback provider吗？？
