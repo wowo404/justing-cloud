@@ -22,7 +22,7 @@
 7. 引入链路追踪
 8. 引入spring-cloud-starter-netflix-hystrix-dashboard
 
-#思考
+# 思考
 1. zuul中需要为每一个微服务添加fallback provider吗？？
 
 # 系统模块结构

@@ -131,19 +131,19 @@ public class RedisHelper {
 		jacksonRedisTemplate.boundValueOps(RedisCode.TOKEN + token).expire(RedisCode.TOKEN_EXPIRE_TIME.getSeconds(), TimeUnit.SECONDS);
 	}
 
-	public void saveKaptcha(String username, String capText) {
-		jacksonRedisTemplate.boundValueOps(RedisCode.KAPTCHA + username).set(capText);
+	public void saveCaptcha(String username, String capText) {
+		jacksonRedisTemplate.boundValueOps(RedisCode.CAPTCHA + username).set(capText);
 	}
 
-	public String getKaptcha(String username) {
-		return (String) jacksonRedisTemplate.boundValueOps(RedisCode.KAPTCHA + username).get();
+	public String getCaptcha(String username) {
+		return (String) jacksonRedisTemplate.boundValueOps(RedisCode.CAPTCHA + username).get();
 	}
 
-	public void deleteKaptcha(String username) {
-		jacksonRedisTemplate.delete(RedisCode.KAPTCHA + username);
+	public void deleteCaptcha(String username) {
+		jacksonRedisTemplate.delete(RedisCode.CAPTCHA + username);
 	}
 
-	public String queryTodaySpuCode(String ymd){
+	public String queryTodayQrCode(String ymd){
 		String s = stringRedisTemplate.boundValueOps(RedisCode.TODAY_QRCODE_CODE + ymd).get();
 		if (null == s) {
 			return "0";

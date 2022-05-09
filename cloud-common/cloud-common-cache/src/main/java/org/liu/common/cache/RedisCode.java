@@ -4,12 +4,12 @@ import java.time.Duration;
 
 /**
  * @date ：Created in 2019/3/1 13:31
- * @description：${description}
- * @modified By：
- * @version: $version$
+ * @description：redis常量
+ * @modified By：JustingLiu
+ * @version: v1.0.0
  */
 public interface RedisCode {
-    String KAPTCHA = "KAPTCHA_";
+    String CAPTCHA = "CAPTCHA_";
     String CODE = "CODE_";
     String CODE_DAY_LIMIT = "CODE_DAY_LIMIT_";//格式：key+年月日，存放手机号码的每日发送次数：数据结构：set
     String TOKEN = "TOKEN_";
@@ -20,8 +20,8 @@ public interface RedisCode {
     String LOCK_SKU = "lock_sku_";//sku锁，格式：key+skuId
 
     String WEIXIN_ACCESS_TOKEN = "weixin_access_token";//微信的AccessToken，数据类型：string，保存时间7200
-    String WEIXIN_JSAPI_TICKET = "weixin_jaspi_ticket";//微信的JsAPI_Ticket，数据类型：string，保存时间7200
-	String TODAY_QRCODE_CODE = "today_qrcode_code_";//spu递增编码，每日从1开始递增
+    String WEIXIN_JSAPI_TICKET = "weixin_jsapi_ticket";//微信的JsAPI_Ticket，数据类型：string，保存时间7200
+	String TODAY_QRCODE_CODE = "today_qrcode_code_";//qrCode递增编码，每日从1开始递增
 
     //有效期
     Duration CODE_EXPIRE_TIME = Duration.ofSeconds(5 * 60L);

@@ -40,6 +40,7 @@ public class OrderController {
 
         List<Order> list = new ArrayList<>();
         list.add(order);
+        int a = 1 / 0;
 
         //转成对外部接口开放的对象
         return Response.ok(CollectionConverterUtil.copyProperties(list, OrderListResp::new));

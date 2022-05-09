@@ -13,6 +13,7 @@ import java.util.List;
 
 @FeignClient(value = ServiceNameConstants.CLOUD_ORDER, fallback = OrderClientFallback.class, configuration = FeignConfig.class)
 //@RequestMapping("order")//千万不要把此注解加上，不然就会出现Ambiguous mapping的错误
+//updated at 20220509，出现此错误的原因很可能是当前service引入了自身的feignClient，现在已不会引入，所有没有这个问题了
 public interface OrderClient {
 
     @RequestLine("GET /order/queryByUserId/{userId}")
