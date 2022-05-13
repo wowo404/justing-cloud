@@ -24,9 +24,6 @@ eureka:
   instance:
     lease-expiration-duration-in-seconds: 90 #如果超过90秒eureka没有收到心跳，eureka就认为该服务已停止，并从服务列表移除
     lease-renewal-interval-in-seconds: 30 #每30秒向eureka发送一次心跳信息
-logging:
-  level:
-    root: debug
 
 ---
 spring:
@@ -42,9 +39,6 @@ eureka:
   instance:
     lease-expiration-duration-in-seconds: 90
     lease-renewal-interval-in-seconds: 30
-logging:
-  level:
-    root: debug
 
 ---
 spring:
@@ -60,6 +54,3 @@ eureka:
   instance:
     lease-expiration-duration-in-seconds: 90
     lease-renewal-interval-in-seconds: 30
-logging:
-  level:
-    root: info

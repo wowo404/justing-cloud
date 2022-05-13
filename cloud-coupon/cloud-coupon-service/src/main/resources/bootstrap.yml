@@ -2,7 +2,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: cloud-storage
+    name: cloud-coupon
   cloud:
     config:
       discovery:

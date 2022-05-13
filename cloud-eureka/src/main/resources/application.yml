@@ -11,3 +11,5 @@ eureka:
     service-url:
       #如果要让eureka高可用，部署多个，如部署了ABC三个，则注册方式为A注册到B，B注册到C
       defaultZone: http://localhost:7410/eureka
+  server:
+    eviction-interval-timer-in-ms: 10000 #剔除无效链接的间隔时间，默认60s
