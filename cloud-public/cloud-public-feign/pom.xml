@@ -10,32 +10,4 @@
     <artifactId>cloud-public-feign</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.liu</groupId>
-            <artifactId>cloud-common-feign</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.liu</groupId>
-            <artifactId>cloud-public-feign-pojo</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.liu</groupId>
-            <artifactId>cloud-common-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-    </dependencies>
-
 </project>

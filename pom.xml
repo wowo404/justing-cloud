@@ -15,6 +15,7 @@
 		<module>cloud-order</module>
 		<module>cloud-product</module>
 		<module>cloud-public</module>
+		<module>cloud-search</module>
 		<module>cloud-storage</module>
 		<module>cloud-user</module>
 		<module>cloud-zuul</module>

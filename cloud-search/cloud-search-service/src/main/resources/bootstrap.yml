@@ -1,0 +1,55 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: cloud-search
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: cloud-config-server
+
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      label: master
+      profile: dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7410/eureka
+  instance:
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
+
+---
+spring:
+  profiles: test
+  cloud:
+    config:
+      label: master
+      profile: test
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7410/eureka
+  instance:
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
+
+---
+spring:
+  profiles: prod
+  cloud:
+    config:
+      label: master
+      profile: prod
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7410/eureka
+  instance:
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30

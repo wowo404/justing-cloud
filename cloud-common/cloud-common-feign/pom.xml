@@ -12,9 +12,18 @@
     <artifactId>cloud-common-feign</artifactId>
 
     <dependencies>
+        <!--此处是只依赖feign相关的jar，还是依赖spring-cloud-starter-openfeign，有待考究？？？
+        如果此common-feign只在项目内部使用，则依赖spring-cloud-starter-openfeign较好
+        如果此common-feign模块也会给外部项目依赖，则使用最小依赖原则，只依赖feign相关的jar，
+        这两个原则对各个子服务的feign模块也适应
+        -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>

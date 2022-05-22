@@ -70,6 +70,11 @@
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.9.4</version>
 		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.justing.commons</groupId>
@@ -81,7 +86,7 @@
 			<groupId>org.liu</groupId>
 			<artifactId>cloud-user-feign-pojo</artifactId>
 		</dependency>
-		<!--引入外部的feign客户端-->
+		<!--引入基础模块-->
 		<dependency>
 			<groupId>org.liu</groupId>
 			<artifactId>cloud-common-core</artifactId>
@@ -92,17 +97,12 @@
 			<artifactId>cloud-order-feign</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-
+		<!--测试和optional依赖-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
