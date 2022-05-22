@@ -63,7 +63,6 @@
 <!--		<dependency>-->
 <!--			<groupId>com.alibaba.cloud</groupId>-->
 <!--			<artifactId>spring-cloud-starter-alibaba-seata</artifactId>-->
-<!--			<version>${seata.version}</version>-->
 <!--		</dependency>-->
 		<dependency>
 			<groupId>commons-beanutils</groupId>
