@@ -247,6 +247,27 @@
 				<artifactId>cloud-public-service</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<!--搜索服务-->
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-search</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-search-feign</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-search-feign-pojo</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-search-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<!--库存服务-->
 			<dependency>
 				<groupId>org.liu</groupId>
