@@ -38,6 +38,6 @@
 - cloud-product：7418：产品服务：spu，sku
 - cloud-public：7414：公共基础服务：诸如全局公共配置，数据字典，消息，短信，文件上传下载等
 - cloud-search：7420：搜索服务
-- cloud-storage：7415：库存服务
+- cloud-storage：7415：库存服务，~~~~此服务和产品服务是不是重合了，有待进一步了解~~~~
 - cloud-user：7413：用户服务
 - cloud-zuul：10086：以zuul为框架搭建的网关

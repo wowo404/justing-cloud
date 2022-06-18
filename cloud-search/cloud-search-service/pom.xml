@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>cloud-search</artifactId>
         <groupId>org.liu</groupId>
+        <artifactId>cloud-search</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cloud-search-service</artifactId>
 
     <dependencies>
+        <!--spring-boot依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -19,10 +20,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -40,6 +37,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
+        <!--spring-cloud依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-bus</artifactId>
@@ -61,27 +59,21 @@
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
         <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>1.9.4</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.justing.commons</groupId>
             <artifactId>justing-commons-util</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
+        <!--本微服务内部的模块-->
         <dependency>
             <groupId>org.liu</groupId>
             <artifactId>cloud-search-feign-pojo</artifactId>
         </dependency>
-        <!--引入基础模块-->
+        <!--项目内部的基础模块-->
         <dependency>
             <groupId>org.liu</groupId>
             <artifactId>cloud-common-core</artifactId>
         </dependency>
-        <!--引入其他服务的feign-->
+        <!--引入其他服务的feign，保留版本号，不使用顶级pom管理，因为随着项目的演变，各微服务会各自发展-->
 
         <!--测试和optional依赖-->
         <dependency>
@@ -93,6 +85,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <scope>compile</scope>
             <optional>true</optional>
         </dependency>
         <dependency>
