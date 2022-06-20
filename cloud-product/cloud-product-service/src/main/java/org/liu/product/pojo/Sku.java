@@ -1,0 +1,57 @@
+package org.liu.product.pojo;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+
+@TableName("sku")
+@Accessors(chain = true)
+@Data
+public class Sku implements Serializable {
+    /**
+     * sku id
+     */
+    @TableId(type = IdType.AUTO)
+    private Long id;
+    /**
+     * spu id
+     */
+    @TableField
+    private Long spuId;
+    /**
+     * 商品标题
+     */
+    @TableField
+    private String title;
+    /**
+     * 商品的图片，多个图片以‘,’分割
+     */
+    @TableField
+    private String images;
+    /**
+     * 销售价格
+     */
+    @TableField
+    private Long price;
+    /**
+     * 特有规格属性在spu属性模板中的对应下标组合
+     */
+    @TableField
+    private String indexes;
+    /**
+     * sku的特有规格参数，json格式
+     */
+    @TableField
+    private String ownSpec;
+    /**
+     * 是否有效，0无效，1有效
+     */
+    @TableField
+    private Integer enable;
+}
+

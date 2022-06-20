@@ -14,14 +14,15 @@ public class GenerateMapper {
     public static void generate(String entityName, String entityPackage, String mapperPackage, String mapperPath,
                                 String entitySuffix, String mapperInterfaceName) throws IOException {
         File file = new File(mapperPath + mapperInterfaceName + ".java");
-        if (file.exists()) return;
+//        if (file.exists()) return;
 
         StringBuffer sb = new StringBuffer();
         sb.append("package ").append(mapperPackage).append(";\r\n").append("\r\n");
 
         sb.append("import com.baomidou.mybatisplus.core.mapper.BaseMapper;\r\n");
+        sb.append("import org.apache.ibatis.annotations.Mapper;\r\n");
         sb.append("import ").append(entityPackage).append(".").append(entityName + entitySuffix).append(";\r\n");
-        sb.append("import org.apache.ibatis.annotations.Mapper;\r\n\r\n");
+        sb.append("\r\n");
 
         sb.append("@Mapper\r\n");
         sb.append("public interface ").append(mapperInterfaceName).append(" extends BaseMapper<" + entityName + entitySuffix + "> {\r\n");

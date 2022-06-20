@@ -12,6 +12,12 @@
     <artifactId>cloud-common-codegenerator</artifactId>
 
     <dependencies>
+        <!--数据源-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
         <!--optional依赖-->
         <dependency>
             <groupId>org.projectlombok</groupId>

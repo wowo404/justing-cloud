@@ -102,16 +102,24 @@ public class Generate {
 		String basePackage = "org.liu.product";
 		String entitySuffix = "";//po类的后缀，比如：XXXEntity
 		String requestMappingPrefix = "";//requestMapping的前缀，比如：/api/**
-		String microServicePath = "cloud-product/cloud-product-service";
+		String microServicePath = "cloud-product/cloud-product-service/";
 		basePath += microServicePath;
 		String entityPath = basePath + "src/main/java/org/liu/product/pojo/";
 		String mapperPath = basePath + "src/main/java/org/liu/product/mapper/";
 		String xmlPath = basePath + "src/main/resources/mapper/";
 		String servicePath = basePath + "src/main/java/org/liu/product/service/impl/";
 		String serviceInterfacePath = basePath + "src/main/java/org/liu/product/service/";
-		String controllerPath = basePath + "src/main/java/org/liu/product/controller/manager/";
+		String controllerPath = basePath + "src/main/java/org/liu/product/controller/";
 		Map<String, String> names = new HashMap<>();
-		names.put("product_spu", "ProductSpu");
+		names.put("brand", "Brand");
+		names.put("category", "Category");
+		names.put("category_brand", "CategoryBrand");
+		names.put("sku", "Sku");
+		names.put("spec_group", "SpecGroup");
+		names.put("spec_param", "SpecParam");
+		names.put("spu", "Spu");
+		names.put("spu_detail", "SpuDetail");
+		names.put("stock", "Stock");
 		for (Map.Entry<String, String> entry : names.entrySet()) {
 			generate("81.71.18.47", "3306", "cloud_product", "root", "20211027@nankang",
 					entry.getKey(), entry.getValue(), basePackage, entityPath, mapperPath, xmlPath, servicePath, serviceInterfacePath,

@@ -21,13 +21,13 @@ public class GenerateController {
         StringBuffer sb = new StringBuffer();
         sb.append("package ").append(controllerPackage).append(";\r\n").append("\r\n");
 
-        sb.append("import ").append(entityPackage).append(".").append(entityName + entitySuffix).append(";\r\n\r\n");
-        sb.append("import ").append(serviceInterfacePackage).append(".").append(serviceInterfaceName).append(";\r\n");
-        sb.append("import com.base.common.core.domain.AjaxResult;\r\n");
-        sb.append("import lombok.extern.slf4j.Slf4j;\r\n");
-		sb.append("import lombok.RequiredArgsConstructor;\r\n");
-        sb.append("import org.springframework.web.bind.annotation.*;\r\n");
         sb.append("import com.baomidou.mybatisplus.extension.plugins.pagination.Page;\r\n");
+        sb.append("import lombok.RequiredArgsConstructor;\r\n");
+        sb.append("import lombok.extern.slf4j.Slf4j;\r\n");
+        sb.append("import org.justing.commons.model.Response;\r\n");
+        sb.append("import ").append(entityPackage).append(".").append(entityName + entitySuffix).append(";\r\n");
+        sb.append("import ").append(serviceInterfacePackage).append(".").append(serviceInterfaceName).append(";\r\n");
+        sb.append("import org.springframework.web.bind.annotation.*;\r\n");
         sb.append("\r\n");
 
         sb.append("/**\r\n");
@@ -39,58 +39,58 @@ public class GenerateController {
         sb.append("@RequestMapping(\"" + requestMappingPrefix + "/" + initial(entityName) + "\")\r\n");
         sb.append("public class ").append(controllerClassName).append(" {\r\n");
         sb.append("\r\n");
-        sb.append("\tprivate final " + serviceInterfaceName + " " + initial(serviceInterfaceName) + ";\r\n");
+        sb.append("    private final " + serviceInterfaceName + " " + initial(serviceInterfaceName) + ";\r\n");
         sb.append("\r\n");
         //--------分页列表
-        sb.append("\t/**\r\n");
-        sb.append("\t * 分页列表\r\n");
-        sb.append("\t */\r\n");
-        sb.append("\t@PostMapping(\"pageList\")\r\n");
-        sb.append("\tpublic AjaxResult<Page<Long>> pageList() {\r\n");
-        sb.append("\t\treturn AjaxResult.success(" + initial(serviceInterfaceName) + ".pageList());\r\n");
-        sb.append("\t}\r\n");
+        sb.append("    /**\r\n");
+        sb.append("     * 分页列表\r\n");
+        sb.append("     */\r\n");
+        sb.append("    @PostMapping(\"pageList\")\r\n");
+        sb.append("    public Response<Page<Long>> pageList() {\r\n");
+        sb.append("        return Response.ok(" + initial(serviceInterfaceName) + ".pageList());\r\n");
+        sb.append("    }\r\n");
         sb.append("\r\n");
         //--------
         //--------详情
-        sb.append("\t/**\r\n");
-        sb.append("\t * 详情\r\n");
-        sb.append("\t */\r\n");
-        sb.append("\t@GetMapping(\"/{id}\")\r\n");
-        sb.append("\tpublic AjaxResult<Long> detail(@PathVariable(\"id\") Long id) {\r\n");
-        sb.append("\t\treturn AjaxResult.success(" + initial(serviceInterfaceName) + ".detail(id));\r\n");
-        sb.append("\t}\r\n");
+        sb.append("    /**\r\n");
+        sb.append("     * 详情\r\n");
+        sb.append("     */\r\n");
+        sb.append("    @GetMapping(\"/{id}\")\r\n");
+        sb.append("    public Response<Long> detail(@PathVariable(\"id\") Long id) {\r\n");
+        sb.append("        return Response.ok(" + initial(serviceInterfaceName) + ".detail(id));\r\n");
+        sb.append("    }\r\n");
         sb.append("\r\n");
         //--------
         //--------新增
-        sb.append("\t/**\r\n");
-        sb.append("\t * 新增\r\n");
-        sb.append("\t */\r\n");
-        sb.append("\t@PostMapping(\"add\")\r\n");
-        sb.append("\tpublic AjaxResult<Long> add() {\r\n");
-        sb.append("\t\treturn AjaxResult.success(" + initial(serviceInterfaceName) + ".add());\r\n");
-        sb.append("\t}\r\n");
+        sb.append("    /**\r\n");
+        sb.append("     * 新增\r\n");
+        sb.append("     */\r\n");
+        sb.append("    @PostMapping(\"add\")\r\n");
+        sb.append("    public Response<Long> add() {\r\n");
+        sb.append("        return Response.ok(" + initial(serviceInterfaceName) + ".add());\r\n");
+        sb.append("    }\r\n");
         sb.append("\r\n");
         //--------
         //--------编辑
-        sb.append("\t/**\r\n");
-        sb.append("\t * 编辑\r\n");
-        sb.append("\t */\r\n");
-        sb.append("\t@PostMapping(\"edit\")\r\n");
-        sb.append("\tpublic AjaxResult<Void> edit() {\r\n");
-        sb.append("\t\t" + initial(serviceInterfaceName) + ".edit();\r\n");
-        sb.append("\t\treturn AjaxResult.success();\r\n");
-        sb.append("\t}\r\n");
+        sb.append("    /**\r\n");
+        sb.append("     * 编辑\r\n");
+        sb.append("     */\r\n");
+        sb.append("    @PostMapping(\"edit\")\r\n");
+        sb.append("    public Response<Void> edit() {\r\n");
+        sb.append("        " + initial(serviceInterfaceName) + ".edit();\r\n");
+        sb.append("        return Response.ok();\r\n");
+        sb.append("    }\r\n");
         sb.append("\r\n");
         //--------
         //--------删除
-        sb.append("\t/**\r\n");
-        sb.append("\t * 删除\r\n");
-        sb.append("\t */\r\n");
-        sb.append("\t@DeleteMapping(\"/{ids}\")\r\n");
-        sb.append("\tpublic AjaxResult<Void> delete(@PathVariable Long[] ids) {\r\n");
-        sb.append("\t\t" + initial(serviceInterfaceName) + ".delete(ids);\r\n");
-        sb.append("\t\treturn AjaxResult.success();\r\n");
-        sb.append("\t}\r\n");
+        sb.append("    /**\r\n");
+        sb.append("     * 删除\r\n");
+        sb.append("     */\r\n");
+        sb.append("    @DeleteMapping(\"/{ids}\")\r\n");
+        sb.append("    public Response<Void> delete(@PathVariable Long[] ids) {\r\n");
+        sb.append("        " + initial(serviceInterfaceName) + ".delete(ids);\r\n");
+        sb.append("        return Response.ok();\r\n");
+        sb.append("    }\r\n");
         //----------
         sb.append("}\r\n");
         String content = sb.toString();

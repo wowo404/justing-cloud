@@ -20,20 +20,21 @@ public class GenerateServiceInterface {
         StringBuffer sb = new StringBuffer();
         sb.append("package ").append(serviceInterfacePackage).append(";\r\n").append("\r\n");
 
-        sb.append("import ").append(entityPackage).append(".").append(entityName + entitySuffix).append(";\r\n");
         sb.append("import com.baomidou.mybatisplus.extension.plugins.pagination.Page;\r\n");
-        sb.append("import com.baomidou.mybatisplus.extension.service.IService;\r\n\r\n");
+        sb.append("import com.baomidou.mybatisplus.extension.service.IService;\r\n");
+        sb.append("import ").append(entityPackage).append(".").append(entityName + entitySuffix).append(";\r\n");
+        sb.append("\r\n");
 
         sb.append("public interface ").append(serviceInterfaceName).append(" extends IService<" + entityName + entitySuffix + "> {\r\n");
-        sb.append("\tPage<Long> pageList();\r\n");
+        sb.append("    Page<Long> pageList();\r\n");
         sb.append("\r\n");
-        sb.append("\tLong detail(Long id);\r\n");
+        sb.append("    Long detail(Long id);\r\n");
         sb.append("\r\n");
-        sb.append("\tLong add();\r\n");
+        sb.append("    Long add();\r\n");
         sb.append("\r\n");
-        sb.append("\tvoid edit();\r\n");
+        sb.append("    void edit();\r\n");
         sb.append("\r\n");
-        sb.append("\tvoid delete(Long[] ids);\r\n");
+        sb.append("    void delete(Long[] ids);\r\n");
         sb.append("}\r\n");
         String content = sb.toString();
         System.out.println(content);
