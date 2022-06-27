@@ -5,13 +5,13 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import org.liu.product.pojo.Brand;
 
 public interface BrandService extends IService<Brand> {
-    Page<Long> pageList();
+    Page<Brand> pageList();
 
-    Long detail(Long id);
+    Brand detail(Long id);
 
-    Long add();
+    Long add(Brand brand);
 
-    void edit();
+    void edit(Brand brand);
 
     void delete(Long[] ids);
 }

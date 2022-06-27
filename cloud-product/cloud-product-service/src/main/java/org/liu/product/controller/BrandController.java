@@ -23,7 +23,7 @@ public class BrandController {
      * 分页列表
      */
     @PostMapping("pageList")
-    public Response<Page<Long>> pageList() {
+    public Response<Page<Brand>> pageList() {
         return Response.ok(brandService.pageList());
     }
 
@@ -31,7 +31,7 @@ public class BrandController {
      * 详情
      */
     @GetMapping("/{id}")
-    public Response<Long> detail(@PathVariable("id") Long id) {
+    public Response<Brand> detail(@PathVariable("id") Long id) {
         return Response.ok(brandService.detail(id));
     }
 
@@ -39,16 +39,16 @@ public class BrandController {
      * 新增
      */
     @PostMapping("add")
-    public Response<Long> add() {
-        return Response.ok(brandService.add());
+    public Response<Long> add(Brand brand) {
+        return Response.ok(brandService.add(brand));
     }
 
     /**
      * 编辑
      */
     @PostMapping("edit")
-    public Response<Void> edit() {
-        brandService.edit();
+    public Response<Void> edit(Brand brand) {
+        brandService.edit(brand);
         return Response.ok();
     }
 

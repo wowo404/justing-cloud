@@ -10,32 +10,37 @@ import org.liu.product.service.BrandService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
+
 @Slf4j
 @RequiredArgsConstructor
 @Transactional(rollbackFor = Exception.class)
 @Service
 public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements BrandService {
     @Override
-    public Page<Long> pageList() {
+    public Page<Brand> pageList() {
         return null;
     }
 
     @Override
-    public Long detail(Long id) {
-        return null;
+    public Brand detail(Long id) {
+        return super.getById(id);
     }
 
     @Override
-    public Long add() {
-        return null;
+    public Long add(Brand brand) {
+        super.save(brand);
+        return brand.getId();
     }
 
     @Override
-    public void edit() {
+    public void edit(Brand brand) {
+        super.updateById(brand);
     }
 
     @Override
     public void delete(Long[] ids) {
+        super.removeByIds(Arrays.asList(ids));
     }
 }
 
