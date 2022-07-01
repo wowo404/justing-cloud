@@ -1,3 +1,6 @@
+server:
+  port: 7418
+
 spring:
   profiles:
     active: dev

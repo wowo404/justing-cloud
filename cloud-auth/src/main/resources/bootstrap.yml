@@ -1,3 +1,6 @@
+server:
+  port: 7474
+
 spring:
   profiles:
     active: dev
