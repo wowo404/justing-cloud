@@ -21,9 +21,11 @@
 6. 接入分布式事务框架seata
 7. 引入链路追踪
 8. 引入spring-cloud-starter-netflix-hystrix-dashboard
+9. 完成gateway
 
 # 思考
 1. zuul中需要为每一个微服务添加fallback provider吗？？
+2. auth服务使用的是oauth2，在joolun商城项目中，每一个微服务就是一个client，这是一种错误的架构，把resource端和client端搞混淆了
 
 # 系统模块结构
 - cloud-activity：7417：活动服务：含优惠券
