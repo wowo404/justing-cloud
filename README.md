@@ -29,6 +29,7 @@
 
 # 系统模块结构
 - cloud-activity：7417：活动服务：含优惠券
+- cloud-admin：7421：管理后台权限服务
 - cloud-auth：7474：认证及授权服务
 - cloud-common：公共聚合模块
 - cloud-config-server：7411：配置中心
@@ -41,5 +42,5 @@
 - cloud-public：7414：公共基础服务：诸如全局公共配置，数据字典，消息，短信，文件上传下载等
 - cloud-search：7420：搜索服务
 - cloud-storage：7415：库存服务，~~~~此服务和产品服务是不是重合了，有待进一步了解~~~~
-- cloud-user：7413：用户服务
+- cloud-user：7413：用户服务，通常是微信用户或者web端的用户，跟管理后台的用户区分开来
 - cloud-zuul：10086：以zuul为框架搭建的网关

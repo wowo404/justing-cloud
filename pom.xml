@@ -5,6 +5,7 @@
 
 	<modules>
 		<module>cloud-activity</module>
+		<module>cloud-admin</module>
 		<module>cloud-auth</module>
 		<module>cloud-common</module>
 		<module>cloud-config-server</module>
