@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.justing.commons.util.SnowFlake;
 import org.liu.order.feign.pojo.AddOrderReq;
 import org.liu.order.pojo.Order;
-import org.liu.storage.feign.client.StorageClient;
-import org.liu.storage.feign.pojo.OperateStorageReq;
+import org.liu.product.feign.client.StockClient;
+import org.liu.product.feign.pojo.req.EditStockReq;
 import org.liu.user.feign.client.UserClient;
 import org.liu.user.feign.pojo.BuyingBehaviorStatisticsReq;
 import org.liu.user.feign.pojo.OperateAccountReq;
@@ -23,7 +23,7 @@ import java.util.Map;
 public class OrderService {
 
     private final UserClient userClient;
-    private final StorageClient storageClient;
+    private final StockClient stockClient;
     private static final SnowFlake snowFlake = new SnowFlake(1L, 1L);
 
     public Order addOrder(AddOrderReq req) {
@@ -31,11 +31,10 @@ public class OrderService {
         order.setOrderId(snowFlake.nextId());
 
         //执行扣减库存操作
-        OperateStorageReq operateStorageReq = new OperateStorageReq();
-        operateStorageReq.setCategoryId(1L);
-        operateStorageReq.setGoodsId(1L);
-        operateStorageReq.setCount(10);
-        storageClient.operate(operateStorageReq);
+        EditStockReq stockReq = new EditStockReq();
+        stockReq.setSkuId(1L);
+        stockReq.setStock(1);
+        stockClient.edit(stockReq);
         //执行保存订单操作
         //执行用户账户扣减操作
         OperateAccountReq operateAccountReq = new OperateAccountReq();

@@ -26,6 +26,7 @@
 # 思考
 1. zuul中需要为每一个微服务添加fallback provider吗？？
 2. auth服务使用的是oauth2，在joolun商城项目中，每一个微服务就是一个client，这是一种错误的架构，把resource端和client端搞混淆了
+3. po类是否移动到feign-pojo模块中供外部调用与内部使用共用？
 
 # 系统模块结构
 - cloud-activity：7417：活动服务：含优惠券

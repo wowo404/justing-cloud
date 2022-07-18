@@ -104,6 +104,27 @@
 				<artifactId>cloud-activity-service</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<!--管理后台权限服务-->
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-admin</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-admin-feign</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-admin-feign-pojo</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-admin-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<!--授权服务-->
 			<dependency>
 				<groupId>org.liu</groupId>

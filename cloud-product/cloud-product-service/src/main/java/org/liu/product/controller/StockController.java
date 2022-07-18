@@ -46,7 +46,7 @@ public class StockController {
     /**
      * 编辑
      */
-    @PostMapping("edit")
+    @PutMapping("edit")
     public Response<Void> edit() {
         stockService.edit();
         return Response.ok();

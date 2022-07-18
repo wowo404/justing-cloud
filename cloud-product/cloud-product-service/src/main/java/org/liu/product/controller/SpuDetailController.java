@@ -46,7 +46,7 @@ public class SpuDetailController {
     /**
      * 编辑
      */
-    @PostMapping("edit")
+    @PutMapping("edit")
     public Response<Void> edit() {
         spuDetailService.edit();
         return Response.ok();

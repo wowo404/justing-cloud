@@ -12,5 +12,9 @@
     <artifactId>cloud-admin</artifactId>
     <packaging>pom</packaging>
 
-
+    <modules>
+        <module>cloud-admin-service</module>
+        <module>cloud-admin-feign</module>
+        <module>cloud-admin-feign-pojo</module>
+    </modules>
 </project>

@@ -46,7 +46,7 @@ public class SkuController {
     /**
      * 编辑
      */
-    @PostMapping("edit")
+    @PutMapping("edit")
     public Response<Void> edit() {
         skuService.edit();
         return Response.ok();

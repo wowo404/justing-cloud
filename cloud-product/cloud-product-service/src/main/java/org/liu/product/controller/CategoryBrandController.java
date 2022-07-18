@@ -46,7 +46,7 @@ public class CategoryBrandController {
     /**
      * 编辑
      */
-    @PostMapping("edit")
+    @PutMapping("edit")
     public Response<Void> edit() {
         categoryBrandService.edit();
         return Response.ok();

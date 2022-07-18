@@ -75,7 +75,7 @@ public class GenerateController {
         sb.append("    /**\r\n");
         sb.append("     * 编辑\r\n");
         sb.append("     */\r\n");
-        sb.append("    @PostMapping(\"edit\")\r\n");
+        sb.append("    @PutMapping(\"edit\")\r\n");
         sb.append("    public Response<Void> edit() {\r\n");
         sb.append("        " + initial(serviceInterfaceName) + ".edit();\r\n");
         sb.append("        return Response.ok();\r\n");

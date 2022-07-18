@@ -46,7 +46,7 @@ public class SpecParamController {
     /**
      * 编辑
      */
-    @PostMapping("edit")
+    @PutMapping("edit")
     public Response<Void> edit() {
         specParamService.edit();
         return Response.ok();

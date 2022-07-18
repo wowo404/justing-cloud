@@ -46,7 +46,7 @@ public class SpecGroupController {
     /**
      * 编辑
      */
-    @PostMapping("edit")
+    @PutMapping("edit")
     public Response<Void> edit() {
         specGroupService.edit();
         return Response.ok();
