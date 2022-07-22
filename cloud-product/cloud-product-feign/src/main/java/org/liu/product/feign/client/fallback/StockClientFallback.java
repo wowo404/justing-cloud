@@ -2,7 +2,7 @@ package org.liu.product.feign.client.fallback;
 
 import org.justing.commons.model.Response;
 import org.liu.product.feign.client.StockClient;
-import org.liu.product.feign.pojo.req.EditStockReq;
+import org.liu.product.feign.pojo.EditStockReq;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,6 +13,6 @@ import org.springframework.stereotype.Component;
 public class StockClientFallback implements StockClient {
     @Override
     public Response<Void> edit(EditStockReq req) {
-        return null;
+        return Response.serverError();
     }
 }

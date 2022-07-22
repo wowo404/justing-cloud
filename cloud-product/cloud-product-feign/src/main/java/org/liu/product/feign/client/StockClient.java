@@ -4,7 +4,7 @@ import org.justing.commons.model.Response;
 import org.liu.common.core.constants.ServiceNameConstants;
 import org.liu.common.feign.config.FeignConfig;
 import org.liu.product.feign.client.fallback.SpuClientFallback;
-import org.liu.product.feign.pojo.req.EditStockReq;
+import org.liu.product.feign.pojo.EditStockReq;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

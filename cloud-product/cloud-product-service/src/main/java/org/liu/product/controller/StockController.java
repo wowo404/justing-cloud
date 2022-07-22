@@ -4,8 +4,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.justing.commons.model.Response;
+import org.liu.product.feign.pojo.EditStockReq;
 import org.liu.product.pojo.Stock;
 import org.liu.product.service.StockService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -47,8 +49,8 @@ public class StockController {
      * 编辑
      */
     @PutMapping("edit")
-    public Response<Void> edit() {
-        stockService.edit();
+    public Response<Void> edit(@Validated @RequestBody EditStockReq req) {
+        stockService.edit(req);
         return Response.ok();
     }
 
