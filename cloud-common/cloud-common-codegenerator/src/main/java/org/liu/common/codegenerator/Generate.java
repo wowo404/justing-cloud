@@ -72,18 +72,50 @@ public class Generate {
 		String property = System.getProperty("user.name");
 		if ("liuzhsh".equals(property)) {
 			basePath = "D:/work/workspace-idea/justing-cloud/";
-		} else if ("TUF GAMING".equals(property)) {
+		} else if ("Administrator".equals(property)) {
 			basePath = "E:/work/minxun/code/gxjcms/java/";
 		} else {
 			return;
 		}
 //		cloud_activity(basePath);
+		cloud_admin(basePath);
 //		cloud_coupon(basePath);
 //		cloud_order(basePath);
-		cloud_product(basePath);
+//		cloud_product(basePath);
 //		cloud_public(basePath);
 //		cloud_storage(basePath);
 //		cloud_user(basePath);
+	}
+
+	private static void cloud_admin(String basePath) throws Exception {
+		String basePackage = "org.liu.admin";
+		String entitySuffix = "";//po类的后缀，比如：XXXEntity
+		String requestMappingPrefix = "";//requestMapping的前缀，比如：/api/**
+		String microServicePath = "cloud-admin/cloud-admin-service/";
+		basePath += microServicePath;
+		String entityPath = basePath + "src/main/java/org/liu/admin/pojo/";
+		String mapperPath = basePath + "src/main/java/org/liu/admin/mapper/";
+		String xmlPath = basePath + "src/main/resources/mapper/";
+		String servicePath = basePath + "src/main/java/org/liu/admin/service/impl/";
+		String serviceInterfacePath = basePath + "src/main/java/org/liu/admin/service/";
+		String controllerPath = basePath + "src/main/java/org/liu/admin/controller/";
+		Map<String, String> names = new HashMap<>();
+		names.put("sys_config", "Config");
+		names.put("sys_dept", "Dept");
+		names.put("sys_dictionary", "Dictionary");
+		names.put("sys_menu", "Menu");
+		names.put("sys_operate_log", "OperateLog");
+		names.put("sys_operator", "Operator");
+		names.put("sys_operator_post", "OperatorPost");
+		names.put("sys_post", "Post");
+		names.put("sys_role", "Role");
+		names.put("sys_role_menu", "RoleMenu");
+		names.put("sys_tenant", "Tenant");
+		for (Map.Entry<String, String> entry : names.entrySet()) {
+			generate("81.71.18.47", "3306", "cloud_admin", "root", "20211027@nankang",
+					entry.getKey(), entry.getValue(), basePackage, entityPath, mapperPath, xmlPath, servicePath, serviceInterfacePath,
+					controllerPath, entitySuffix, requestMappingPrefix);
+		}
 	}
 
 	private static void cloud_activity(String basePath) {
