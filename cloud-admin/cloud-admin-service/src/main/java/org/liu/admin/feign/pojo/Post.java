@@ -1,4 +1,4 @@
-package org.liu.admin.pojo;
+package org.liu.admin.feign.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -9,30 +9,35 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
-@TableName("sys_config")
+@TableName("sys_post")
 @Accessors(chain = true)
 @Data
-public class Config implements Serializable {
+public class Post implements Serializable {
     /**
-     * 主键
+     * 岗位ID
      */
     @TableId(type = IdType.AUTO)
     private Long id;
     /**
-     * 名称
+     * 岗位编码
+     */
+    @TableField
+    private String code;
+    /**
+     * 岗位名称
      */
     @TableField
     private String name;
     /**
-     * 键，唯一
+     * 显示顺序
      */
     @TableField
-    private String key;
+    private Integer sortNumber;
     /**
-     * 值
+     * 状态（0-正常,1-停用）
      */
     @TableField
-    private String value;
+    private Integer status;
     /**
      * 租户ID
      */

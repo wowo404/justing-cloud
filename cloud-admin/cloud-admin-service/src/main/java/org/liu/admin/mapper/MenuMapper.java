@@ -2,7 +2,7 @@ package org.liu.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-import org.liu.admin.pojo.Menu;
+import org.liu.admin.feign.pojo.Menu;
 
 @Mapper
 public interface MenuMapper extends BaseMapper<Menu> {

@@ -1,4 +1,4 @@
-package org.liu.admin.pojo;
+package org.liu.admin.feign.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -9,50 +9,40 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
-@TableName("sys_operate_log")
+@TableName("sys_dept")
 @Accessors(chain = true)
 @Data
-public class OperateLog implements Serializable {
+public class Dept implements Serializable {
     /**
      * ID
      */
     @TableId(type = IdType.AUTO)
     private Long id;
     /**
-     * 操作员姓名
+     * 部门名称
      */
     @TableField
-    private String operatorName;
+    private String name;
     /**
-     * 操作动作名称，如：新增订单
+     * 上级部门ID，顶级部门为0
      */
     @TableField
-    private String actionName;
+    private Long parentId;
     /**
-     * 操作对应业务表的ID
+     * 祖级列表
      */
     @TableField
-    private Integer bizTableId;
+    private String ancestors;
     /**
-     * 请求参数
+     * 排序
      */
     @TableField
-    private String requestArgs;
+    private Integer sortNumber;
     /**
-     * 来源IP
+     * 是否删除：0-存在；1-已删除
      */
     @TableField
-    private String ip;
-    /**
-     * 浏览器
-     */
-    @TableField
-    private String browser;
-    /**
-     * 操作系统
-     */
-    @TableField
-    private String os;
+    private Integer deleted;
     /**
      * 租户ID
      */

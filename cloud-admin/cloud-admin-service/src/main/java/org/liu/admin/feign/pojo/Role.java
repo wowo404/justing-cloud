@@ -1,4 +1,4 @@
-package org.liu.admin.pojo;
+package org.liu.admin.feign.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -9,32 +9,37 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
-@TableName("sys_post")
+@TableName("sys_role")
 @Accessors(chain = true)
 @Data
-public class Post implements Serializable {
+public class Role implements Serializable {
     /**
-     * 岗位ID
+     * 角色ID
      */
     @TableId(type = IdType.AUTO)
     private Long id;
     /**
-     * 岗位编码
+     * 角色编码
      */
     @TableField
     private String code;
     /**
-     * 岗位名称
+     * 角色名称
      */
     @TableField
     private String name;
     /**
-     * 显示顺序
+     * 数据范围（0-全部数据权限，1-自定数据权限，2-本部门数据权限，3-本部门及以下数据权限，4-自定义数据权限）
      */
     @TableField
-    private Integer sortNumber;
+    private Integer dataScope;
     /**
-     * 状态（0-正常,1-停用）
+     * 是否删除：0-存在；1-已删除
+     */
+    @TableField
+    private Integer deleted;
+    /**
+     * 状态（0-正常，1-注销）
      */
     @TableField
     private Integer status;

@@ -11,5 +11,11 @@
 
     <artifactId>cloud-common-core</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.justing.commons</groupId>
+            <artifactId>justing-commons-base</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

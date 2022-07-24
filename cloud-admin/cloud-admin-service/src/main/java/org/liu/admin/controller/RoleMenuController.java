@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.justing.commons.model.Response;
-import org.liu.admin.pojo.RoleMenu;
 import org.liu.admin.service.RoleMenuService;
 import org.springframework.web.bind.annotation.*;
 

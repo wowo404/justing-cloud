@@ -1,4 +1,4 @@
-package org.liu.admin.pojo;
+package org.liu.admin.feign.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -9,34 +9,34 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
-@TableName("sys_dictionary")
+@TableName("sys_config")
 @Accessors(chain = true)
 @Data
-public class Dictionary implements Serializable {
+public class Config implements Serializable {
     /**
-     * ID
+     * 主键
      */
     @TableId(type = IdType.AUTO)
     private Long id;
     /**
-     * 字典类型
+     * 名称
      */
     @TableField
-    private String type;
+    private String name;
     /**
-     * 字典key，同一type下的key不能相同
+     * 键，唯一
      */
     @TableField
     private String key;
     /**
-     * 字典key对应的值
+     * 值
      */
     @TableField
     private String value;
     /**
-     * 同一个type下的排序
+     * 租户ID
      */
     @TableField
-    private Integer sortNumber;
+    private Long tenantId;
 }
 

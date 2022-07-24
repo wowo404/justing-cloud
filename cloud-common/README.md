@@ -1,5 +1,6 @@
 # 结构
 - cache: 缓存相关
+- codegenerator：代码生成
 - core: 通用的对象、枚举、常量等
 - feign：feign的通用配置
 

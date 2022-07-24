@@ -2,7 +2,7 @@ package org.liu.admin.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.liu.admin.pojo.RoleMenu;
+import org.liu.admin.feign.pojo.RoleMenu;
 
 public interface RoleMenuService extends IService<RoleMenu> {
     Page<Long> pageList();

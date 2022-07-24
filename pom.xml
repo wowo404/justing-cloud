@@ -71,6 +71,12 @@
 				<artifactId>mybatis-plus-boot-starter</artifactId>
 				<version>3.4.2</version>
 			</dependency>
+			<!--工具库-->
+			<dependency>
+				<groupId>cn.hutool</groupId>
+				<artifactId>hutool-all</artifactId>
+				<version>5.8.4</version>
+			</dependency>
 			<!--跨项目通用模块-->
 			<dependency>
 				<groupId>org.justing.commons</groupId>
@@ -144,12 +150,22 @@
 			</dependency>
 			<dependency>
 				<groupId>org.liu</groupId>
+				<artifactId>cloud-common-codegenerator</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
 				<artifactId>cloud-common-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.liu</groupId>
 				<artifactId>cloud-common-feign</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
+				<artifactId>cloud-common-springmvc</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<!--配置中心-->

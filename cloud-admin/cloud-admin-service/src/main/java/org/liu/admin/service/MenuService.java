@@ -2,7 +2,7 @@ package org.liu.admin.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.liu.admin.pojo.Menu;
+import org.liu.admin.feign.pojo.Menu;
 
 public interface MenuService extends IService<Menu> {
     Page<Long> pageList();

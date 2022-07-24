@@ -2,7 +2,7 @@ package org.liu.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-import org.liu.admin.pojo.Operator;
+import org.liu.admin.feign.pojo.Operator;
 
 @Mapper
 public interface OperatorMapper extends BaseMapper<Operator> {
