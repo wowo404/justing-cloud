@@ -1,4 +1,4 @@
-package org.liu.admin.feign.pojo;
+package org.liu.admin.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -66,6 +66,11 @@ public class Operator implements Serializable {
     @TableField
     private Integer status;
     /**
+     * 备注
+     */
+    @TableField
+    private String remark;
+    /**
      * 最后登录IP
      */
     @TableField
@@ -76,6 +81,28 @@ public class Operator implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @TableField
     private Date lastLoginTime;
+    /**
+     * 创建者
+     */
+    @TableField
+    private String createBy;
+    /**
+     * 创建时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @TableField
+    private Date createTime;
+    /**
+     * 更新者
+     */
+    @TableField
+    private String updateBy;
+    /**
+     * 更新时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @TableField
+    private Date updateTime;
     /**
      * 租户ID
      */

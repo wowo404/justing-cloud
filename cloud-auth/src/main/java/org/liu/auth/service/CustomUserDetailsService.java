@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.justing.commons.exception.CommonException;
 import org.liu.admin.feign.client.OperatorClient;
 import org.liu.common.core.enums.ClientEnum;
-import org.liu.common.springmvc.utils.ServletUtil;
+import org.liu.common.service.util.ServletUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,7 +26,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        String client = ServletUtil.getRequest().getHeader(HEADER_CLIENT);
+        String client = ServletUtils.getRequest().getHeader(HEADER_CLIENT);
         if (StrUtil.isBlank(client)) {
             throw new CommonException(MISSING_HEADER_CLIENT);
         }

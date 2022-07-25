@@ -1,4 +1,4 @@
-package org.liu.admin.feign.pojo;
+package org.liu.admin.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -11,65 +11,71 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 import java.util.Date;
 
-@TableName("sys_tenant")
+@TableName("sys_dept")
 @Accessors(chain = true)
 @Data
-public class Tenant implements Serializable {
+public class Dept implements Serializable {
     /**
      * ID
      */
     @TableId(type = IdType.AUTO)
     private Long id;
     /**
-     * 名称
+     * 部门名称
      */
     @TableField
     private String name;
     /**
-     * 租户管理登录账号
+     * 上级部门ID，顶级部门为0
      */
     @TableField
-    private String account;
+    private Long parentId;
     /**
-     * 密码
+     * 祖级列表
      */
     @TableField
-    private String password;
+    private String ancestors;
     /**
-     * 手机
+     * 排序
      */
     @TableField
-    private String phone;
-    /**
-     * 邮箱
-     */
-    @TableField
-    private String email;
-    /**
-     * 地址
-     */
-    @TableField
-    private String address;
-    /**
-     * 角色ID
-     */
-    @TableField
-    private Long roleId;
-    /**
-     * 到期时间
-     */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @TableField
-    private Date expirationDate;
-    /**
-     * 是否启用（0-是，1-否）
-     */
-    @TableField
-    private Integer enable;
+    private Integer sortNumber;
     /**
      * 是否删除：0-存在；1-已删除
      */
     @TableField
     private Integer deleted;
+    /**
+     * 备注
+     */
+    @TableField
+    private String remark;
+    /**
+     * 创建者
+     */
+    @TableField
+    private String createBy;
+    /**
+     * 创建时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @TableField
+    private Date createTime;
+    /**
+     * 更新者
+     */
+    @TableField
+    private String updateBy;
+    /**
+     * 更新时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @TableField
+    private Date updateTime;
+    /**
+     * 租户ID
+     */
+    @TableField
+    private Long tenantId;
 }
 

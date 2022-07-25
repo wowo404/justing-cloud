@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.liu.admin.mapper.RoleMapper;
-import org.liu.admin.feign.pojo.Role;
+import org.liu.admin.pojo.Role;
 import org.liu.admin.service.RoleService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

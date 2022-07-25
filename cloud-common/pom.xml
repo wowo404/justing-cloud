@@ -19,7 +19,7 @@
         <module>cloud-common-feign</module>
         <module>cloud-common-cache</module>
         <module>cloud-common-codegenerator</module>
-        <module>cloud-common-springmvc</module>
+        <module>cloud-common-service</module>
     </modules>
 
 </project>

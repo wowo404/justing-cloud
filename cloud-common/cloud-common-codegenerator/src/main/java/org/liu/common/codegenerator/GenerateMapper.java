@@ -14,7 +14,7 @@ public class GenerateMapper {
     public static void generate(String entityName, String entityPackage, String mapperPackage, String mapperPath,
                                 String entitySuffix, String mapperInterfaceName) throws IOException {
         File file = new File(mapperPath + mapperInterfaceName + ".java");
-//        if (file.exists()) return;
+        if (file.exists()) return;
 
         StringBuffer sb = new StringBuffer();
         sb.append("package ").append(mapperPackage).append(";\r\n").append("\r\n");

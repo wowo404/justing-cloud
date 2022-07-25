@@ -1,5 +1,6 @@
-package org.liu.admin.feign.pojo;
+package org.liu.admin.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -8,6 +9,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @TableName("sys_role")
 @Accessors(chain = true)
@@ -39,10 +41,37 @@ public class Role implements Serializable {
     @TableField
     private Integer deleted;
     /**
+     * 备注
+     */
+    @TableField
+    private String remark;
+    /**
      * 状态（0-正常，1-注销）
      */
     @TableField
     private Integer status;
+    /**
+     * 创建者
+     */
+    @TableField
+    private String createBy;
+    /**
+     * 创建时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @TableField
+    private Date createTime;
+    /**
+     * 修改者
+     */
+    @TableField
+    private String updateBy;
+    /**
+     * 修改时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @TableField
+    private Date updateTime;
     /**
      * 租户ID
      */

@@ -81,7 +81,7 @@ public class Generate {
 		cloud_admin(basePath);
 //		cloud_coupon(basePath);
 //		cloud_order(basePath);
-//		cloud_product(basePath);
+		cloud_product(basePath);
 //		cloud_public(basePath);
 //		cloud_storage(basePath);
 //		cloud_user(basePath);

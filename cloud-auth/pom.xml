@@ -29,7 +29,7 @@
 
         <dependency>
             <groupId>org.liu</groupId>
-            <artifactId>cloud-common-springmvc</artifactId>
+            <artifactId>cloud-common-service</artifactId>
         </dependency>
     </dependencies>
 

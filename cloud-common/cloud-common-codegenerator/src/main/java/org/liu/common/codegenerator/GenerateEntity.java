@@ -3,7 +3,7 @@ package org.liu.common.codegenerator;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,11 +14,12 @@ import java.util.regex.Pattern;
  */
 public class GenerateEntity {
 
-    public static final List<String> ignore_columns = Arrays.asList("create_by", "create_time", "update_by", "update_time", "remark");
+    //"create_by", "create_time", "update_by", "update_time", "remark"
+    public static final List<String> ignore_columns = Collections.emptyList();
 
     //生成实体类
     public static void generate(String entityName, String entityPackage, String entityPath, String databaseName,
-								Generate.TableInfo tableInfo) throws IOException {
+                                Generate.TableInfo tableInfo) throws IOException {
         StringBuffer sb = new StringBuffer();
         sb.append("package ").append(entityPackage).append(";\r\n").append("\r\n");
 

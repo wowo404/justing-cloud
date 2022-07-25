@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.justing.commons.model.Response;
+import org.liu.admin.feign.pojo.OperatorDetailResp;
 import org.liu.admin.service.OperatorService;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,6 +59,11 @@ public class OperatorController {
     public Response<Void> delete(@PathVariable Long[] ids) {
         operatorService.delete(ids);
         return Response.ok();
+    }
+
+    @GetMapping("operator/{username}")
+    public Response<OperatorDetailResp> queryByUsername(@PathVariable String username) {
+        return Response.ok(operatorService.queryByUsername(username));
     }
 }
 

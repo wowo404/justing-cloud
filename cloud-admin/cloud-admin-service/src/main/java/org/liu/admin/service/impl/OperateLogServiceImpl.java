@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.liu.admin.mapper.OperateLogMapper;
-import org.liu.admin.feign.pojo.OperateLog;
+import org.liu.admin.pojo.OperateLog;
 import org.liu.admin.service.OperateLogService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

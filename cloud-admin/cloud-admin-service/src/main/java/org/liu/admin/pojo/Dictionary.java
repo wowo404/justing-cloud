@@ -1,4 +1,4 @@
-package org.liu.admin.feign.pojo;
+package org.liu.admin.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -33,6 +33,11 @@ public class Dictionary implements Serializable {
      */
     @TableField
     private String value;
+    /**
+     * 备注
+     */
+    @TableField
+    private String remark;
     /**
      * 同一个type下的排序
      */

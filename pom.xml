@@ -165,7 +165,7 @@
 			</dependency>
 			<dependency>
 				<groupId>org.liu</groupId>
-				<artifactId>cloud-common-springmvc</artifactId>
+				<artifactId>cloud-common-service</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<!--配置中心-->
