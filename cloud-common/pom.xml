@@ -20,6 +20,7 @@
         <module>cloud-common-cache</module>
         <module>cloud-common-codegenerator</module>
         <module>cloud-common-service</module>
+        <module>cloud-common-security-resource-server</module>
     </modules>
 
 </project>

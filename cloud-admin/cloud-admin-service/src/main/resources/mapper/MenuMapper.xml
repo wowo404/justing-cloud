@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.liu.admin.mapper.MenuMapper">
+    <select id="queryByOperatorId" resultType="org.liu.admin.feign.pojo.MenuDetailResp">
+        SELECT
+            m.*
+        FROM
+            sys_operator_role sor
+                LEFT JOIN
+            sys_role_menu rm ON sor.role_id = rm.role_id
+                LEFT JOIN
+            sys_menu m ON rm.menu_id = m.id
+        WHERE
+            sor.operator_id = #{operatorId}
+    </select>
 </mapper>

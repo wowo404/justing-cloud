@@ -61,7 +61,7 @@ public class Operator implements Serializable {
     @TableField
     private Integer deleted;
     /**
-     * 状态：0-正常；1-冻结；2-注销
+     * 状态：0-正常；1-冻结
      */
     @TableField
     private Integer status;

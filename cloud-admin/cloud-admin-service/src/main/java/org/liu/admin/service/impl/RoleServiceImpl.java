@@ -4,11 +4,14 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.liu.admin.feign.pojo.RoleDetailResp;
 import org.liu.admin.mapper.RoleMapper;
 import org.liu.admin.pojo.Role;
 import org.liu.admin.service.RoleService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -36,6 +39,11 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
 
     @Override
     public void delete(Long[] ids) {
+    }
+
+    @Override
+    public List<RoleDetailResp> queryByOperatorId(Long operatorId) {
+        return baseMapper.queryByOperatorId(operatorId);
     }
 }
 

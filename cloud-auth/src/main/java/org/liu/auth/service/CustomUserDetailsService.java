@@ -1,16 +1,30 @@
 package org.liu.auth.service;
 
-import cn.hutool.core.util.StrUtil;
 import lombok.RequiredArgsConstructor;
 import org.justing.commons.exception.CommonException;
+import org.justing.commons.model.Response;
 import org.liu.admin.feign.client.OperatorClient;
+import org.liu.admin.feign.pojo.MenuDetailResp;
+import org.liu.admin.feign.pojo.OperatorDetailResp;
+import org.liu.admin.feign.pojo.RoleDetailResp;
 import org.liu.common.core.enums.ClientEnum;
-import org.liu.common.service.util.ServletUtils;
+import org.liu.common.core.enums.OperatorStatusEnum;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import static org.liu.auth.exception.BizCodeEnum.ERROR_GET_OPERATOR_DETAIL;
 import static org.liu.auth.exception.BizCodeEnum.MISSING_HEADER_CLIENT;
 import static org.liu.common.core.constants.CommonConstants.HEADER_CLIENT;
 
@@ -26,15 +40,37 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        String client = ServletUtils.getRequest().getHeader(HEADER_CLIENT);
-        if (StrUtil.isBlank(client)) {
+        String client = getRequest().getHeader(HEADER_CLIENT);
+        if (!StringUtils.hasText(client)) {
             throw new CommonException(MISSING_HEADER_CLIENT);
         }
         if (client.equals(ClientEnum.PC.name())) {
-            operatorClient.queryByUsername(username);
+            Response<OperatorDetailResp> response = operatorClient.queryByUsername(username);
+            if (!response.isOk()) {
+                throw new CommonException(ERROR_GET_OPERATOR_DETAIL);
+            }
+            OperatorDetailResp operator = response.getData();
+            Set<String> authorities = new HashSet<>();
+            authorities.addAll(operator.getMenus().stream().map(MenuDetailResp::getUrl).collect(Collectors.toList()));
+            return User.builder()
+                    .username(operator.getUsername())
+                    .password(operator.getPassword())
+                    .accountLocked(OperatorStatusEnum.LOCKED.getCode().equals(operator.getStatus()))
+                    .disabled(false)
+                    .accountExpired(false)
+                    .credentialsExpired(false)
+                    .roles(operator.getRoles().stream().map(RoleDetailResp::getCode).toArray(String[]::new))
+                    .authorities(AuthorityUtils.createAuthorityList(authorities.toArray(new String[0])))
+                    .build();
         } else {
 
         }
         return null;
     }
+
+    private HttpServletRequest getRequest() {
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        return requestAttributes.getRequest();
+    }
+
 }

@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.liu.admin.mapper.RoleMapper">
+    <select id="queryByOperatorId" resultType="org.liu.admin.feign.pojo.RoleDetailResp">
+        SELECT
+            r.*
+        FROM
+            sys_operator_role sor
+                LEFT JOIN
+            sys_role r ON sor.role_id = r.id
+        WHERE
+            sor.operator_id = #{operatorId}
+    </select>
 </mapper>

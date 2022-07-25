@@ -4,11 +4,14 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.liu.admin.feign.pojo.MenuDetailResp;
 import org.liu.admin.mapper.MenuMapper;
 import org.liu.admin.pojo.Menu;
 import org.liu.admin.service.MenuService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -36,6 +39,11 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
 
     @Override
     public void delete(Long[] ids) {
+    }
+
+    @Override
+    public List<MenuDetailResp> queryByOperatorId(Long operatorId) {
+        return baseMapper.queryByOperatorId(operatorId);
     }
 }
 

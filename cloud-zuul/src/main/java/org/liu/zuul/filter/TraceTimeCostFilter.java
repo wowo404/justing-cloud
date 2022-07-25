@@ -26,10 +26,7 @@ public class TraceTimeCostFilter extends ZuulFilter {
     public boolean shouldFilter() {
         RequestContext context = RequestContext.getCurrentContext();
         Object callBackendStartObj = context.get("callBackendStart");
-        if (null != callBackendStartObj) {
-            return true;
-        }
-        return false;
+        return null != callBackendStartObj;
     }
 
     @Override

@@ -47,11 +47,8 @@ public class RedisHelper {
 		redisScript.setScriptSource(new StaticScriptSource(script));
 		List<String> keys = Collections.singletonList(key);
 		Long result = stringRedisTemplate.execute(redisScript, keys, requestId);
-		if (null == result || 0 == result) {
-			return false;
-		}
-		return true;
-	}
+        return null != result && 0 != result;
+    }
 
 	/**
 	 * 将long类型的id转换为byte，要先转为string，再获取string的bytes

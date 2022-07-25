@@ -69,17 +69,7 @@
         <!--			<groupId>com.alibaba.cloud</groupId>-->
         <!--			<artifactId>spring-cloud-starter-alibaba-seata</artifactId>-->
         <!--		</dependency>-->
-        <!--跨项目通用模块-->
-        <dependency>
-            <groupId>org.justing.commons</groupId>
-            <artifactId>justing-commons-util</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.justing.commons</groupId>
-            <artifactId>justing-commons-validation</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+
         <!--本微服务内部的模块-->
         <dependency>
             <groupId>org.liu</groupId>
@@ -88,7 +78,7 @@
         <!--项目内部的基础模块-->
         <dependency>
             <groupId>org.liu</groupId>
-            <artifactId>cloud-common-core</artifactId>
+            <artifactId>cloud-common-service</artifactId>
         </dependency>
         <!--引入其他服务的feign，保留版本号，不使用顶级pom管理，因为随着项目的演变，各微服务会各自发展-->
         <!--测试和optional依赖-->
