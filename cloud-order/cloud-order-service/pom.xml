@@ -92,7 +92,7 @@
         <!--引入其他服务的feign，保留版本号，不使用顶级pom管理，因为随着项目的演变，各微服务会各自发展-->
         <dependency>
             <groupId>org.liu</groupId>
-            <artifactId>cloud-user-feign</artifactId>
+            <artifactId>cloud-wx-feign</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
