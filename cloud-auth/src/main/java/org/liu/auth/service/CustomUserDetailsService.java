@@ -9,7 +9,7 @@ import org.liu.admin.feign.pojo.po.Menu;
 import org.liu.admin.feign.pojo.po.Role;
 import org.liu.admin.feign.pojo.resp.OperatorDetailResp;
 import org.liu.common.core.enums.ClientEnum;
-import org.liu.common.core.enums.OperatorStatusEnum;
+import org.liu.admin.feign.pojo.enums.OperatorStatusEnum;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

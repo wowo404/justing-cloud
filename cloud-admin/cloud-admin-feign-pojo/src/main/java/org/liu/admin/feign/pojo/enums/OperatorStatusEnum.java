@@ -1,4 +1,4 @@
-package org.liu.common.core.enums;
+package org.liu.admin.feign.pojo.enums;
 
 public enum OperatorStatusEnum {
     NORMAL(0, "正常"), LOCKED(1, "冻结");
