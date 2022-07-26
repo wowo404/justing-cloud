@@ -2,7 +2,7 @@ package org.liu.admin.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.liu.admin.pojo.Tenant;
+import org.liu.admin.feign.pojo.po.Tenant;
 
 public interface TenantService extends IService<Tenant> {
     Page<Long> pageList();

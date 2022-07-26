@@ -1,4 +1,4 @@
-package org.liu.admin.pojo;
+package org.liu.admin.feign.pojo.po;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -11,81 +11,45 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 import java.util.Date;
 
-@TableName("sys_operator")
+@TableName("sys_dept")
 @Accessors(chain = true)
 @Data
-public class Operator implements Serializable {
+public class Dept implements Serializable {
     /**
-     * 操作员ID
+     * ID
      */
     @TableId(type = IdType.AUTO)
     private Long id;
     /**
-     * 操作员账号
+     * 部门名称
      */
     @TableField
-    private String username;
+    private String name;
     /**
-     * 登录密码
+     * 上级部门ID，顶级部门为0
      */
     @TableField
-    private String password;
+    private Long parentId;
     /**
-     * 操作员姓名
+     * 祖级列表
      */
     @TableField
-    private String operatorName;
+    private String ancestors;
     /**
-     * 所属部门，超级管理员无所属部门
+     * 排序
      */
     @TableField
-    private Long deptId;
-    /**
-     * 手机
-     */
-    @TableField
-    private String mobile;
-    /**
-     * 邮箱
-     */
-    @TableField
-    private String email;
-    /**
-     * 头像地址
-     */
-    @TableField
-    private String avatarUrl;
-    /**
-     * 密码是否过期（0-否，1-是）
-     */
-    @TableField
-    private Integer credentialsExpired;
+    private Integer sortNumber;
     /**
      * 是否删除：0-存在；1-已删除
      */
     @TableField
     private Integer deleted;
     /**
-     * 状态：0-正常；1-冻结
-     */
-    @TableField
-    private Integer status;
-    /**
      * 备注
      */
     @TableField
     private String remark;
-    /**
-     * 最后登录IP
-     */
-    @TableField
-    private String lastLoginIp;
-    /**
-     * 最后登录时间
-     */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @TableField
-    private Date lastLoginTime;
     /**
      * 创建者
      */

@@ -1,4 +1,4 @@
-package org.liu.admin.pojo;
+package org.liu.product.feign.pojo.po;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -11,66 +11,61 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 import java.util.Date;
 
-@TableName("sys_post")
+@TableName("sku")
 @Accessors(chain = true)
 @Data
-public class Post implements Serializable {
+public class Sku implements Serializable {
     /**
-     * 岗位ID
+     * sku id
      */
     @TableId(type = IdType.AUTO)
     private Long id;
     /**
-     * 岗位编码
+     * spu id
      */
     @TableField
-    private String code;
+    private Long spuId;
     /**
-     * 岗位名称
+     * 商品标题
      */
     @TableField
-    private String name;
+    private String title;
     /**
-     * 显示顺序
+     * 商品的图片，多个图片以‘,’分割
      */
     @TableField
-    private Integer sortNumber;
+    private String images;
     /**
-     * 状态（0-正常,1-停用）
+     * 销售价格
      */
     @TableField
-    private Integer status;
+    private Long price;
     /**
-     * 备注
+     * 特有规格属性在spu属性模板中的对应下标组合
      */
     @TableField
-    private String remark;
+    private String indexes;
     /**
-     * 创建者
+     * sku的特有规格参数，json格式
      */
     @TableField
-    private String createBy;
+    private String ownSpec;
     /**
-     * 创建时间
+     * 是否有效，0无效，1有效
+     */
+    @TableField
+    private Integer enable;
+    /**
+     * 添加时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @TableField
     private Date createTime;
-    /**
-     * 更新者
-     */
-    @TableField
-    private String updateBy;
     /**
      * 更新时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @TableField
     private Date updateTime;
-    /**
-     * 租户ID
-     */
-    @TableField
-    private Long tenantId;
 }
 

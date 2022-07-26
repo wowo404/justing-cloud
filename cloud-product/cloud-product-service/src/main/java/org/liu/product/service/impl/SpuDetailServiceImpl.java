@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.liu.product.mapper.SpuDetailMapper;
-import org.liu.product.pojo.SpuDetail;
+import org.liu.product.feign.pojo.po.SpuDetail;
 import org.liu.product.service.SpuDetailService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

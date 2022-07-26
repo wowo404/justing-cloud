@@ -1,4 +1,4 @@
-package org.liu.product.pojo;
+package org.liu.admin.feign.pojo.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -9,29 +9,24 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
-@TableName("brand")
+@TableName("sys_operator_post")
 @Accessors(chain = true)
 @Data
-public class Brand implements Serializable {
+public class OperatorPost implements Serializable {
     /**
-     * 品牌id
+     * id
      */
-    @TableId(type = IdType.AUTO)
+    @TableId(type = IdType.ASSIGN_ID)
     private Long id;
     /**
-     * 品牌名称
+     * 操作员ID
      */
     @TableField
-    private String name;
+    private Long operatorId;
     /**
-     * 品牌图片地址
+     * 岗位ID
      */
     @TableField
-    private String image;
-    /**
-     * 品牌的首字母
-     */
-    @TableField
-    private String letter;
+    private Long postId;
 }
 

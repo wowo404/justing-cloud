@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.justing.commons.model.Response;
-import org.liu.product.pojo.Brand;
+import org.liu.product.feign.pojo.po.Brand;
 import org.liu.product.service.BrandService;
 import org.springframework.web.bind.annotation.*;
 

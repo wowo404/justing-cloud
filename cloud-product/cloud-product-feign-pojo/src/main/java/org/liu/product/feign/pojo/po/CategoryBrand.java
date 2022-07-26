@@ -1,4 +1,4 @@
-package org.liu.product.pojo;
+package org.liu.product.feign.pojo.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -9,24 +9,19 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
-@TableName("spec_group")
+@TableName("category_brand")
 @Accessors(chain = true)
 @Data
-public class SpecGroup implements Serializable {
+public class CategoryBrand implements Serializable {
     /**
-     * 主键
+     * 商品类目id
      */
-    @TableId(type = IdType.AUTO)
-    private Long id;
-    /**
-     * 商品分类id，一个分类下有多个规格组
-     */
-    @TableField
+    @TableId(type = IdType.ASSIGN_ID)
     private Long categoryId;
     /**
-     * 规格组的名称
+     * 品牌id
      */
     @TableField
-    private String name;
+    private Long brandId;
 }
 

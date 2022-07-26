@@ -1,4 +1,4 @@
-package org.liu.product.pojo;
+package org.liu.admin.feign.pojo.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -9,34 +9,39 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
-@TableName("category")
+@TableName("sys_dictionary")
 @Accessors(chain = true)
 @Data
-public class Category implements Serializable {
+public class Dictionary implements Serializable {
     /**
-     * 类目id
+     * ID
      */
     @TableId(type = IdType.AUTO)
     private Long id;
     /**
-     * 类目名称
+     * 字典类型
      */
     @TableField
-    private String name;
+    private String type;
     /**
-     * 父类目id,顶级类目填0
+     * 字典key，同一type下的key不能相同
      */
     @TableField
-    private Long parentId;
+    private String key;
     /**
-     * 是否为父节点，0为否，1为是
+     * 字典key对应的值
      */
     @TableField
-    private Integer isParent;
+    private String value;
     /**
-     * 排序指数，越小越靠前
+     * 备注
      */
     @TableField
-    private Integer sort;
+    private String remark;
+    /**
+     * 同一个type下的排序
+     */
+    @TableField
+    private Integer sortNumber;
 }
 

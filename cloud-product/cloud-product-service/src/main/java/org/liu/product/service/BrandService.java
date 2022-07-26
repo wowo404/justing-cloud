@@ -2,7 +2,7 @@ package org.liu.product.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.liu.product.pojo.Brand;
+import org.liu.product.feign.pojo.po.Brand;
 
 public interface BrandService extends IService<Brand> {
     Page<Brand> pageList();

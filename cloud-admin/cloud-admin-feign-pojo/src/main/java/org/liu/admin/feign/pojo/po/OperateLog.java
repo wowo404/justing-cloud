@@ -1,4 +1,4 @@
-package org.liu.product.pojo;
+package org.liu.admin.feign.pojo.po;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -11,61 +11,60 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 import java.util.Date;
 
-@TableName("sku")
+@TableName("sys_operate_log")
 @Accessors(chain = true)
 @Data
-public class Sku implements Serializable {
+public class OperateLog implements Serializable {
     /**
-     * sku id
+     * ID
      */
     @TableId(type = IdType.AUTO)
     private Long id;
     /**
-     * spu id
+     * 操作员姓名
      */
     @TableField
-    private Long spuId;
+    private String operatorName;
     /**
-     * 商品标题
+     * 操作动作名称，如：新增订单
      */
     @TableField
-    private String title;
+    private String actionName;
     /**
-     * 商品的图片，多个图片以‘,’分割
+     * 操作对应业务表的ID
      */
     @TableField
-    private String images;
+    private Integer bizTableId;
     /**
-     * 销售价格
+     * 请求参数
      */
     @TableField
-    private Long price;
+    private String requestArgs;
     /**
-     * 特有规格属性在spu属性模板中的对应下标组合
+     * 来源IP
      */
     @TableField
-    private String indexes;
+    private String ip;
     /**
-     * sku的特有规格参数，json格式
+     * 浏览器
      */
     @TableField
-    private String ownSpec;
+    private String browser;
     /**
-     * 是否有效，0无效，1有效
+     * 操作系统
      */
     @TableField
-    private Integer enable;
+    private String os;
     /**
-     * 添加时间
+     * 创建时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @TableField
     private Date createTime;
     /**
-     * 更新时间
+     * 租户ID
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @TableField
-    private Date updateTime;
+    private Long tenantId;
 }
 

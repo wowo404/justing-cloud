@@ -5,11 +5,11 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.liu.admin.feign.pojo.MenuDetailResp;
-import org.liu.admin.feign.pojo.OperatorDetailResp;
-import org.liu.admin.feign.pojo.RoleDetailResp;
+import org.liu.admin.feign.pojo.po.Menu;
+import org.liu.admin.feign.pojo.po.Role;
+import org.liu.admin.feign.pojo.resp.OperatorDetailResp;
 import org.liu.admin.mapper.OperatorMapper;
-import org.liu.admin.pojo.Operator;
+import org.liu.admin.feign.pojo.po.Operator;
 import org.liu.admin.service.MenuService;
 import org.liu.admin.service.OperatorService;
 import org.liu.admin.service.RoleService;
@@ -57,11 +57,11 @@ public class OperatorServiceImpl extends ServiceImpl<OperatorMapper, Operator> i
                 .ge(Operator::getUsername, username)
                 .ge(Operator::getDeleted, DeletedEnum.EXISTS.getCode())
                 .one();
-        List<RoleDetailResp> roleDetails = roleService.queryByOperatorId(operator.getId());
-        List<MenuDetailResp> menuDetails = menuService.queryByOperatorId(operator.getId());
+        List<Role> roles = roleService.queryByOperatorId(operator.getId());
+        List<Menu> menus = menuService.queryByOperatorId(operator.getId());
         OperatorDetailResp resp = BeanUtil.copyProperties(operator, OperatorDetailResp.class);
-        resp.setRoles(roleDetails);
-        resp.setMenus(menuDetails);
+        resp.setRoles(roles);
+        resp.setMenus(menus);
         return resp;
     }
 }

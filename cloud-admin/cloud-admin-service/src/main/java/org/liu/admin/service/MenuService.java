@@ -2,8 +2,7 @@ package org.liu.admin.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.liu.admin.feign.pojo.MenuDetailResp;
-import org.liu.admin.pojo.Menu;
+import org.liu.admin.feign.pojo.po.Menu;
 
 import java.util.List;
 
@@ -18,6 +17,6 @@ public interface MenuService extends IService<Menu> {
 
     void delete(Long[] ids);
 
-    List<MenuDetailResp> queryByOperatorId(Long operatorId);
+    List<Menu> queryByOperatorId(Long operatorId);
 }
 

@@ -2,7 +2,7 @@ package org.liu.product.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.liu.product.pojo.Spu;
+import org.liu.product.feign.pojo.po.Spu;
 
 public interface SpuService extends IService<Spu> {
     Page<Long> pageList();

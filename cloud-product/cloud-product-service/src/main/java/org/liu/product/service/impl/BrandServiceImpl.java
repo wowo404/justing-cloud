@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.liu.product.mapper.BrandMapper;
-import org.liu.product.pojo.Brand;
+import org.liu.product.feign.pojo.po.Brand;
 import org.liu.product.service.BrandService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

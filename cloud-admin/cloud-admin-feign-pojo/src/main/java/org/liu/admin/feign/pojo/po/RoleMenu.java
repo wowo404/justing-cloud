@@ -1,4 +1,4 @@
-package org.liu.product.pojo;
+package org.liu.admin.feign.pojo.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -9,29 +9,24 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
-@TableName("stock")
+@TableName("sys_role_menu")
 @Accessors(chain = true)
 @Data
-public class Stock implements Serializable {
+public class RoleMenu implements Serializable {
     /**
-     * 库存对应的商品sku id
+     * ID
      */
-    @TableId(type = IdType.ASSIGN_ID)
-    private Long skuId;
+    @TableId(type = IdType.AUTO)
+    private Long id;
     /**
-     * 可秒杀库存
-     */
-    @TableField
-    private Integer seckillStock;
-    /**
-     * 秒杀总数量
+     * 角色编号
      */
     @TableField
-    private Integer seckillTotal;
+    private Long roleId;
     /**
-     * 库存数量
+     * 资源编号
      */
     @TableField
-    private Integer stock;
+    private Long menuId;
 }
 

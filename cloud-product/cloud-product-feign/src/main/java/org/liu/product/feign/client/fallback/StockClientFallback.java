@@ -2,7 +2,7 @@ package org.liu.product.feign.client.fallback;
 
 import org.justing.commons.model.Response;
 import org.liu.product.feign.client.StockClient;
-import org.liu.product.feign.pojo.EditStockReq;
+import org.liu.product.feign.pojo.req.EditStockReq;
 import org.springframework.stereotype.Component;
 
 /**

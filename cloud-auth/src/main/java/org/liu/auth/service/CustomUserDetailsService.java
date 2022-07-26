@@ -4,10 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.justing.commons.exception.CommonException;
 import org.justing.commons.model.Response;
 import org.liu.admin.feign.client.OperatorClient;
-import org.liu.admin.feign.pojo.MenuDetailResp;
-import org.liu.admin.feign.pojo.OperatorDetailResp;
-import org.liu.admin.feign.pojo.RoleDetailResp;
 import org.liu.admin.feign.pojo.enums.CredentialsExpiredEnum;
+import org.liu.admin.feign.pojo.po.Menu;
+import org.liu.admin.feign.pojo.po.Role;
+import org.liu.admin.feign.pojo.resp.OperatorDetailResp;
 import org.liu.common.core.enums.ClientEnum;
 import org.liu.common.core.enums.OperatorStatusEnum;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -55,8 +55,8 @@ public class CustomUserDetailsService implements UserDetailsService {
                     .disabled(false)
                     .accountExpired(false)
                     .credentialsExpired(CredentialsExpiredEnum.NO.getCode().equals(operator.getCredentialsExpired()))
-                    .roles(operator.getRoles().stream().map(RoleDetailResp::getCode).toArray(String[]::new))
-                    .authorities(AuthorityUtils.createAuthorityList(operator.getMenus().stream().map(MenuDetailResp::getUrl).distinct().toArray(String[]::new)))
+                    .roles(operator.getRoles().stream().map(Role::getCode).toArray(String[]::new))
+                    .authorities(AuthorityUtils.createAuthorityList(operator.getMenus().stream().map(Menu::getUrl).distinct().toArray(String[]::new)))
                     .build();
         } else {
 

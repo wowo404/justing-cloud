@@ -1,4 +1,4 @@
-package org.liu.product.pojo;
+package org.liu.product.feign.pojo.po;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.baomidou.mybatisplus.annotation.IdType;

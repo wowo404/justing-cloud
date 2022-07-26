@@ -1,4 +1,4 @@
-package org.liu.admin.pojo;
+package org.liu.admin.feign.pojo.po;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -11,56 +11,62 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 import java.util.Date;
 
-@TableName("sys_operate_log")
+@TableName("sys_post")
 @Accessors(chain = true)
 @Data
-public class OperateLog implements Serializable {
+public class Post implements Serializable {
     /**
-     * ID
+     * 岗位ID
      */
     @TableId(type = IdType.AUTO)
     private Long id;
     /**
-     * 操作员姓名
+     * 岗位编码
      */
     @TableField
-    private String operatorName;
+    private String code;
     /**
-     * 操作动作名称，如：新增订单
+     * 岗位名称
      */
     @TableField
-    private String actionName;
+    private String name;
     /**
-     * 操作对应业务表的ID
+     * 显示顺序
      */
     @TableField
-    private Integer bizTableId;
+    private Integer sortNumber;
     /**
-     * 请求参数
+     * 状态（0-正常,1-停用）
      */
     @TableField
-    private String requestArgs;
+    private Integer status;
     /**
-     * 来源IP
+     * 备注
      */
     @TableField
-    private String ip;
+    private String remark;
     /**
-     * 浏览器
+     * 创建者
      */
     @TableField
-    private String browser;
-    /**
-     * 操作系统
-     */
-    @TableField
-    private String os;
+    private String createBy;
     /**
      * 创建时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @TableField
     private Date createTime;
+    /**
+     * 更新者
+     */
+    @TableField
+    private String updateBy;
+    /**
+     * 更新时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @TableField
+    private Date updateTime;
     /**
      * 租户ID
      */

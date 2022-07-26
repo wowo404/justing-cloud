@@ -1,4 +1,4 @@
-package org.liu.admin.pojo;
+package org.liu.product.feign.pojo.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -9,39 +9,39 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
-@TableName("sys_dictionary")
+@TableName("spu_detail")
 @Accessors(chain = true)
 @Data
-public class Dictionary implements Serializable {
+public class SpuDetail implements Serializable {
     /**
-     * ID
+     * spu id
      */
-    @TableId(type = IdType.AUTO)
-    private Long id;
+    @TableId(type = IdType.ASSIGN_ID)
+    private Long spuId;
     /**
-     * 字典类型
-     */
-    @TableField
-    private String type;
-    /**
-     * 字典key，同一type下的key不能相同
+     * 商品描述信息
      */
     @TableField
-    private String key;
+    private String description;
     /**
-     * 字典key对应的值
+     * 通用规格参数数据
      */
     @TableField
-    private String value;
+    private String genericSpec;
     /**
-     * 备注
+     * 特有规格参数及可选值信息，json格式
      */
     @TableField
-    private String remark;
+    private String specialSpec;
     /**
-     * 同一个type下的排序
+     * 包装清单
      */
     @TableField
-    private Integer sortNumber;
+    private String packingList;
+    /**
+     * 售后服务
+     */
+    @TableField
+    private String afterService;
 }
 

@@ -2,8 +2,8 @@ package org.liu.product.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.liu.product.feign.pojo.EditStockReq;
-import org.liu.product.pojo.Stock;
+import org.liu.product.feign.pojo.req.EditStockReq;
+import org.liu.product.feign.pojo.po.Stock;
 
 public interface StockService extends IService<Stock> {
     Page<Long> pageList();

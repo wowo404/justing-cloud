@@ -2,7 +2,7 @@ package org.liu.admin.feign.client;
 
 import org.justing.commons.model.Response;
 import org.liu.admin.feign.client.fallback.OperatorClientFallback;
-import org.liu.admin.feign.pojo.OperatorDetailResp;
+import org.liu.admin.feign.pojo.resp.OperatorDetailResp;
 import org.liu.common.core.constants.ServiceNameConstants;
 import org.liu.common.feign.config.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;

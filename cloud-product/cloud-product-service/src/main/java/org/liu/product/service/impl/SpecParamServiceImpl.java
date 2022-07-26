@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.liu.product.mapper.SpecParamMapper;
-import org.liu.product.pojo.SpecParam;
+import org.liu.product.feign.pojo.po.SpecParam;
 import org.liu.product.service.SpecParamService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

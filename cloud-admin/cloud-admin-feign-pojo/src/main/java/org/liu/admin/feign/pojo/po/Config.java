@@ -1,4 +1,4 @@
-package org.liu.admin.pojo;
+package org.liu.admin.feign.pojo.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -9,24 +9,39 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
-@TableName("sys_role_menu")
+@TableName("sys_config")
 @Accessors(chain = true)
 @Data
-public class RoleMenu implements Serializable {
+public class Config implements Serializable {
     /**
-     * ID
+     * 主键
      */
     @TableId(type = IdType.AUTO)
     private Long id;
     /**
-     * 角色编号
+     * 名称
      */
     @TableField
-    private Long roleId;
+    private String name;
     /**
-     * 资源编号
+     * 键，唯一
      */
     @TableField
-    private Long menuId;
+    private String key;
+    /**
+     * 值
+     */
+    @TableField
+    private String value;
+    /**
+     * 备注
+     */
+    @TableField
+    private String remark;
+    /**
+     * 租户ID
+     */
+    @TableField
+    private Long tenantId;
 }
 

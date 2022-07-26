@@ -5,7 +5,7 @@ import org.justing.commons.util.SnowFlake;
 import org.liu.order.feign.pojo.AddOrderReq;
 import org.liu.order.pojo.Order;
 import org.liu.product.feign.client.StockClient;
-import org.liu.product.feign.pojo.EditStockReq;
+import org.liu.product.feign.pojo.req.EditStockReq;
 import org.liu.user.feign.client.UserClient;
 import org.liu.user.feign.pojo.BuyingBehaviorStatisticsReq;
 import org.liu.user.feign.pojo.OperateAccountReq;
