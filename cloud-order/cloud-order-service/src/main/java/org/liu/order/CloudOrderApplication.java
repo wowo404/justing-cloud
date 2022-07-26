@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 
 @EnableRabbit
-@EnableFeignClients(basePackages = {"org.liu.user.feign.client", "org.liu.product.feign.client"})
+@EnableFeignClients(basePackages = {"org.liu.wx.feign.client", "org.liu.product.feign.client"})
 @SpringCloudApplication
 @ComponentScan(basePackages = {"org.liu"})
 public class CloudOrderApplication {

@@ -1,4 +1,4 @@
-package org.liu.user;
+package org.liu.wx;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

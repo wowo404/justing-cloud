@@ -1,12 +1,12 @@
-package org.liu.user.feign.client;
+package org.liu.wx.feign.client;
 
 import org.justing.commons.model.Response;
 import org.liu.common.core.constants.ServiceNameConstants;
 import org.liu.common.feign.config.FeignConfig;
-import org.liu.user.feign.client.fallback.UserClientFallback;
-import org.liu.user.feign.pojo.BuyingBehaviorStatisticsReq;
-import org.liu.user.feign.pojo.OperateAccountReq;
-import org.liu.user.feign.pojo.UserResp;
+import org.liu.wx.feign.client.fallback.UserClientFallback;
+import org.liu.wx.feign.pojo.req.BuyingBehaviorStatisticsReq;
+import org.liu.wx.feign.pojo.req.OperateAccountReq;
+import org.liu.wx.feign.pojo.resp.UserResp;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

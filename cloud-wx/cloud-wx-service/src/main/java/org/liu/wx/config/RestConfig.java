@@ -1,4 +1,4 @@
-package org.liu.user.config;
+package org.liu.wx.config;
 
 //@Configuration
 public class RestConfig {

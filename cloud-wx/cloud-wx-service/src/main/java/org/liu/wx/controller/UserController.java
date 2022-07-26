@@ -1,12 +1,12 @@
-package org.liu.user.controller;
+package org.liu.wx.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.justing.commons.model.Response;
 import org.liu.order.feign.client.OrderClient;
 import org.liu.order.feign.pojo.OrderListResp;
-import org.liu.user.feign.pojo.BuyingBehaviorStatisticsReq;
-import org.liu.user.feign.pojo.OperateAccountReq;
-import org.liu.user.service.UserService;
+import org.liu.wx.feign.pojo.req.BuyingBehaviorStatisticsReq;
+import org.liu.wx.feign.pojo.req.OperateAccountReq;
+import org.liu.wx.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

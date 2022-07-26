@@ -1,8 +1,8 @@
-package org.liu.user.service;
+package org.liu.wx.service;
 
 import lombok.RequiredArgsConstructor;
-import org.liu.user.feign.pojo.BuyingBehaviorStatisticsReq;
-import org.liu.user.feign.pojo.OperateAccountReq;
+import org.liu.wx.feign.pojo.req.BuyingBehaviorStatisticsReq;
+import org.liu.wx.feign.pojo.req.OperateAccountReq;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

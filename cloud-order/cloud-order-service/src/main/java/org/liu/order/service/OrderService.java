@@ -6,9 +6,9 @@ import org.liu.order.feign.pojo.AddOrderReq;
 import org.liu.order.pojo.Order;
 import org.liu.product.feign.client.StockClient;
 import org.liu.product.feign.pojo.req.EditStockReq;
-import org.liu.user.feign.client.UserClient;
-import org.liu.user.feign.pojo.BuyingBehaviorStatisticsReq;
-import org.liu.user.feign.pojo.OperateAccountReq;
+import org.liu.wx.feign.client.UserClient;
+import org.liu.wx.feign.pojo.req.BuyingBehaviorStatisticsReq;
+import org.liu.wx.feign.pojo.req.OperateAccountReq;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

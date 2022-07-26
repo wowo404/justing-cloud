@@ -1,4 +1,4 @@
-package org.liu.user.feign.pojo;
+package org.liu.wx.feign.pojo.req;
 
 import lombok.Data;
 
