@@ -7,6 +7,7 @@ import org.liu.admin.feign.client.OperatorClient;
 import org.liu.admin.feign.pojo.MenuDetailResp;
 import org.liu.admin.feign.pojo.OperatorDetailResp;
 import org.liu.admin.feign.pojo.RoleDetailResp;
+import org.liu.admin.feign.pojo.enums.CredentialsExpiredEnum;
 import org.liu.common.core.enums.ClientEnum;
 import org.liu.common.core.enums.OperatorStatusEnum;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -20,9 +21,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import static org.liu.auth.exception.BizCodeEnum.ERROR_GET_OPERATOR_DETAIL;
 import static org.liu.auth.exception.BizCodeEnum.MISSING_HEADER_CLIENT;
@@ -50,17 +48,15 @@ public class CustomUserDetailsService implements UserDetailsService {
                 throw new CommonException(ERROR_GET_OPERATOR_DETAIL);
             }
             OperatorDetailResp operator = response.getData();
-            Set<String> authorities = new HashSet<>();
-            authorities.addAll(operator.getMenus().stream().map(MenuDetailResp::getUrl).collect(Collectors.toList()));
             return User.builder()
                     .username(operator.getUsername())
                     .password(operator.getPassword())
                     .accountLocked(OperatorStatusEnum.LOCKED.getCode().equals(operator.getStatus()))
                     .disabled(false)
                     .accountExpired(false)
-                    .credentialsExpired(false)
+                    .credentialsExpired(CredentialsExpiredEnum.NO.getCode().equals(operator.getCredentialsExpired()))
                     .roles(operator.getRoles().stream().map(RoleDetailResp::getCode).toArray(String[]::new))
-                    .authorities(AuthorityUtils.createAuthorityList(authorities.toArray(new String[0])))
+                    .authorities(AuthorityUtils.createAuthorityList(operator.getMenus().stream().map(MenuDetailResp::getUrl).distinct().toArray(String[]::new)))
                     .build();
         } else {
 

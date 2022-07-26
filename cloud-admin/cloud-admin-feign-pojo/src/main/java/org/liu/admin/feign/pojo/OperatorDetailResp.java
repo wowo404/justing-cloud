@@ -41,6 +41,10 @@ public class OperatorDetailResp {
      */
     private String avatarUrl;
     /**
+     * 密码是否过期（0-否，1-是）
+     */
+    private Integer credentialsExpired;
+    /**
      * 是否删除：0-存在；1-已删除
      */
     private Integer deleted;
