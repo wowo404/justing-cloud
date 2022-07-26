@@ -53,11 +53,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
-        <!--持久层框架-->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
         <!--数据源-->
         <dependency>
             <groupId>mysql</groupId>
@@ -87,7 +82,7 @@
         <!--项目内部的基础模块-->
         <dependency>
             <groupId>org.liu</groupId>
-            <artifactId>cloud-common-core</artifactId>
+            <artifactId>cloud-common-service</artifactId>
         </dependency>
         <!--引入其他服务的feign，保留版本号，不使用顶级pom管理，因为随着项目的演变，各微服务会各自发展-->
         <dependency>

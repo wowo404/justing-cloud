@@ -4,11 +4,10 @@ import org.justing.commons.model.Response;
 import org.liu.common.core.constants.ServiceNameConstants;
 import org.liu.common.feign.config.FeignConfig;
 import org.liu.order.feign.client.fallback.OrderClientFallback;
-import org.liu.order.feign.pojo.OrderListResp;
+import org.liu.order.feign.pojo.resp.OrderListResp;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 

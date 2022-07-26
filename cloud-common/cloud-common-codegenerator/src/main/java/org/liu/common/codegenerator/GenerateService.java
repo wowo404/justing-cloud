@@ -25,8 +25,8 @@ public class GenerateService {
         sb.append("import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;\r\n");
         sb.append("import lombok.RequiredArgsConstructor;\r\n");
         sb.append("import lombok.extern.slf4j.Slf4j;\r\n");
-        sb.append("import ").append(mapperPackage).append(".").append(mapperInterfaceName).append(";\r\n");
         sb.append("import ").append(entityPackage).append(".").append(entityName + entitySuffix).append(";\r\n");
+        sb.append("import ").append(mapperPackage).append(".").append(mapperInterfaceName).append(";\r\n");
         sb.append("import ").append(serviceInterfacePackage).append(".").append(serviceInterfaceName).append(";\r\n");
         sb.append("import org.springframework.stereotype.Service;\r\n");
         sb.append("import org.springframework.transaction.annotation.Transactional;\r\n\r\n");

@@ -3,7 +3,7 @@ package org.liu.wx.controller;
 import lombok.RequiredArgsConstructor;
 import org.justing.commons.model.Response;
 import org.liu.order.feign.client.OrderClient;
-import org.liu.order.feign.pojo.OrderListResp;
+import org.liu.order.feign.pojo.resp.OrderListResp;
 import org.liu.wx.feign.pojo.req.BuyingBehaviorStatisticsReq;
 import org.liu.wx.feign.pojo.req.OperateAccountReq;
 import org.liu.wx.service.UserService;

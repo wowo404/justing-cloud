@@ -41,6 +41,11 @@ public class Post implements Serializable {
     @TableField
     private Integer status;
     /**
+     * 是否删除：0-存在；1-已删除
+     */
+    @TableField
+    private Integer deleted;
+    /**
      * 备注
      */
     @TableField

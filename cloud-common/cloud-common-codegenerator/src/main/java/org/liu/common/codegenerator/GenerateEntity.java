@@ -18,7 +18,7 @@ public class GenerateEntity {
     public static final List<String> ignore_columns = Collections.emptyList();
 
     //生成实体类
-    public static void generate(String entityName, String entityPackage, String entityPath, String databaseName,
+    public static void generate(String entityName, String entityPackage, String entityPath,
                                 Generate.TableInfo tableInfo) throws IOException {
         StringBuffer sb = new StringBuffer();
         sb.append("package ").append(entityPackage).append(";\r\n").append("\r\n");

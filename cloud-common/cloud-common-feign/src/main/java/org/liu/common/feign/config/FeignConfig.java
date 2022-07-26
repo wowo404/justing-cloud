@@ -84,7 +84,7 @@ public class FeignConfig implements RequestInterceptor {
             log.warn("没有获取到authorization，请求uri：{}", request.getRequestURI());
             return;
         }
-        //此处是为了演示，只把authorization原样放入feign请求头
+        //把authorization原样放入feign请求头，符合oauth2规范
         template.header(CommonConstants.HEADER_AUTHORIZATION, authorization);
     }
 }

@@ -24,7 +24,12 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
-
+        <!--持久层框架-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+        <!--common模块内部依赖-->
         <dependency>
             <groupId>org.liu</groupId>
             <artifactId>cloud-common-security-resource-server</artifactId>

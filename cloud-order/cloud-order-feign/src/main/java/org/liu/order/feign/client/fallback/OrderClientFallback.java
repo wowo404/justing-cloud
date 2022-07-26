@@ -2,7 +2,7 @@ package org.liu.order.feign.client.fallback;
 
 import org.justing.commons.model.Response;
 import org.liu.order.feign.client.OrderClient;
-import org.liu.order.feign.pojo.OrderListResp;
+import org.liu.order.feign.pojo.resp.OrderListResp;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
