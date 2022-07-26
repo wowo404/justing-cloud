@@ -8,16 +8,16 @@
 		<artifactId>justing-cloud</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>cloud-user</artifactId>
+    <artifactId>cloud-wx</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <description>用户服务</description>
+    <description>微信服务</description>
 
     <modules>
-    	<module>cloud-user-service</module>
-    	<module>cloud-user-feign</module>
-    	<module>cloud-user-feign-pojo</module>
+    	<module>cloud-wx-service</module>
+    	<module>cloud-wx-feign</module>
+    	<module>cloud-wx-feign-pojo</module>
     </modules>
 
 </project>

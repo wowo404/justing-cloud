@@ -18,7 +18,7 @@
 		<module>cloud-public</module>
 		<module>cloud-search</module>
 		<module>cloud-storage</module>
-		<module>cloud-user</module>
+		<module>cloud-wx</module>
 		<module>cloud-zuul</module>
 	</modules>
 
@@ -346,22 +346,22 @@
 			<!--用户服务-->
 			<dependency>
 				<groupId>org.liu</groupId>
-				<artifactId>cloud-user</artifactId>
+				<artifactId>cloud-wx</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.liu</groupId>
-				<artifactId>cloud-user-feign</artifactId>
+				<artifactId>cloud-wx-feign</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.liu</groupId>
-				<artifactId>cloud-user-feign-pojo</artifactId>
+				<artifactId>cloud-wx-feign-pojo</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.liu</groupId>
-				<artifactId>cloud-user-service</artifactId>
+				<artifactId>cloud-wx-service</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<!--zuul网关服务-->
