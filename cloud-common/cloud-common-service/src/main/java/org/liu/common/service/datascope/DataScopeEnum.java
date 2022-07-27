@@ -19,12 +19,12 @@ public enum DataScopeEnum {
 	/**
 	 * 本级及子级
 	 */
-	OWN_CHILD_LEVEL(1, "本级及子级"),
+	SELF_AND_CHILD(1, "本级及子级"),
 
 	/**
 	 * 本级
 	 */
-	OWN_LEVEL(2, "本级"),
+	SELF(2, "本级"),
 
 	/**
 	 * 自定义
@@ -34,9 +34,9 @@ public enum DataScopeEnum {
 	/**
 	 * 类型
 	 */
-	private final int type;
+	private final int code;
 	/**
 	 * 描述
 	 */
-	private final String description;
+	private final String msg;
 }
