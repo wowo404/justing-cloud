@@ -56,7 +56,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             }
             //菜单和角色
             List<GrantedAuthority> authorityList = AuthorityUtils.createAuthorityList(operator.getMenus().stream().map(Menu::getUrl).distinct().toArray(String[]::new));
-            authorityList.addAll(AuthorityUtils.createAuthorityList(operator.getRoles().stream().map(Role::getCode).distinct().toArray(String[]::new)));
+            authorityList.addAll(AuthorityUtils.createAuthorityList(operator.getRoles().stream().map(role -> "ROLE_" + role.getCode()).distinct().toArray(String[]::new)));
 
             BaseUser baseUser = new BaseUser(operator.getUsername(), operator.getPassword(), true, true,
                     credentialsNonExpired, true, authorityList);
