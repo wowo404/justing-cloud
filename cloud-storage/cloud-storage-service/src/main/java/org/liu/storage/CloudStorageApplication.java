@@ -1,15 +1,6 @@
 package org.liu.storage;
 
-import org.springframework.amqp.rabbit.annotation.EnableRabbit;
-import org.springframework.boot.SpringApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
-import org.springframework.context.annotation.ComponentScan;
-
-@EnableRabbit
-@SpringCloudApplication
-@ComponentScan(basePackages = {"org.liu"})
 public class CloudStorageApplication {
     public static void main(String[] args) {
-        SpringApplication.run(CloudStorageApplication.class, args);
     }
 }

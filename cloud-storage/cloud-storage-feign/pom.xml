@@ -11,19 +11,4 @@
 
     <artifactId>cloud-storage-feign</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.liu</groupId>
-            <artifactId>cloud-common-feign</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.justing.commons</groupId>
-            <artifactId>justing-commons-base</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.liu</groupId>
-            <artifactId>cloud-storage-feign-pojo</artifactId>
-        </dependency>
-    </dependencies>
-
 </project>

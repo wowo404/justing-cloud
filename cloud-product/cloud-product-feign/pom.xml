@@ -17,10 +17,6 @@
             <artifactId>cloud-common-feign</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.justing.commons</groupId>
-            <artifactId>justing-commons-base</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.liu</groupId>
             <artifactId>cloud-product-feign-pojo</artifactId>
         </dependency>

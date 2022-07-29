@@ -10,4 +10,15 @@
     <artifactId>cloud-public-feign</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.liu</groupId>
+            <artifactId>cloud-common-feign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.liu</groupId>
+            <artifactId>cloud-public-feign-pojo</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
