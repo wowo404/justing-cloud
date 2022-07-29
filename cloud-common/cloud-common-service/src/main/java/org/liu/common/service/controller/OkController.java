@@ -1,4 +1,4 @@
-package org.liu.publicbase.controller;
+package org.liu.common.service.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date 2022/2/21 16:39
  **/
 @RestController
-public class HelloController {
+public class OkController {
 
     @RequestMapping("ok")
     public String ok() {

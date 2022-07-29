@@ -11,10 +11,18 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<dependencies>
+		<!--跨项目通用模块-->
+		<dependency>
+			<groupId>org.justing.commons</groupId>
+			<artifactId>justing-commons-web</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<!--本微服务内部的模块-->
 		<dependency>
 			<groupId>org.liu</groupId>
 			<artifactId>cloud-public-feign-pojo</artifactId>
 		</dependency>
+		<!--项目内部的基础模块-->
 		<dependency>
 			<groupId>org.liu</groupId>
 			<artifactId>cloud-common-service</artifactId>
