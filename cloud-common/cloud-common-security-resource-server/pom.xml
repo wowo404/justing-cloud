@@ -16,6 +16,17 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
+        <!--内部模块依赖-->
+        <dependency>
+            <groupId>org.liu</groupId>
+            <artifactId>cloud-common-security-base</artifactId>
+        </dependency>
+        <!--optional依赖-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
 </project>

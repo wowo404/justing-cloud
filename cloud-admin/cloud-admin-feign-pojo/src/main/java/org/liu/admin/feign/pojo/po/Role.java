@@ -31,10 +31,15 @@ public class Role implements Serializable {
     @TableField
     private String name;
     /**
-     * 数据范围（0-全部数据权限，1-本部门数据权限，2-本部门及以下数据权限，3-自定义数据权限）
+     * 数据范围（0-全部数据权限，1-本部门及以下数据权限，2-本部门数据权限，3-仅本人数据权限，4-自定义数据权限）
      */
     @TableField
     private Integer dataScope;
+    /**
+     * 自定义数据权限时的部门ID，英文逗号分隔
+     */
+    @TableField
+    private String deptIds;
     /**
      * 是否删除：0-存在；1-已删除
      */

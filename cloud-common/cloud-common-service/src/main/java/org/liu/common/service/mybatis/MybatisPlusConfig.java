@@ -2,10 +2,14 @@ package org.liu.common.service.mybatis;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.autoconfigure.ConfigurationCustomizer;
+import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.DataPermissionInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
+import org.liu.common.service.datascope.DataScopeHandler;
+import org.liu.common.service.handler.CreateAndUpdateMetaObjectHandler;
 import org.liu.common.service.tenant.BaseTenantHandler;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
@@ -20,12 +24,14 @@ import org.springframework.context.annotation.Configuration;
 public class MybatisPlusConfig {
 
     @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor(BaseTenantHandler baseTenantHandler) {
+    public MybatisPlusInterceptor mybatisPlusInterceptor(BaseTenantHandler baseTenantHandler, DataScopeHandler dataScopeHandler) {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         //租户
         interceptor.addInnerInterceptor(new TenantLineInnerInterceptor(baseTenantHandler));
         //乐观锁
         interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
+        //数据权限
+        interceptor.addInnerInterceptor(new DataPermissionInterceptor(dataScopeHandler));
         //分页
         PaginationInnerInterceptor pagination = new PaginationInnerInterceptor();
         pagination.setDbType(DbType.MYSQL);//对于单一数据库类型来说,都建议配置该值,避免每次分页都去抓取数据库类型
@@ -36,6 +42,11 @@ public class MybatisPlusConfig {
     @Bean
     public ConfigurationCustomizer configurationCustomizer() {
         return configuration -> configuration.setUseDeprecatedExecutor(false);
+    }
+
+    @Bean
+    public MetaObjectHandler metaObjectHandler() {
+        return new CreateAndUpdateMetaObjectHandler();
     }
 
 }

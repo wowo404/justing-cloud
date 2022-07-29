@@ -10,3 +10,11 @@
 * feign调用异常的处理
 * feign调用会话的传输，从调用方把会话放入请求头，被调用方再从请求头中取出
     - 使用oauth2，把token放如feign请求头，oauth2资源服务器会去授权服务器查询用户信息，如果是jwt则直接在本地解析
+    
+# 依赖关系图
+```mermaid
+graph LR
+    A[common] --> B[common-service] --> C[common-cache]
+                                  B --> D[common-security-resource-server] --> E[common-core]
+            A --> F[common-feign] --> E
+```

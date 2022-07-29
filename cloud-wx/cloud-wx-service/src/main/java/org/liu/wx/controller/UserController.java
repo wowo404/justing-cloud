@@ -7,6 +7,7 @@ import org.liu.order.feign.pojo.resp.OrderListResp;
 import org.liu.wx.feign.pojo.req.BuyingBehaviorStatisticsReq;
 import org.liu.wx.feign.pojo.req.OperateAccountReq;
 import org.liu.wx.service.UserService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,12 +19,17 @@ import java.util.List;
 //@DefaultProperties(defaultFallback = "defaultFallback")//defaultFallback方法要和熔断的方法同返回值类型，不需要参数
 public class UserController {
 
+    @Value("${microservice.global.config.require}")
+    private String globalConfig;//从全局配置文件中读取，即application.yml
+    @Value("${custom.id}")
+    private String globalProfileConfig;//从全局的根据环境区分的配置文件中读取，如dev环境是application-dev.yml
     private final OrderClient orderClient;
     private final UserService userService;
 
     @GetMapping("myOrder/{userId}")
     public Response<List<OrderListResp>> myOrder(@PathVariable("userId") Long userId) {
         //从会话中拿到当前登录用户的ID？？？微服务中有没有会话这个概念？？？
+        //有，现在的架构是使用oauth2来实现授权服务，在资源微服务中会将accessToken转化为本地authentication
         userId = 1L;
         return orderClient.queryByUserId(userId);
     }
@@ -38,6 +44,11 @@ public class UserController {
     public Response<Void> operateAccount(@RequestBody OperateAccountReq req) {
         userService.operateAccount(req);
         return Response.ok();
+    }
+
+    @GetMapping("testConfig")
+    public String testConfig(){
+        return globalConfig + globalProfileConfig;
     }
 
     //---------------------------------注释掉的代码仅保留用来学习------------------

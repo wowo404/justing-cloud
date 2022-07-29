@@ -1,15 +1,12 @@
 package org.liu.order.feign.pojo.resp;
 
 import lombok.Data;
+import org.liu.order.feign.pojo.po.Order;
+import org.liu.order.feign.pojo.po.OrderItem;
 
-import java.math.BigDecimal;
-import java.util.Date;
+import java.util.List;
 
 @Data
-public class OrderListResp {
-    private Long orderId;
-    private BigDecimal amount;//订单金额
-    private Integer itemNumber;//订单品类数量，同一个东西买N个算一个品类
-    private Long userId;
-    private Date createTime;
+public class OrderListResp extends Order {
+    private List<OrderItem> orderItems;
 }

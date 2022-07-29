@@ -21,6 +21,7 @@
         <module>cloud-common-codegenerator</module>
         <module>cloud-common-service</module>
         <module>cloud-common-security-resource-server</module>
+        <module>cloud-common-security-base</module>
     </modules>
 
 </project>

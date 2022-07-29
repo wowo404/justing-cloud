@@ -58,8 +58,9 @@ public class Operator implements Serializable {
     /**
      * 密码是否过期（0-否，1-是）
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @TableField
-    private Integer credentialsExpired;
+    private Date credentialsExpireTime;
     /**
      * 是否删除：0-存在；1-已删除
      */

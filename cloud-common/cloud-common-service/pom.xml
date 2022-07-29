@@ -12,13 +12,14 @@
     <artifactId>cloud-common-service</artifactId>
 
     <dependencies>
+        <!--spring-boot依赖-->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
@@ -36,7 +37,7 @@
         </dependency>
         <dependency>
             <groupId>org.liu</groupId>
-            <artifactId>cloud-common-core</artifactId>
+            <artifactId>cloud-common-cache</artifactId>
         </dependency>
         <!--跨项目通用模块-->
         <dependency>

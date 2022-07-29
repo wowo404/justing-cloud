@@ -4,11 +4,14 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.justing.commons.model.Response;
-import org.liu.order.feign.pojo.po.Order;
 import org.liu.order.feign.pojo.req.AddOrderReq;
+import org.liu.order.feign.pojo.req.PayOrderReq;
+import org.liu.order.feign.pojo.resp.OrderListResp;
 import org.liu.order.service.OrderService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * 订单
@@ -60,6 +63,17 @@ public class OrderController {
     @DeleteMapping("/{ids}")
     public Response<Void> delete(@PathVariable Long[] ids) {
         orderService.delete(ids);
+        return Response.ok();
+    }
+
+    @GetMapping("queryByWxUserId/{wxUserId}")
+    public Response<List<OrderListResp>> queryByWxUserId(@PathVariable("wxUserId") Long wxUserId) {
+        return Response.ok(orderService.queryByWxUserId(wxUserId));
+    }
+
+    @PostMapping("payOrder")
+    public Response<Void> payOrder(@Validated @RequestBody PayOrderReq req){
+        orderService.payOrder(req);
         return Response.ok();
     }
 }

@@ -7,19 +7,28 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.justing.commons.exception.CommonException;
+import org.liu.common.security.base.util.SecurityUtils;
 import org.liu.order.feign.pojo.enums.PayStatusEnum;
 import org.liu.order.feign.pojo.enums.PaymentWayEnum;
 import org.liu.order.feign.pojo.po.Order;
 import org.liu.order.feign.pojo.req.AddOrderReq;
+import org.liu.order.feign.pojo.req.PayOrderReq;
+import org.liu.order.feign.pojo.resp.OrderListResp;
 import org.liu.order.mapper.OrderMapper;
 import org.liu.order.service.OrderService;
 import org.liu.product.feign.client.StockClient;
+import org.liu.product.feign.pojo.req.EditStockReq;
 import org.liu.wx.feign.client.UserClient;
+import org.liu.wx.feign.pojo.req.BuyingBehaviorStatisticsReq;
+import org.liu.wx.feign.pojo.req.OperateAccountReq;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.liu.order.feign.pojo.exception.BizCodeEnum.MISSING_PAYMENT_TYPE;
 import static org.liu.order.feign.pojo.exception.BizCodeEnum.WRONG_PAYMENT_PRICE;
@@ -84,9 +93,14 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         order.setPaymentPoints(paymentPoints);
         order.setTotalNum(totalNum);
         order.setItemNum(orderItems.size());
-
         super.save(order);
-        return null;
+
+        //执行扣减库存操作
+        EditStockReq stockReq = new EditStockReq();
+        stockReq.setSkuId(1L);
+        stockReq.setStock(1);
+        stockClient.edit(stockReq);
+        return order.getId();
     }
 
     private void check(Order order) {
@@ -102,6 +116,39 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
     @Override
     public void delete(Long[] ids) {
+    }
+
+    @Override
+    public List<OrderListResp> queryByWxUserId(Long wxUserId) {
+        return null;
+    }
+
+    @Override
+    public void payOrder(PayOrderReq req) {
+        Order order = super.getById(req.getOrderId());
+        //执行用户账户扣减操作
+        OperateAccountReq operateAccountReq = new OperateAccountReq();
+        operateAccountReq.setUserId(SecurityUtils.getId());
+        operateAccountReq.setAmount(order.getPaymentPrice());
+        userClient.operateAccount(operateAccountReq);
+
+        //增加用户购买行为统计
+        //商品品类ID=1
+        BuyingBehaviorStatisticsReq.BuyingCount buyingCount = new BuyingBehaviorStatisticsReq.BuyingCount();
+        buyingCount.setGoodsId(1L);
+        buyingCount.setCount(10);
+
+        List<BuyingBehaviorStatisticsReq.BuyingCount> list = new ArrayList<>();
+        list.add(buyingCount);
+
+        Map<Integer, List<BuyingBehaviorStatisticsReq.BuyingCount>> details = new HashMap<>();
+        details.put(1, list);
+
+        BuyingBehaviorStatisticsReq statisticsReq = new BuyingBehaviorStatisticsReq();
+        statisticsReq.setOrderId(req.getOrderId());
+        statisticsReq.setUserId(SecurityUtils.getId());
+        statisticsReq.setDetails(details);
+        userClient.addBuyingBehaviorStatistics(statisticsReq);
     }
 }
 

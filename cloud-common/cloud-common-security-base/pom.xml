@@ -3,33 +3,29 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>justing-cloud</artifactId>
+        <artifactId>cloud-common</artifactId>
         <groupId>org.liu</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-auth</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>cloud-common-security-base</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-oauth2</artifactId>
+            <artifactId>spring-cloud-starter-security</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
-
+        <!--内部模块依赖-->
         <dependency>
             <groupId>org.liu</groupId>
-            <artifactId>cloud-admin-feign</artifactId>
+            <artifactId>cloud-common-core</artifactId>
         </dependency>
-
+        <!--optional依赖-->
         <dependency>
-            <groupId>org.liu</groupId>
-            <artifactId>cloud-common-security-base</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
