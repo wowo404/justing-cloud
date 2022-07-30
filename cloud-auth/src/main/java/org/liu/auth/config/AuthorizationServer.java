@@ -10,7 +10,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
-import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.InMemoryAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
@@ -31,6 +30,8 @@ import java.util.Arrays;
 public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
+    private DataSource dataSource;
+    @Autowired
     private TokenStore tokenStore;
     @Autowired
     private ClientDetailsService clientDetailsService;
@@ -48,7 +49,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(clientDetailsService);
+        clients.jdbc(dataSource);
     }
 
     @Override
@@ -76,10 +77,5 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
         chain.setTokenEnhancers(Arrays.asList(jwtAccessTokenConverter, customAdditionalInformation));
         tokenServices.setTokenEnhancer(chain);
         return tokenServices;
-    }
-
-    @Bean
-    public ClientDetailsService clientDetailsService(DataSource dataSource) {
-        return new JdbcClientDetailsService(dataSource);
     }
 }
