@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.justing.commons.model.Response;
+import org.liu.admin.feign.pojo.po.Role;
+import org.liu.admin.feign.pojo.req.RoleListReq;
 import org.liu.admin.service.RoleService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -22,8 +25,8 @@ public class RoleController {
      * 分页列表
      */
     @PostMapping("pageList")
-    public Response<Page<Long>> pageList() {
-        return Response.ok(roleService.pageList());
+    public Response<Page<Role>> pageList(@Validated @RequestBody RoleListReq req) {
+        return Response.ok(roleService.pageList(req));
     }
 
     /**

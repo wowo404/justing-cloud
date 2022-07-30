@@ -39,6 +39,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        //登录界面是security内置的，请求头client如何从oauth/authorize请求中拿到?
         String client = getRequest().getHeader(HEADER_CLIENT);
         if (!StringUtils.hasText(client)) {
             throw new CommonException(MISSING_HEADER_CLIENT);

@@ -21,6 +21,11 @@ public class WxUser implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
     /**
+     * wx_app.id
+     */
+    @TableField
+    private Long appId;
+    /**
      * 手机号码
      */
     @TableField
@@ -81,6 +86,11 @@ public class WxUser implements Serializable {
     @TableField
     private String remark;
     /**
+     * 是否删除：0-存在；1-已删除
+     */
+    @TableField
+    private Integer deleted;
+    /**
      * 创建时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
@@ -102,5 +112,10 @@ public class WxUser implements Serializable {
      */
     @TableField
     private String updateBy;
+    /**
+     * 租户ID
+     */
+    @TableField
+    private Long tenantId;
 }
 
