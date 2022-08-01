@@ -74,7 +74,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 //        tokenServices.setAccessTokenValiditySeconds(60 * 60 * 2);
 //        tokenServices.setRefreshTokenValiditySeconds(60 * 60 * 24 * 3);
         TokenEnhancerChain chain = new TokenEnhancerChain();
-        chain.setTokenEnhancers(Arrays.asList(jwtAccessTokenConverter, customAdditionalInformation));
+        chain.setTokenEnhancers(Arrays.asList(customAdditionalInformation, jwtAccessTokenConverter));
         tokenServices.setTokenEnhancer(chain);
         return tokenServices;
     }

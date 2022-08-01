@@ -1,10 +1,13 @@
 package org.liu.common.security.resource.server.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+
+import static org.liu.common.core.constants.CommonConstants.SIGNING_KEY;
 
 /**
  * @Author lzs
@@ -13,7 +16,8 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @Configuration
 public class AccessTokenConfig {
 
-    private String SIGNING_KEY = "JustingLiu";
+    @Autowired
+    private CustomAccessTokenConverter accessTokenConverter;
 
     @Bean
     TokenStore tokenStore() {
@@ -23,6 +27,7 @@ public class AccessTokenConfig {
     @Bean
     JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+        converter.setAccessTokenConverter(accessTokenConverter);
         converter.setSigningKey(SIGNING_KEY);
         return converter;
     }

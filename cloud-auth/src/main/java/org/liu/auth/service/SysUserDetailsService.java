@@ -33,7 +33,7 @@ import static org.liu.common.core.constants.CommonConstants.HEADER_CLIENT;
  **/
 @RequiredArgsConstructor
 @Component
-public class CustomUserDetailsService implements UserDetailsService {
+public class SysUserDetailsService implements UserDetailsService {
 
     private final OperatorClient operatorClient;
 
