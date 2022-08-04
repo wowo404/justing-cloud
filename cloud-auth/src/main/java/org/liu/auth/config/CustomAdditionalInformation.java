@@ -24,7 +24,6 @@ public class CustomAdditionalInformation implements TokenEnhancer {
         BaseUser baseUser = (BaseUser) authentication.getPrincipal();
         map.put(ADDITIONAL_ID, baseUser.getId());
         map.put(ADDITIONAL_TENANT_ID, baseUser.getTenantId());
-        map.put(ADDITIONAL_CLIENT, baseUser.getClient());
         map.put(ADDITIONAL_DISPLAY_NAME, baseUser.getDisplayName());
         map.put(ADDITIONAL_ROLE_IDS, baseUser.getRoleIds());
         map.put(ADDITIONAL_DATA_SCOPE, baseUser.getDataScope());

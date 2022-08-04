@@ -50,6 +50,10 @@
             <groupId>org.liu</groupId>
             <artifactId>cloud-admin-feign</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.liu</groupId>
+            <artifactId>cloud-wx-feign</artifactId>
+        </dependency>
         <!--项目内部的基础模块-->
         <dependency>
             <groupId>org.liu</groupId>

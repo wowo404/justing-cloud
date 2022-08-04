@@ -2,7 +2,6 @@ package org.liu.common.security.base.pojo;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.liu.common.core.enums.ClientEnum;
 import org.liu.common.core.enums.DataScopeEnum;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -25,10 +24,6 @@ public class BaseUser extends User {
      * 租户ID
      */
     private Long tenantId;
-    /**
-     * 客户端
-     */
-    private ClientEnum client;
     /**
      * client=PC时为sysUser.operatorName，client=MINIAPP时为wxUser.nickName
      */

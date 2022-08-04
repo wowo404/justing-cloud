@@ -1,0 +1,145 @@
+package org.liu.auth.provider;
+
+import org.liu.auth.service.BaseUserDetailsService;
+import org.liu.common.core.enums.ClientEnum;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsPasswordService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.util.Assert;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @Author lzs
+ * @Date 2022/8/3 15:32
+ **/
+public class CustomAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
+
+    private static final String PARAM_NAME = "client";
+    private static final String USER_NOT_FOUND_PASSWORD = "userNotFoundPassword";
+    private PasswordEncoder passwordEncoder;
+    private volatile String userNotFoundEncodedPassword;
+    private List<BaseUserDetailsService> userDetailsServices;
+    private UserDetailsPasswordService userDetailsPasswordService;
+
+    public CustomAuthenticationProvider() {
+        setPasswordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
+    }
+
+    @Override
+    protected void doAfterPropertiesSet() {
+        Assert.notEmpty(this.userDetailsServices, "A UserDetailsServices must be set");
+    }
+
+    @Override
+    protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
+        Map<String, String> details = (Map<String, String>) authentication.getDetails();
+        //只有pc端需要校验密码
+        if (details.get(PARAM_NAME) != null && details.get(PARAM_NAME).equals(ClientEnum.PC.name())) {
+            if (authentication.getCredentials() == null) {
+                logger.debug("Authentication failed: no credentials provided");
+
+                throw new BadCredentialsException(messages.getMessage(
+                        "AbstractUserDetailsAuthenticationProvider.badCredentials",
+                        "Bad credentials"));
+            }
+
+            String presentedPassword = authentication.getCredentials().toString();
+
+            if (!passwordEncoder.matches(presentedPassword, userDetails.getPassword())) {
+                logger.debug("Authentication failed: password does not match stored value");
+
+                throw new BadCredentialsException(messages.getMessage(
+                        "AbstractUserDetailsAuthenticationProvider.badCredentials",
+                        "Bad credentials"));
+            }
+        }
+    }
+
+    @Override
+    protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
+        prepareTimingAttackProtection();
+        try {
+            Map<String, String> details = (Map<String, String>) authentication.getDetails();
+            UserDetails loadedUser = null;
+            for (BaseUserDetailsService userDetailsService : userDetailsServices) {
+                if (userDetailsService.supports(ClientEnum.valueOf(details.get(PARAM_NAME)))) {
+                    loadedUser = userDetailsService.loadUserByUsername(username);
+                    break;
+                }
+            }
+            if (loadedUser == null) {
+                throw new InternalAuthenticationServiceException(
+                        "UserDetailsService returned null, which is an interface contract violation");
+            }
+            return loadedUser;
+        } catch (UsernameNotFoundException ex) {
+            mitigateAgainstTimingAttack(authentication);
+            throw ex;
+        } catch (InternalAuthenticationServiceException ex) {
+            throw ex;
+        } catch (Exception ex) {
+            throw new InternalAuthenticationServiceException(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    protected Authentication createSuccessAuthentication(Object principal, Authentication authentication, UserDetails user) {
+        boolean upgradeEncoding = this.userDetailsPasswordService != null
+                && this.passwordEncoder.upgradeEncoding(user.getPassword());
+        if (upgradeEncoding) {
+            String presentedPassword = authentication.getCredentials().toString();
+            String newPassword = this.passwordEncoder.encode(presentedPassword);
+            user = this.userDetailsPasswordService.updatePassword(user, newPassword);
+        }
+        return super.createSuccessAuthentication(principal, authentication, user);
+    }
+
+    private void prepareTimingAttackProtection() {
+        if (this.userNotFoundEncodedPassword == null) {
+            this.userNotFoundEncodedPassword = this.passwordEncoder.encode(USER_NOT_FOUND_PASSWORD);
+        }
+    }
+
+    private void mitigateAgainstTimingAttack(UsernamePasswordAuthenticationToken authentication) {
+        if (authentication.getCredentials() != null) {
+            String presentedPassword = authentication.getCredentials().toString();
+            this.passwordEncoder.matches(presentedPassword, this.userNotFoundEncodedPassword);
+        }
+    }
+
+    public PasswordEncoder getPasswordEncoder() {
+        return passwordEncoder;
+    }
+
+    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+        Assert.notNull(passwordEncoder, "passwordEncoder cannot be null");
+        this.passwordEncoder = passwordEncoder;
+        this.userNotFoundEncodedPassword = null;
+    }
+
+    public List<BaseUserDetailsService> getUserDetailsServices() {
+        return userDetailsServices;
+    }
+
+    public void setUserDetailsServices(List<BaseUserDetailsService> userDetailsServices) {
+        this.userDetailsServices = userDetailsServices;
+    }
+
+    public UserDetailsPasswordService getUserDetailsPasswordService() {
+        return userDetailsPasswordService;
+    }
+
+    public void setUserDetailsPasswordService(UserDetailsPasswordService userDetailsPasswordService) {
+        this.userDetailsPasswordService = userDetailsPasswordService;
+    }
+}

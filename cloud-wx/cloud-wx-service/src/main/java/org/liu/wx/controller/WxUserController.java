@@ -8,6 +8,8 @@ import org.liu.wx.feign.pojo.po.WxUser;
 import org.liu.wx.service.WxUserService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 微信用户
  */
@@ -59,6 +61,16 @@ public class WxUserController {
     public Response<Void> delete(@PathVariable Long[] ids) {
         wxUserService.delete(ids);
         return Response.ok();
+    }
+
+    @GetMapping("wxUser/{openId}")
+    public Response<WxUser> queryByOpenId(@PathVariable("openId") String openId){
+        return Response.ok(wxUserService.queryByOpenId(openId));
+    }
+
+    @GetMapping("wxUser/{jsCode}")
+    public Response<WxUser> queryByJsCode(@PathVariable("jsCode") String jsCode, HttpServletRequest request){
+        return Response.ok(wxUserService.queryByJsCode(jsCode, request));
     }
 }
 

@@ -1,11 +1,10 @@
 package org.liu.common.service.exception;
 
+import lombok.extern.slf4j.Slf4j;
 import org.justing.commons.enums.CommonCodeEnum;
 import org.justing.commons.exception.CommonException;
 import org.justing.commons.model.Response;
 import org.liu.common.service.util.ServletUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.BindException;
@@ -22,9 +21,9 @@ import javax.validation.ConstraintViolationException;
  *
  * @author ruoyi
  */
+@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     /**
      * 业务异常

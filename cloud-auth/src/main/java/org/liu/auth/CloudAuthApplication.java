@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @Author lzs
  * @Date 2022/3/17 17:18
  **/
-@EnableFeignClients(basePackages = {"org.liu.admin.feign.client"})//引入外部的feignClient才需要这个注解
+@EnableFeignClients(basePackages = {"org.liu.admin.feign.client", "org.liu.wx.feign.client"})//引入外部的feignClient才需要这个注解
 @SpringCloudApplication
 @ComponentScan(basePackages = {"org.liu"})
 public class CloudAuthApplication {

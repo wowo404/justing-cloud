@@ -12,6 +12,30 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
+        <!--微信小程序-->
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-miniapp</artifactId>
+            <version>4.3.8.B</version>
+        </dependency>
+        <!--微信公众号-->
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-mp</artifactId>
+            <version>4.3.8.B</version>
+        </dependency>
+        <!--微信开放平台-->
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>wx-java-open-spring-boot-starter</artifactId>
+            <version>4.3.8.B</version>
+        </dependency>
+        <!--微信开放平台-->
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-pay</artifactId>
+            <version>4.3.8.B</version>
+        </dependency>
         <!--本微服务内部的模块-->
         <dependency>
             <groupId>org.liu</groupId>

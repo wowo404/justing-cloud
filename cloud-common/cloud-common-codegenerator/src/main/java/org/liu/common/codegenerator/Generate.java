@@ -80,11 +80,11 @@ public class Generate {
 //		cloud_activity(basePath);
 //        cloud_admin(basePath);
 //		cloud_coupon(basePath);
-		cloud_order(basePath);
+//		cloud_order(basePath);
 //		cloud_product(basePath);
 //		cloud_public(basePath);
 //		cloud_storage(basePath);
-//        cloud_wx(basePath);
+        cloud_wx(basePath);
     }
 
     private static void cloud_admin(String basePath) throws Exception {
@@ -199,6 +199,13 @@ public class Generate {
         String serviceInterfacePath = microServicePath + "src/main/java/org/liu/wx/service/";
         String controllerPath = microServicePath + "src/main/java/org/liu/wx/controller/";
         Map<String, String> names = new HashMap<>();
+        names.put("msg_template", "MsgTemplate");
+        names.put("msg_template_param", "MsgTemplateParam");
+        names.put("wx_app", "WxApp");
+        names.put("wx_auto_reply", "WxAutoReply");
+        names.put("wx_mass_msg", "WxMassMsg");
+        names.put("wx_mp_menu", "WxMpMenu");
+        names.put("wx_msg", "WxMsg");
         names.put("wx_user", "WxUser");
         for (Map.Entry<String, String> entry : names.entrySet()) {
             generate("81.71.18.47", "3306", "cloud_wx", "root", "20211027@nankang",

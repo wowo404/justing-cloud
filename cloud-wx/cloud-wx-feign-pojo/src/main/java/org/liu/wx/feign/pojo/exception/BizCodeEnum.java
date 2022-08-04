@@ -11,7 +11,9 @@ import org.justing.commons.exception.CodeEnum;
 @AllArgsConstructor
 public enum BizCodeEnum implements CodeEnum {
 
-    MISSING_HEADER_CLIENT("240000", "请求头client为必须的参数"),
+    MISSING_MINIAPP_CONFIG("240000", "系统内无此小程序：%s"),
+    WX_ERROR("240001", "微信接口异常：%s"),
+    WX_ERROR_GET_SESSION_INFO("240002", "微信登录失败：jsCode换sessionInfo失败"),
     ;
 
     private final String code;

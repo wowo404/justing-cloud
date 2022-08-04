@@ -1,10 +1,10 @@
 package org.liu.wx.feign.pojo.po;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -21,10 +21,10 @@ public class WxUser implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
     /**
-     * wx_app.id
+     * wx_app.app_id
      */
     @TableField
-    private Long appId;
+    private String appId;
     /**
      * 手机号码
      */
@@ -75,6 +75,66 @@ public class WxUser implements Serializable {
      */
     @TableField
     private String openId;
+    /**
+     * 地理位置纬度
+     */
+    @TableField
+    private Double latitude;
+    /**
+     * 地理位置经度
+     */
+    @TableField
+    private Double longitude;
+    /**
+     * 地理位置精度
+     */
+    @TableField(value = "`precision`")
+    private Double precision;
+    /**
+     * 是否订阅（0：否；1：是；2：网页授权用户）
+     */
+    @TableField
+    private Integer subscribe;
+    /**
+     * 返回用户关注的渠道来源，ADD_SCENE_SEARCH 公众号搜索，ADD_SCENE_ACCOUNT_MIGRATION 公众号迁移，ADD_SCENE_PROFILE_CARD 名片分享，ADD_SCENE_QR_CODE 扫描二维码，ADD_SCENEPROFILE LINK 图文页内名称点击，ADD_SCENE_PROFILE_ITEM 图文页右上角菜单，ADD_SCENE_PAID 支付后关注，ADD_SCENE_OTHERS 其他
+     */
+    @TableField
+    private String subscribeScene;
+    /**
+     * 关注时间
+     */
+    @TableField
+    private Date subscribeTime;
+    /**
+     * 关注次数
+     */
+    @TableField
+    private Integer subscribeNum;
+    /**
+     * 取消关注时间
+     */
+    @TableField
+    private Date cancelSubscribeTime;
+    /**
+     * 用户所在的分组ID（兼容旧的用户分组接口）
+     */
+    @TableField
+    private String groupId;
+    /**
+     * 用户被打上的标签 ID 列表
+     */
+    @TableField
+    private String tagidList;
+    /**
+     * 二维码扫码场景（开发者自定义）
+     */
+    @TableField
+    private String qrScene;
+    /**
+     * 二维码扫码场景描述（开发者自定义）
+     */
+    @TableField
+    private String qrSceneStr;
     /**
      * 状态（0-正常，1-冻结）
      */
