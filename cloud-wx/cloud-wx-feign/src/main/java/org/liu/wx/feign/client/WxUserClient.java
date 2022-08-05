@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @Author lzs
  * @Date 2022/8/2 11:09
  **/
-@FeignClient(value = ServiceNameConstants.CLOUD_USER, fallback = WxUserClientFallback.class, configuration = FeignConfig.class)
+@FeignClient(contextId = "WxUserClient", value = ServiceNameConstants.CLOUD_WX, fallback = WxUserClientFallback.class, configuration = FeignConfig.class)
 public interface WxUserClient {
     @GetMapping("wxUser/{openId}")
     Response<WxUser> queryByOpenId(@PathVariable("openId") String openId);

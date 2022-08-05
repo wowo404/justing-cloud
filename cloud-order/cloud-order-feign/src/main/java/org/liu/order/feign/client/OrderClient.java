@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(value = ServiceNameConstants.CLOUD_ORDER, fallback = OrderClientFallback.class, configuration = FeignConfig.class)
+@FeignClient(contextId = "OrderClient", value = ServiceNameConstants.CLOUD_ORDER, fallback = OrderClientFallback.class, configuration = FeignConfig.class)
 //@RequestMapping("order")//千万不要把此注解加上，不然就会出现Ambiguous mapping的错误
 public interface OrderClient {
 

@@ -17,6 +17,6 @@ public interface ServiceNameConstants {
     String CLOUD_PUBLIC = "cloud-public";
     String CLOUD_SEARCH = "cloud-search";
     String CLOUD_STORAGE = "cloud-storage";
-    String CLOUD_USER = "cloud-user";
+    String CLOUD_WX = "cloud-wx";
     String CLOUD_ZUUL = "cloud-zuul";
 }

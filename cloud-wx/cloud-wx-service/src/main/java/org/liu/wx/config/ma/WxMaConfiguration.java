@@ -1,7 +1,7 @@
 package org.liu.wx.config.ma;
 
 import cn.binarywang.wx.miniapp.api.WxMaService;
-import cn.binarywang.wx.miniapp.api.impl.WxMaServiceImpl;
+import cn.binarywang.wx.miniapp.api.impl.WxMaServiceOkHttpImpl;
 import cn.binarywang.wx.miniapp.config.impl.WxMaRedisBetterConfigImpl;
 import cn.binarywang.wx.miniapp.message.WxMaMessageRouter;
 import com.google.common.collect.Maps;
@@ -63,23 +63,24 @@ public class WxMaConfiguration {
         WxMaService wxMaService = maServices.get(appId);
         if (wxMaService == null) {
             WxApp wxApp = wxAppService.queryByAppId(appId);
-            if (wxApp != null) {
-                if (IsComponentEnum.YES.getCode().equals(wxApp.getIsComponent())) {//第三方平台
-                    wxMaService = wxOpenService.getWxOpenComponentService().getWxMaServiceByAppid(appId);
-                    maServices.put(appId, wxMaService);
-                    routers.put(appId, newRouter(wxMaService));
-                } else {
-                    WxRedisOps redisOps = new RedisTemplateWxRedisOps(stringRedisTemplate);
-                    WxMaRedisBetterConfigImpl config = new WxMaRedisBetterConfigImpl(redisOps, "ma");
-                    config.setAppid(wxApp.getAppId());
-                    config.setSecret(wxApp.getSecret());
-                    config.setToken(wxApp.getToken());
-                    config.setAesKey(wxApp.getAesKey());
-                    wxMaService = new WxMaServiceImpl();
-                    wxMaService.setWxMaConfig(config);
-                    maServices.put(appId, wxMaService);
-                    routers.put(appId, newRouter(wxMaService));
-                }
+            if (wxApp == null) {
+                throw new CommonException(MISSING_MINIAPP_CONFIG, appId);
+            }
+            if (IsComponentEnum.YES.getCode().equals(wxApp.getIsComponent())) {//第三方平台
+                wxMaService = wxOpenService.getWxOpenComponentService().getWxMaServiceByAppid(appId);
+                maServices.put(appId, wxMaService);
+                routers.put(appId, newRouter(wxMaService));
+            } else {
+                WxRedisOps redisOps = new RedisTemplateWxRedisOps(stringRedisTemplate);
+                WxMaRedisBetterConfigImpl config = new WxMaRedisBetterConfigImpl(redisOps, "ma");
+                config.setAppid(wxApp.getAppId());
+                config.setSecret(wxApp.getSecret());
+                config.setToken(wxApp.getToken());
+                config.setAesKey(wxApp.getAesKey());
+                wxMaService = new WxMaServiceOkHttpImpl();
+                wxMaService.setWxMaConfig(config);
+                maServices.put(appId, wxMaService);
+                routers.put(appId, newRouter(wxMaService));
             }
         }
         return wxMaService;

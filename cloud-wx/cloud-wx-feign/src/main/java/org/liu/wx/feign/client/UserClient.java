@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(value = ServiceNameConstants.CLOUD_USER, fallback = UserClientFallback.class, configuration = FeignConfig.class)
+@FeignClient(contextId = "UserClient", value = ServiceNameConstants.CLOUD_WX, fallback = UserClientFallback.class, configuration = FeignConfig.class)
 public interface UserClient {
 
     @GetMapping("/user/{userId}")

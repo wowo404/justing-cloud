@@ -12,10 +12,11 @@ import me.chanjar.weixin.common.redis.RedisTemplateWxRedisOps;
 import me.chanjar.weixin.common.redis.WxRedisOps;
 import me.chanjar.weixin.mp.api.WxMpMessageRouter;
 import me.chanjar.weixin.mp.api.WxMpService;
-import me.chanjar.weixin.mp.api.impl.WxMpServiceImpl;
+import me.chanjar.weixin.mp.api.impl.WxMpServiceOkHttpImpl;
 import me.chanjar.weixin.mp.config.impl.WxMpRedisConfigImpl;
 import me.chanjar.weixin.mp.constant.WxMpEventConstants;
 import me.chanjar.weixin.open.api.WxOpenService;
+import org.justing.commons.exception.CommonException;
 import org.liu.wx.feign.pojo.enums.IsComponentEnum;
 import org.liu.wx.feign.pojo.po.WxApp;
 import org.liu.wx.handler.*;
@@ -25,6 +26,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 import java.util.Map;
+
+import static org.liu.wx.feign.pojo.exception.BizCodeEnum.MISSING_OFFIACCOUNT_CONFIG;
 
 /**
  * 公众号Configuration
@@ -106,23 +109,24 @@ public class WxMpConfiguration {
         WxMpService wxMpService = mpServices.get(appId);
         if (wxMpService == null) {
             WxApp wxApp = wxAppService.queryByAppId(appId);
-            if (wxApp != null) {
-                if (IsComponentEnum.YES.getCode().equals(wxApp.getIsComponent())) {//第三方授权账号
-                    wxMpService = wxOpenService.getWxOpenComponentService().getWxMpServiceByAppid(appId);
-                    mpServices.put(appId, wxMpService);
-                    routers.put(appId, newRouter(wxMpService));
-                } else {
-                    WxRedisOps redisOps = new RedisTemplateWxRedisOps(redisTemplate);
-                    WxMpRedisConfigImpl wxMpRedisConfig = new WxMpRedisConfigImpl(redisOps, "mp");
-                    wxMpRedisConfig.setAppId(wxApp.getAppId());
-                    wxMpRedisConfig.setSecret(wxApp.getSecret());
-                    wxMpRedisConfig.setToken(wxApp.getToken());
-                    wxMpRedisConfig.setAesKey(wxApp.getAesKey());
-                    wxMpService = new WxMpServiceImpl();
-                    wxMpService.setWxMpConfigStorage(wxMpRedisConfig);
-                    mpServices.put(appId, wxMpService);
-                    routers.put(appId, newRouter(wxMpService));
-                }
+            if (wxApp == null) {
+                throw new CommonException(MISSING_OFFIACCOUNT_CONFIG, appId);
+            }
+            if (IsComponentEnum.YES.getCode().equals(wxApp.getIsComponent())) {//第三方授权账号
+                wxMpService = wxOpenService.getWxOpenComponentService().getWxMpServiceByAppid(appId);
+                mpServices.put(appId, wxMpService);
+                routers.put(appId, newRouter(wxMpService));
+            } else {
+                WxRedisOps redisOps = new RedisTemplateWxRedisOps(redisTemplate);
+                WxMpRedisConfigImpl wxMpRedisConfig = new WxMpRedisConfigImpl(redisOps, "mp");
+                wxMpRedisConfig.setAppId(wxApp.getAppId());
+                wxMpRedisConfig.setSecret(wxApp.getSecret());
+                wxMpRedisConfig.setToken(wxApp.getToken());
+                wxMpRedisConfig.setAesKey(wxApp.getAesKey());
+                wxMpService = new WxMpServiceOkHttpImpl();
+                wxMpService.setWxMpConfigStorage(wxMpRedisConfig);
+                mpServices.put(appId, wxMpService);
+                routers.put(appId, newRouter(wxMpService));
             }
         }
         return wxMpService;

@@ -15,4 +15,9 @@ public class WxUserClientFallback implements WxUserClient {
     public Response<WxUser> queryByOpenId(String openId) {
         return Response.serverError();
     }
+
+    @Override
+    public Response<WxUser> queryByJsCode(String jsCode) {
+        return Response.serverError();
+    }
 }

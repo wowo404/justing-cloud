@@ -9,7 +9,7 @@ import org.springframework.cloud.openfeign.FeignClient;
  * @Author lzs
  * @Date 2022/7/18 15:40
  **/
-@FeignClient(name = ServiceNameConstants.CLOUD_PRODUCT, fallback = SpuClientFallback.class, configuration = FeignConfig.class)
+@FeignClient(contextId = "SpuClient", name = ServiceNameConstants.CLOUD_PRODUCT, fallback = SpuClientFallback.class, configuration = FeignConfig.class)
 public interface SpuClient {
 
 }

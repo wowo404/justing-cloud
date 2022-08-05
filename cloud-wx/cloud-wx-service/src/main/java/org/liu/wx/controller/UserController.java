@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * 保留此类仅为了学习
+ */
 @RequiredArgsConstructor
 @RequestMapping("user")
 @RestController
