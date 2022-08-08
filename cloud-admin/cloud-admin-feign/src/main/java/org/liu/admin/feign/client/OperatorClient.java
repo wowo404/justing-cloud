@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(contextId = "OperatorClient", value = ServiceNameConstants.CLOUD_ADMIN, fallback = OperatorClientFallback.class, configuration = FeignConfig.class)
 public interface OperatorClient {
-    @GetMapping("operator/{username}")
+    @GetMapping("operator/queryByUsername/{username}")
     Response<OperatorDetailResp> queryByUsername(@PathVariable("username") String username);
 }

@@ -61,7 +61,7 @@ public class OperatorController {
         return Response.ok();
     }
 
-    @GetMapping("operator/{username}")
+    @GetMapping("queryByUsername/{username}")
     public Response<OperatorDetailResp> queryByUsername(@PathVariable String username) {
         return Response.ok(operatorService.queryByUsername(username));
     }

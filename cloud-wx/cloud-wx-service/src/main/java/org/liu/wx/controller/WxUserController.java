@@ -3,6 +3,7 @@ package org.liu.wx.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import me.chanjar.weixin.common.error.WxErrorException;
 import org.justing.commons.model.Response;
 import org.liu.wx.feign.pojo.po.WxUser;
 import org.liu.wx.service.WxUserService;
@@ -63,13 +64,13 @@ public class WxUserController {
         return Response.ok();
     }
 
-    @GetMapping("wxUser/{openId}")
+    @GetMapping("queryByOpenId/{openId}")
     public Response<WxUser> queryByOpenId(@PathVariable("openId") String openId){
         return Response.ok(wxUserService.queryByOpenId(openId));
     }
 
-    @GetMapping("wxUser/{jsCode}")
-    public Response<WxUser> queryByJsCode(@PathVariable("jsCode") String jsCode, HttpServletRequest request){
+    @GetMapping("queryByJsCode/{jsCode}")
+    public Response<WxUser> queryByJsCode(@PathVariable("jsCode") String jsCode, HttpServletRequest request) throws WxErrorException {
         return Response.ok(wxUserService.queryByJsCode(jsCode, request));
     }
 }

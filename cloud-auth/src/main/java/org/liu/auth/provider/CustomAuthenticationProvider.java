@@ -1,5 +1,7 @@
 package org.liu.auth.provider;
 
+import org.justing.commons.enums.CommonCodeEnum;
+import org.justing.commons.exception.CommonException;
 import org.liu.auth.service.BaseUserDetailsService;
 import org.liu.common.core.enums.ClientEnum;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -14,9 +16,15 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.Assert;
+import org.springframework.util.StringUtils;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
+
+import static org.liu.common.core.constants.CommonConstants.HEADER_CLIENT;
 
 /**
  * @Author lzs
@@ -24,7 +32,6 @@ import java.util.Map;
  **/
 public class CustomAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
 
-    private static final String PARAM_NAME = "client";
     private static final String USER_NOT_FOUND_PASSWORD = "userNotFoundPassword";
     private PasswordEncoder passwordEncoder;
     private volatile String userNotFoundEncodedPassword;
@@ -42,9 +49,9 @@ public class CustomAuthenticationProvider extends AbstractUserDetailsAuthenticat
 
     @Override
     protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
-        Map<String, String> details = (Map<String, String>) authentication.getDetails();
+        String client = getClientFromRequest(authentication);
         //只有pc端需要校验密码
-        if (details.get(PARAM_NAME) != null && details.get(PARAM_NAME).equals(ClientEnum.PC.name())) {
+        if (StringUtils.hasText(client)) {
             if (authentication.getCredentials() == null) {
                 logger.debug("Authentication failed: no credentials provided");
 
@@ -69,10 +76,10 @@ public class CustomAuthenticationProvider extends AbstractUserDetailsAuthenticat
     protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
         prepareTimingAttackProtection();
         try {
-            Map<String, String> details = (Map<String, String>) authentication.getDetails();
+            String client = getClientFromRequest(authentication);
             UserDetails loadedUser = null;
             for (BaseUserDetailsService userDetailsService : userDetailsServices) {
-                if (userDetailsService.supports(ClientEnum.valueOf(details.get(PARAM_NAME)))) {
+                if (userDetailsService.supports(ClientEnum.valueOf(client))) {
                     loadedUser = userDetailsService.loadUserByUsername(username);
                     break;
                 }
@@ -90,6 +97,20 @@ public class CustomAuthenticationProvider extends AbstractUserDetailsAuthenticat
         } catch (Exception ex) {
             throw new InternalAuthenticationServiceException(ex.getMessage(), ex);
         }
+    }
+
+    private String getClientFromRequest(UsernamePasswordAuthenticationToken authentication) {
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        if (null == requestAttributes) {
+            throw new CommonException(CommonCodeEnum.SERVER_ERROR);
+        }
+        HttpServletRequest request = requestAttributes.getRequest();
+        String client = request.getHeader(HEADER_CLIENT);
+        if (!StringUtils.hasText(client)) {
+            Map<String, String> details = (Map<String, String>) authentication.getDetails();
+            client = details.get(HEADER_CLIENT);
+        }
+        return client;
     }
 
     @Override

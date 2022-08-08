@@ -1,4 +1,4 @@
-package org.liu.zuul.config;
+package org.liu.common.feign.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @RefreshScope
 @Configuration
-@ConfigurationProperties(prefix = "zuul.custom")
-public class CustomZuulProperties {
-    private List<String> ignoreAuthorizationUrls = new ArrayList<>();
+@ConfigurationProperties(prefix = "base.auth.ignore")
+public class BaseAuthIgnoreProperties {
+    private List<String> urls = new ArrayList<>();
 }

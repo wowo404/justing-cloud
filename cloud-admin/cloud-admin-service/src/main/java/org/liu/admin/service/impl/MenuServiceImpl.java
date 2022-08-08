@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.liu.admin.feign.pojo.po.Menu;
 import org.liu.admin.mapper.MenuMapper;
 import org.liu.admin.service.MenuService;
+import org.liu.common.core.constants.CommonConstants;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,6 +43,9 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
 
     @Override
     public List<Menu> queryByOperatorId(Long operatorId) {
+        if (CommonConstants.SUPER_OPERATOR.equals(operatorId)) {
+            return super.list();
+        }
         return baseMapper.queryByOperatorId(operatorId);
     }
 }

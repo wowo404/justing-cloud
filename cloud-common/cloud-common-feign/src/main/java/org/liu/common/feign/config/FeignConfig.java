@@ -3,13 +3,16 @@ package org.liu.common.feign.config;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
-import org.liu.common.core.constants.CommonConstants;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+
+import static org.liu.common.core.constants.CommonConstants.*;
 
 @Slf4j
 @Configuration
@@ -65,6 +68,10 @@ public class FeignConfig implements RequestInterceptor {
 //        }
 //    }
 
+    @Autowired
+    private BaseAuthIgnoreProperties baseAuthIgnoreProperties;
+    private static AntPathMatcher antPathMatcher = new AntPathMatcher();
+
     /**
      * 此方法的主要功能是对请求参数做处理
      * 比如：将登录用户的信息放入请求头
@@ -79,12 +86,52 @@ public class FeignConfig implements RequestInterceptor {
             return;
         }
         HttpServletRequest request = requestAttributes.getRequest();
-        String authorization = request.getHeader(CommonConstants.HEADER_AUTHORIZATION);
+        //请求头：Authorization
+        setAuthorizationIfOptional(request, template);
+        //请求头：client
+        setClientIfOptional(request, template);
+        //请求头：tenantId
+        setTenantIdIfOptional(request, template);
+    }
+
+    private void setTenantIdIfOptional(HttpServletRequest request, RequestTemplate template) {
+        String client = request.getHeader(HEADER_CLIENT);
+        if (StringUtils.hasText(client)) {
+            template.header(HEADER_CLIENT, client);
+        }
+    }
+
+    private void setClientIfOptional(HttpServletRequest request, RequestTemplate template) {
+        String client = request.getHeader(HEADER_TENANT_ID);
+        if (StringUtils.hasText(client)) {
+            template.header(HEADER_TENANT_ID, client);
+        }
+    }
+
+    private void setAuthorizationIfOptional(HttpServletRequest request, RequestTemplate template) {
+        if (isIgnoreUrl(request.getRequestURI())) {
+            return;
+        }
+        String authorization = request.getHeader(HEADER_AUTHORIZATION);
         if (StringUtils.isEmpty(authorization)) {
             log.warn("没有获取到authorization，请求uri：{}", request.getRequestURI());
             return;
         }
-        //把authorization原样放入feign请求头，符合oauth2规范
-        template.header(CommonConstants.HEADER_AUTHORIZATION, authorization);
+        //把authorization原样放入feign请求头，符合oauth2资源服务端规范
+        template.header(HEADER_AUTHORIZATION, authorization);
+    }
+
+    private boolean isIgnoreUrl(String requestURI) {
+        boolean empty = baseAuthIgnoreProperties.getUrls().isEmpty();
+        if (empty) {
+            return false;
+        }
+        for (String ignoreAuthorizationUrl : baseAuthIgnoreProperties.getUrls()) {
+            boolean match = antPathMatcher.match(ignoreAuthorizationUrl, requestURI);
+            if (match) {
+                return true;
+            }
+        }
+        return false;
     }
 }

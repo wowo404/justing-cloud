@@ -15,7 +15,7 @@ spring:
           #default-label: master #配置文件分支
           #search-paths: config  #配置文件所在根目录
           #现在这种最简单的配置方式，配置文件访问规则是application.yml是给所有项目公用的且不分环境，application-dev.yml是给所有项目的dev环境公用的
-          refresh-rate: 10 #每隔10s从git仓库拉取一次
+          refresh-rate: 10 #每隔10s从git仓库拉取一次，不生效，why？
           force-pull: true #强制拉取远程配置，覆盖本地，防止本地副本变脏
           delete-untracked-branches: true #删除未跟踪的分支，即远程仓库不存在了，本地也删除
           #详细配置：https://www.jianshu.com/p/a4a834b4b2a3

@@ -6,7 +6,7 @@ import com.netflix.zuul.exception.ZuulException;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpStatus;
-import org.liu.zuul.config.CustomZuulProperties;
+import org.liu.zuul.config.BaseAuthIgnoreProperties;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
@@ -18,7 +18,7 @@ import java.util.Date;
 @Component
 public class AuthenticationFilter extends ZuulFilter {
 
-    private final CustomZuulProperties customZuulProperties;
+    private final BaseAuthIgnoreProperties baseAuthIgnoreProperties;
     private static AntPathMatcher antPathMatcher = new AntPathMatcher();
 
     /**
@@ -63,11 +63,11 @@ public class AuthenticationFilter extends ZuulFilter {
     }
 
     private boolean isIgnoreUrl(String requestURI) {
-        boolean empty = customZuulProperties.getIgnoreAuthorizationUrls().isEmpty();
+        boolean empty = baseAuthIgnoreProperties.getUrls().isEmpty();
         if (empty) {
             return false;
         }
-        for (String ignoreAuthorizationUrl : customZuulProperties.getIgnoreAuthorizationUrls()) {
+        for (String ignoreAuthorizationUrl : baseAuthIgnoreProperties.getUrls()) {
             boolean match = antPathMatcher.match(ignoreAuthorizationUrl, requestURI);
             if (match) {
                 return true;

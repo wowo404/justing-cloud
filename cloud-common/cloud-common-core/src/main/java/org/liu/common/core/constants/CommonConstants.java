@@ -8,6 +8,8 @@ public interface CommonConstants {
     String HEADER_AUTHORIZATION = "Authorization";
     //客户端类型，见枚举ClientEnum
     String HEADER_CLIENT = "client";
+    String HEADER_TENANT_ID = "tenantId";
+
     Long SUPER_TENANT = 1L;
     Long SUPER_OPERATOR = 1L;
     Long SUPER_ROLE = 1L;
