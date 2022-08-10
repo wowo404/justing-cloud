@@ -1,7 +1,6 @@
 package org.liu.product.feign.pojo.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -21,17 +20,14 @@ public class Brand implements Serializable {
     /**
      * 品牌名称
      */
-    @TableField
     private String name;
     /**
      * 品牌图片地址
      */
-    @TableField
     private String image;
     /**
      * 品牌的首字母
      */
-    @TableField
     private String letter;
 }
 

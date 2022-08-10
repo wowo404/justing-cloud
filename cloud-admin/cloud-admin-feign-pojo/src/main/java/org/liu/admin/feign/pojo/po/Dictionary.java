@@ -1,7 +1,6 @@
 package org.liu.admin.feign.pojo.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -21,27 +20,22 @@ public class Dictionary implements Serializable {
     /**
      * 字典类型
      */
-    @TableField
     private String type;
     /**
      * 字典key，同一type下的key不能相同
      */
-    @TableField
     private String key;
     /**
      * 字典key对应的值
      */
-    @TableField
     private String value;
     /**
      * 备注
      */
-    @TableField
     private String remark;
     /**
      * 同一个type下的排序
      */
-    @TableField
     private Integer sortNumber;
 }
 

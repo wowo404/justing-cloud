@@ -1,7 +1,6 @@
 package org.liu.common.service.mybatis;
 
 import com.baomidou.mybatisplus.annotation.DbType;
-import com.baomidou.mybatisplus.autoconfigure.ConfigurationCustomizer;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.DataPermissionInterceptor;
@@ -37,11 +36,6 @@ public class MybatisPlusConfig {
         pagination.setDbType(DbType.MYSQL);//对于单一数据库类型来说,都建议配置该值,避免每次分页都去抓取数据库类型
         interceptor.addInnerInterceptor(pagination);
         return interceptor;
-    }
-
-    @Bean
-    public ConfigurationCustomizer configurationCustomizer() {
-        return configuration -> configuration.setUseDeprecatedExecutor(false);
     }
 
     @Bean

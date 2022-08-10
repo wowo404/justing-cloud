@@ -1,7 +1,6 @@
 package org.liu.product.feign.pojo.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -21,12 +20,10 @@ public class SpecGroup implements Serializable {
     /**
      * 商品分类id，一个分类下有多个规格组
      */
-    @TableField
     private Long categoryId;
     /**
      * 规格组的名称
      */
-    @TableField
     private String name;
 }
 

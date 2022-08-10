@@ -1,7 +1,6 @@
 package org.liu.admin.feign.pojo.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -21,12 +20,10 @@ public class RoleMenu implements Serializable {
     /**
      * 角色编号
      */
-    @TableField
     private Long roleId;
     /**
      * 资源编号
      */
-    @TableField
     private Long menuId;
 }
 

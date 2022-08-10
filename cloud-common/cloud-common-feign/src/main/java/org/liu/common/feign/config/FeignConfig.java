@@ -87,28 +87,29 @@ public class FeignConfig implements RequestInterceptor {
         }
         HttpServletRequest request = requestAttributes.getRequest();
         //请求头：Authorization
-        setAuthorizationIfOptional(request, template);
+        setAuthorizationIfExists(request, template);
         //请求头：client
-        setClientIfOptional(request, template);
+        setClientIfExists(request, template);
         //请求头：tenantId
-        setTenantIdIfOptional(request, template);
+        setTenantIdIfExists(request, template);
     }
 
-    private void setTenantIdIfOptional(HttpServletRequest request, RequestTemplate template) {
+    private void setTenantIdIfExists(HttpServletRequest request, RequestTemplate template) {
         String client = request.getHeader(HEADER_CLIENT);
         if (StringUtils.hasText(client)) {
             template.header(HEADER_CLIENT, client);
         }
     }
 
-    private void setClientIfOptional(HttpServletRequest request, RequestTemplate template) {
+    private void setClientIfExists(HttpServletRequest request, RequestTemplate template) {
         String client = request.getHeader(HEADER_TENANT_ID);
         if (StringUtils.hasText(client)) {
             template.header(HEADER_TENANT_ID, client);
         }
     }
 
-    private void setAuthorizationIfOptional(HttpServletRequest request, RequestTemplate template) {
+    private void setAuthorizationIfExists(HttpServletRequest request, RequestTemplate template) {
+        //这个判断逻辑可以不需要，暂时保留
         if (isIgnoreUrl(request.getRequestURI())) {
             return;
         }

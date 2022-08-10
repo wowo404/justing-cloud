@@ -42,6 +42,12 @@ public class GlobalExceptionHandler {
         return Response.error(CommonCodeEnum.SESSION_INVALID);
     }
 
+    /**
+     * AccessDeniedException和AuthenticationException在此处是无法捕获的
+     * 这两个异常由AuthenticationEntryPoint处理了
+     * @param e
+     * @return
+     */
     @ExceptionHandler(AccessDeniedException.class)
     public Response<Void> handleAccessDeniedException(AccessDeniedException e) {
         log.error("异常的uri={}", ServletUtils.getRequest().getRequestURI());

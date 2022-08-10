@@ -1,7 +1,6 @@
 package org.liu.admin.feign.pojo.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -21,27 +20,22 @@ public class Config implements Serializable {
     /**
      * 名称
      */
-    @TableField
     private String name;
     /**
      * 键，唯一
      */
-    @TableField
     private String key;
     /**
      * 值
      */
-    @TableField
     private String value;
     /**
      * 备注
      */
-    @TableField
     private String remark;
     /**
      * 租户ID
      */
-    @TableField
     private Long tenantId;
 }
 

@@ -25,7 +25,6 @@ public class GenerateEntity {
 
         if (tableInfo.getImportDate()) sb.append("import com.fasterxml.jackson.annotation.JsonFormat;\r\n");
         sb.append("import com.baomidou.mybatisplus.annotation.IdType;\r\n");
-        sb.append("import com.baomidou.mybatisplus.annotation.TableField;\r\n");
         sb.append("import com.baomidou.mybatisplus.annotation.TableId;\r\n");
         sb.append("import com.baomidou.mybatisplus.annotation.TableName;\r\n");
         sb.append("import lombok.Data;\r\n");
@@ -55,8 +54,6 @@ public class GenerateEntity {
                 } else {
                     sb.append("    @TableId(type = IdType.ASSIGN_ID)\r\n");
                 }
-            } else {
-                sb.append("    @TableField\r\n");
             }
             sb.append("    private ").append(getType(tableInfo.getColTypes().get(i))).append(" ").append(underline2Camel(tableInfo.getColnames().get(i)))
                     .append(";\r\n");

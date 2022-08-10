@@ -34,6 +34,7 @@
 		<spring-boot.version>2.3.12.RELEASE</spring-boot.version>
 		<spring-cloud.version>Hoxton.SR12</spring-cloud.version>
 		<seata.version>2.1.0.RELEASE</seata.version>
+		<mysql.version>8.0.26</mysql.version>
 	</properties>
 
 	<dependencyManagement>
@@ -53,6 +54,18 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<!--默认版本是8.0.25，升级到8.0.26-->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>com.google.protobuf</groupId>
+						<artifactId>protobuf-java</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
 			<!--分布式事务-->
 			<dependency>
 				<groupId>com.alibaba.cloud</groupId>
@@ -65,16 +78,16 @@
 				<artifactId>spring-cloud-zuul-ratelimit</artifactId>
 				<version>2.4.1.RELEASE</version>
 			</dependency>
-			<!--持久层框架-->
+			<!--持久层框架，使用最新版本，老版本pageList方法有bug-->
 			<dependency>
 				<groupId>com.baomidou</groupId>
 				<artifactId>mybatis-plus-boot-starter</artifactId>
-				<version>3.4.2</version>
+				<version>3.5.2</version>
 			</dependency>
 			<dependency>
 				<groupId>com.baomidou</groupId>
 				<artifactId>mybatis-plus-annotation</artifactId>
-				<version>3.4.2</version>
+				<version>3.5.2</version>
 			</dependency>
 			<!--工具库-->
 			<dependency>

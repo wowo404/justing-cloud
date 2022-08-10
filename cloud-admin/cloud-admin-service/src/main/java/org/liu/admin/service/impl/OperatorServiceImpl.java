@@ -14,8 +14,6 @@ import org.liu.admin.mapper.OperatorMapper;
 import org.liu.admin.service.MenuService;
 import org.liu.admin.service.OperatorService;
 import org.liu.admin.service.RoleService;
-import org.liu.common.core.enums.DeletedEnum;
-import org.liu.common.service.tenant.TenantContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,7 +56,7 @@ public class OperatorServiceImpl extends ServiceImpl<OperatorMapper, Operator> i
     @Override
     public OperatorDetailResp queryByUsername(String username) {
         Operator operator = super.lambdaQuery()
-                .ge(Operator::getUsername, username)
+                .eq(Operator::getUsername, username)
                 .one();
         if (null == operator) {
             throw new CommonException(MISSING_OPERATOR);
