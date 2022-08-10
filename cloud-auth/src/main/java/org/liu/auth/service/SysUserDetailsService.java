@@ -63,7 +63,9 @@ public class SysUserDetailsService implements BaseUserDetailsService {
         if (DataScopeEnum.CUSTOM.equals(baseUser.getDataScope())) {
             baseUser.setDeptIds(toLongList(minRole.get().getDeptIds()));
         } else {
-            baseUser.setDeptIds(Collections.singletonList(operator.getDeptId()));
+            if (null != operator.getDeptId()) {
+                baseUser.setDeptIds(Collections.singletonList(operator.getDeptId()));
+            }
         }
         return baseUser;
     }

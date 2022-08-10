@@ -57,8 +57,8 @@ public class AuthenticationFilter extends ZuulFilter {
             context.setResponseBody("");
         } else {
             //验证通过，可以做些其他操作，比如往请求头放些需要放入的公共参数之类的
-            context.set("callBackendStart", new Date());
         }
+        context.set("callBackendStart", new Date());
         return null;
     }
 
