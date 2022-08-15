@@ -38,4 +38,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and().cors();
     }
+    //如果此注释放开，则configure方法中配置tokenServices替代tokenStore
+    // @Bean
+    //    public DefaultTokenServices tokenServices(){
+    //        DefaultTokenServices tokenServices = new DefaultTokenServices();
+    //        tokenServices.setTokenStore(tokenStore);
+    //        return tokenServices;
+    //    }
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import static org.liu.wx.feign.pojo.exception.BizCodeEnum.WX_ERROR;
 
 /**
+ * 在org.liu.common.service.exception.GlobalExceptionHandler全局异常捕获类基础上添加本微服务独有的异常
  * @Author lzs
  * @Date 2022/8/4 15:06
  **/

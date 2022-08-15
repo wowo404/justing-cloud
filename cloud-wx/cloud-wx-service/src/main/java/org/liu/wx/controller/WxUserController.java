@@ -34,7 +34,7 @@ public class WxUserController {
      * 详情
      */
     @GetMapping("/{id}")
-    public Response<Long> detail(@PathVariable("id") Long id) {
+    public Response<WxUser> detail(@PathVariable("id") Long id) {
         return Response.ok(wxUserService.detail(id));
     }
 

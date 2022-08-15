@@ -50,6 +50,7 @@ public class MenuHandler extends AbstractHandler {
     private final WxAppService wxAppService;
     private final WxMsgService wxMsgService;
     private final SimpMessagingTemplate simpMessagingTemplate;
+    private final SubscribeHandler subscribeHandler;
 
     @Override
     public WxMpXmlOutMessage handle(WxMpXmlMessage wxMessage,
@@ -74,7 +75,7 @@ public class MenuHandler extends AbstractHandler {
                     .userInfo(wxMessage.getFromUser(), null);
             wxUser = new WxUser();
             wxUser.setSubscribeNum(1);
-            SubscribeHandler.setWxUserValue(wxApp, wxUser, userWxInfo);
+            subscribeHandler.setWxUserValue(wxApp, wxUser, userWxInfo);
 //			wxUser.setTenantId(wxApp.getTenantId());
             wxUserService.save(wxUser);
         }

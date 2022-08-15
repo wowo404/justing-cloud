@@ -30,8 +30,8 @@ public class WxUserServiceImpl extends ServiceImpl<WxUserMapper, WxUser> impleme
     }
 
     @Override
-    public Long detail(Long id) {
-        return null;
+    public WxUser detail(Long id) {
+        return super.getById(id);
     }
 
     @Override

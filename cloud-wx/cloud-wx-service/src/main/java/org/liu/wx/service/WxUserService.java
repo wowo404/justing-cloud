@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 public interface WxUserService extends IService<WxUser> {
     Page<Long> pageList();
 
-    Long detail(Long id);
+    WxUser detail(Long id);
 
     Long add();
 

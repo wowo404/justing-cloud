@@ -12,6 +12,11 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
+        <!--websocket-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
         <!--微信小程序-->
         <dependency>
             <groupId>com.github.binarywang</groupId>
@@ -24,13 +29,13 @@
             <artifactId>weixin-java-mp</artifactId>
             <version>4.3.8.B</version>
         </dependency>
-        <!--微信开放平台-->
+        <!--微信开放平台，此依赖使用binarywang提供的starter即可-->
         <dependency>
             <groupId>com.github.binarywang</groupId>
             <artifactId>wx-java-open-spring-boot-starter</artifactId>
             <version>4.3.8.B</version>
         </dependency>
-        <!--微信开放平台-->
+        <!--微信支付-->
         <dependency>
             <groupId>com.github.binarywang</groupId>
             <artifactId>weixin-java-pay</artifactId>

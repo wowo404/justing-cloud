@@ -27,6 +27,8 @@ import java.util.Map;
 import static org.liu.common.core.constants.CommonConstants.HEADER_CLIENT;
 
 /**
+ * WARNING:client_credentials模式不会走此步骤
+ *
  * @Author lzs
  * @Date 2022/8/3 15:32
  **/
