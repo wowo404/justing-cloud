@@ -96,15 +96,21 @@ public class FeignConfig implements RequestInterceptor {
 
     private void setTenantIdIfExists(HttpServletRequest request, RequestTemplate template) {
         String client = request.getHeader(HEADER_CLIENT);
+        if (!StringUtils.hasText(client)) {
+            client = request.getParameter(HEADER_CLIENT);
+        }
         if (StringUtils.hasText(client)) {
             template.header(HEADER_CLIENT, client);
         }
     }
 
     private void setClientIfExists(HttpServletRequest request, RequestTemplate template) {
-        String client = request.getHeader(HEADER_TENANT_ID);
-        if (StringUtils.hasText(client)) {
-            template.header(HEADER_TENANT_ID, client);
+        String tenantId = request.getHeader(HEADER_TENANT_ID);
+        if (!StringUtils.hasText(tenantId)) {
+            tenantId = request.getParameter(HEADER_TENANT_ID);
+        }
+        if (StringUtils.hasText(tenantId)) {
+            template.header(HEADER_TENANT_ID, tenantId);
         }
     }
 
@@ -114,7 +120,10 @@ public class FeignConfig implements RequestInterceptor {
             return;
         }
         String authorization = request.getHeader(HEADER_AUTHORIZATION);
-        if (StringUtils.isEmpty(authorization)) {
+        if (!StringUtils.hasText(authorization)) {
+            authorization = request.getParameter(HEADER_AUTHORIZATION);
+        }
+        if (!StringUtils.hasText(authorization)) {
             log.warn("没有获取到authorization，请求uri：{}", request.getRequestURI());
             return;
         }

@@ -2,6 +2,7 @@ package org.liu.auth.provider;
 
 import org.justing.commons.enums.CommonCodeEnum;
 import org.justing.commons.exception.CommonException;
+import org.liu.auth.authentication.CustomWebAuthenticationDetails;
 import org.liu.auth.service.BaseUserDetailsService;
 import org.liu.common.core.enums.ClientEnum;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -109,8 +110,16 @@ public class CustomAuthenticationProvider extends AbstractUserDetailsAuthenticat
         HttpServletRequest request = requestAttributes.getRequest();
         String client = request.getHeader(HEADER_CLIENT);
         if (!StringUtils.hasText(client)) {
-            Map<String, String> details = (Map<String, String>) authentication.getDetails();
-            client = details.get(HEADER_CLIENT);
+            if (authentication.getDetails() instanceof Map) {
+                //password模式下，会在ResourceOwnerPasswordTokenGranter#getOAuth2Authentication方法中把参数放入一个map，设置到details字段中
+                Map<String, String> details = (Map<String, String>) authentication.getDetails();
+                client = details.get(HEADER_CLIENT);
+            } else if (authentication.getDetails() instanceof CustomWebAuthenticationDetails){
+                //authorization_code模式下，走的是spring security默认的认证流程，details字段默认是一个WebAuthenticationDetails对象
+                //自定义配置UsernamePasswordAuthenticationFilter中的AuthenticationDetailsSource，可以修改details字段
+                CustomWebAuthenticationDetails details = (CustomWebAuthenticationDetails) authentication.getDetails();
+                client = details.getClient();
+            }
         }
         return client;
     }

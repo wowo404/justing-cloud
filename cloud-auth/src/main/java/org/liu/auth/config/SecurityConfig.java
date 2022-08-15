@@ -1,5 +1,6 @@
 package org.liu.auth.config;
 
+import org.liu.auth.authentication.CustomWebAuthenticationDetailsSource;
 import org.liu.auth.provider.CustomAuthenticationProvider;
 import org.liu.auth.service.SysUserDetailsService;
 import org.liu.auth.service.WxUserDetailsService;
@@ -26,6 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private SysUserDetailsService sysUserDetailsService;
     @Autowired
     private WxUserDetailsService wxUserDetailsService;
+    @Autowired
+    private CustomWebAuthenticationDetailsSource customWebAuthenticationDetailsSource;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -50,5 +53,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/ok").permitAll();
         super.configure(http);
+        http.formLogin().authenticationDetailsSource(customWebAuthenticationDetailsSource);
     }
 }
