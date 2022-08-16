@@ -6,6 +6,7 @@ import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -24,9 +25,22 @@ public class CustomWebAuthenticationDetailsSource implements AuthenticationDetai
 
     @Override
     public CustomWebAuthenticationDetails buildDetails(HttpServletRequest context) {
-        SavedRequest request = requestCache.getRequest(context, null);
-        String client = null;
+        System.out.println(context.getSession(false).getId());
+        String client = context.getHeader(HEADER_CLIENT);
+        if (!StringUtils.hasText(client)) {
+            client = context.getParameter(HEADER_CLIENT);
+        }
         Long tenantId = null;
+        String tenantIdStr = context.getHeader(HEADER_TENANT_ID);
+        if (StringUtils.hasText(tenantIdStr)) {
+            tenantId = Long.parseLong(tenantIdStr);
+        } else {
+            tenantIdStr = context.getParameter(HEADER_TENANT_ID);
+            if (StringUtils.hasText(tenantIdStr)) {
+                tenantId = Long.parseLong(tenantIdStr);
+            }
+        }
+        SavedRequest request = requestCache.getRequest(context, null);
         if (null != request) {
             List<String> clients = request.getHeaderValues(HEADER_CLIENT);
             if (!CollectionUtils.isEmpty(clients)) {
@@ -40,10 +54,8 @@ public class CustomWebAuthenticationDetailsSource implements AuthenticationDetai
             if (!CollectionUtils.isEmpty(tenantIds)) {
                 tenantId = Long.parseLong(tenantIds.get(0));
             }
-            if (null == tenantId) {
-                String[] parameterValues = request.getParameterValues(HEADER_TENANT_ID);
-                tenantId = null != parameterValues ? Long.parseLong(parameterValues[0]) : null;
-            }
+            String[] parameterValues = request.getParameterValues(HEADER_TENANT_ID);
+            tenantId = null != parameterValues ? Long.parseLong(parameterValues[0]) : null;
         }
         return new CustomWebAuthenticationDetails(context, client, tenantId);
     }
