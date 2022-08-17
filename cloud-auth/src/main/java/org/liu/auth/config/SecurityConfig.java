@@ -13,7 +13,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 
 import java.util.Arrays;
 
@@ -41,13 +40,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      *
      * @return
      */
-    @Bean
-    public HttpSessionRequestCache httpSessionRequestCache() {
-        HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
-        requestCache.setCreateSessionAllowed(false);
-        return requestCache;
-    }
-
+//    @Bean
+//    public HttpSessionRequestCache httpSessionRequestCache() {
+//        HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
+//        requestCache.setCreateSessionAllowed(false);
+//        return requestCache;
+//    }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         CustomAuthenticationProvider customAuthenticationProvider = new CustomAuthenticationProvider();
