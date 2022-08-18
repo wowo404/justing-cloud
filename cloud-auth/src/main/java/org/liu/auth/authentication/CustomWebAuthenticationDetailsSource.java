@@ -25,7 +25,6 @@ public class CustomWebAuthenticationDetailsSource implements AuthenticationDetai
 
     @Override
     public CustomWebAuthenticationDetails buildDetails(HttpServletRequest context) {
-        System.out.println(context.getSession(false).getId());
         String client = context.getHeader(HEADER_CLIENT);
         if (!StringUtils.hasText(client)) {
             client = context.getParameter(HEADER_CLIENT);
@@ -40,6 +39,9 @@ public class CustomWebAuthenticationDetailsSource implements AuthenticationDetai
                 tenantId = Long.parseLong(tenantIdStr);
             }
         }
+        //TIPS：保留此段代码，只是为了学习
+        //此处无法获取到这个缓存的请求：http://desktop-vr558d9:7474/oauth/authorize?client=PC&tenant-id=1&client_id=thirdparty-app&response_type=code&scope=all&redirect_uri=http://localhost:8082/index2.html
+        //因为sessionId不一样了，为什么不一样？详细解释在语雀的流程图上
         SavedRequest request = requestCache.getRequest(context, null);
         if (null != request) {
             List<String> clients = request.getHeaderValues(HEADER_CLIENT);
@@ -54,8 +56,10 @@ public class CustomWebAuthenticationDetailsSource implements AuthenticationDetai
             if (!CollectionUtils.isEmpty(tenantIds)) {
                 tenantId = Long.parseLong(tenantIds.get(0));
             }
-            String[] parameterValues = request.getParameterValues(HEADER_TENANT_ID);
-            tenantId = null != parameterValues ? Long.parseLong(parameterValues[0]) : null;
+            if (null == tenantId) {
+                String[] parameterValues = request.getParameterValues(HEADER_TENANT_ID);
+                tenantId = null != parameterValues ? Long.parseLong(parameterValues[0]) : null;
+            }
         }
         return new CustomWebAuthenticationDetails(context, client, tenantId);
     }
