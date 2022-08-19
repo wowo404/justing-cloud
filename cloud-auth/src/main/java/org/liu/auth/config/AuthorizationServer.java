@@ -38,7 +38,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private JwtAccessTokenConverter jwtAccessTokenConverter;
     @Autowired
-    private CustomAdditionalInformation customAdditionalInformation;
+    private CustomTokenEnhancer customTokenEnhancer;
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -74,7 +74,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 //        tokenServices.setAccessTokenValiditySeconds(60 * 60 * 2);
 //        tokenServices.setRefreshTokenValiditySeconds(60 * 60 * 24 * 3);
         TokenEnhancerChain chain = new TokenEnhancerChain();
-        chain.setTokenEnhancers(Arrays.asList(customAdditionalInformation, jwtAccessTokenConverter));
+        chain.setTokenEnhancers(Arrays.asList(customTokenEnhancer, jwtAccessTokenConverter));
         tokenServices.setTokenEnhancer(chain);
         return tokenServices;
     }

@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/wxUser")
+@RequestMapping("/wxApi/wxUser")
 public class WxUserController {
 
     private final WxUserService wxUserService;

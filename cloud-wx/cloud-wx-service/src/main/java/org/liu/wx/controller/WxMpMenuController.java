@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/wxMpMenu")
+@RequestMapping("/wxApi/wxMpMenu")
 public class WxMpMenuController {
 
     private final WxMpMenuService wxMpMenuService;

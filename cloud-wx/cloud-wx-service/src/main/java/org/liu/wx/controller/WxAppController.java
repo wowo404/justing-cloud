@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/wxApp")
+@RequestMapping("/wxApi/wxApp")
 public class WxAppController {
 
     private final WxAppService wxAppService;

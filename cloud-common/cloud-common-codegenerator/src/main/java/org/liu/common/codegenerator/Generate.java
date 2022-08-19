@@ -189,7 +189,7 @@ public class Generate {
     private static void cloud_wx(String basePath) throws Exception {
         String basePackage = "org.liu.wx";
         String entitySuffix = "";//po类的后缀，比如：XXXEntity
-        String requestMappingPrefix = "";//requestMapping的前缀，比如：/api/**
+        String requestMappingPrefix = "/wxApi";//requestMapping的前缀，比如：/api/**
         String microServicePath = basePath + "cloud-wx/cloud-wx-service/";
         String feignPojoPath = basePath + "cloud-wx/cloud-wx-feign-pojo/";
         String entityPath = feignPojoPath + "src/main/java/org/liu/wx/feign/pojo/po/";

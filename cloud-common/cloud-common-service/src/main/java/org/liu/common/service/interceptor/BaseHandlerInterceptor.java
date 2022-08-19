@@ -41,6 +41,8 @@ public class BaseHandlerInterceptor implements HandlerInterceptor {
         } else {
             TenantContextHolder.setTenantId(Long.parseLong(tenantId));
         }
+        //TODO: 临时使用
+        TenantContextHolder.setTenantId(1L);
         return true;
     }
 }

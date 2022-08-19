@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/wxMassMsg")
+@RequestMapping("/wxApi/wxMassMsg")
 public class WxMassMsgController {
 
     private final WxMassMsgService wxMassMsgService;

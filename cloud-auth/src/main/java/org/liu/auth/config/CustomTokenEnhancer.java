@@ -1,5 +1,6 @@
 package org.liu.auth.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.liu.common.security.base.pojo.BaseUser;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
@@ -16,8 +17,9 @@ import static org.liu.common.core.constants.CommonConstants.*;
  * @Author lzs
  * @Date 2022/7/12 17:12
  **/
+@Slf4j
 @Component
-public class CustomAdditionalInformation implements TokenEnhancer {
+public class CustomTokenEnhancer implements TokenEnhancer {
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
         Map<String, Object> map = new LinkedHashMap<>();
@@ -31,6 +33,8 @@ public class CustomAdditionalInformation implements TokenEnhancer {
             map.put(ADDITIONAL_DATA_SCOPE, baseUser.getDataScope());
             map.put(ADDITIONAL_DEPT_IDS, baseUser.getDeptIds());
             ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(map);
+        } else {
+            log.warn("自定义tokenEnhancer，未处理的principal={}", authentication.getPrincipal());
         }
         return accessToken;
     }

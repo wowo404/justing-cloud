@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/msgTemplate")
+@RequestMapping("/wxApi/msgTemplate")
 public class MsgTemplateController {
 
     private final MsgTemplateService msgTemplateService;

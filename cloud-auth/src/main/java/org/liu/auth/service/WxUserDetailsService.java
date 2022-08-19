@@ -24,7 +24,7 @@ import static org.liu.common.core.constants.CommonConstants.SUPER_SYS_ROLE_NAME;
  * @Date 2022/8/1 17:56
  **/
 @RequiredArgsConstructor
-@Component
+//@Component
 public class WxUserDetailsService implements BaseUserDetailsService {
 
     private final WxUserClient wxUserClient;

@@ -16,7 +16,7 @@ import java.util.List;
  * 保留此类仅为了学习
  */
 @RequiredArgsConstructor
-@RequestMapping("user")
+@RequestMapping("/wxApi/user")
 @RestController
 //使用了Feign后也不需要这个配置了
 //@DefaultProperties(defaultFallback = "defaultFallback")//defaultFallback方法要和熔断的方法同返回值类型，不需要参数
