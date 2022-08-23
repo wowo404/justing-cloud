@@ -72,6 +72,24 @@ public class FeignConfig implements RequestInterceptor {
     private BaseAuthIgnoreProperties baseAuthIgnoreProperties;
     private static AntPathMatcher antPathMatcher = new AntPathMatcher();
 
+    //TIPS：oauth2有一个实现OAuth2FeignRequestInterceptor
+/*    @Bean
+    RequestInterceptor oauth2FeignRequestInterceptor() {
+        return new OAuth2FeignRequestInterceptor(new DefaultOAuth2ClientContext(), resource());
+    }
+
+    private OAuth2ProtectedResourceDetails resource() {
+        ResourceOwnerPasswordResourceDetails resourceDetails = new ResourceOwnerPasswordResourceDetails();
+        resourceDetails.setUsername("piomin");
+        resourceDetails.setPassword("piot123");
+        resourceDetails.setAccessTokenUri(accessTokenUri);
+        resourceDetails.setClientId(clientId);
+        resourceDetails.setClientSecret(clientSecret);
+        resourceDetails.setGrantType("password");
+        resourceDetails.setScope(Arrays.asList(scope));
+        return resourceDetails;
+    }*/
+
     /**
      * 此方法的主要功能是对请求参数做处理
      * 比如：将登录用户的信息放入请求头
