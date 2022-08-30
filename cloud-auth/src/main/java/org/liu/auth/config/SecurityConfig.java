@@ -60,6 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //微信服务的认证流程让微信服务自身实现
                 .antMatchers("/wxApi/**").permitAll();
         super.configure(http);
+        http.cors();
     }
 
 }

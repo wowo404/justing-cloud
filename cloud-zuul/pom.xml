@@ -47,6 +47,11 @@
 			<groupId>com.squareup.okhttp3</groupId>
 			<artifactId>okhttp</artifactId>
 		</dependency>
+		<!--项目内部的基础模块-->
+		<dependency>
+			<groupId>org.liu</groupId>
+			<artifactId>cloud-common-cors</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>

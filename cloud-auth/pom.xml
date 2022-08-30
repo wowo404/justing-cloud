@@ -59,6 +59,14 @@
             <groupId>org.liu</groupId>
             <artifactId>cloud-common-security-base</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.liu</groupId>
+            <artifactId>cloud-common-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.liu</groupId>
+            <artifactId>cloud-common-cors</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

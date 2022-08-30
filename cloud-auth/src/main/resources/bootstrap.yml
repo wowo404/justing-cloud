@@ -1,5 +1,9 @@
 server:
   port: 7474
+  servlet:
+    session:
+      cookie:
+        name: cloud-auth
 
 spring:
   profiles:

@@ -36,7 +36,7 @@ public class BaseHandlerInterceptor implements HandlerInterceptor {
                 Map<String, Object> details = (Map<String, Object>) oAuth2Authentication.getDetails();
                 TenantContextHolder.setTenantId(Long.parseLong(String.valueOf(details.get(CommonConstants.ADDITIONAL_TENANT_ID))));
             } else {
-                log.warn("没有从请求头中获取到tenant-id参数，也没有从token中解析出tenant_id，uri={}", request.getRequestURI());
+                log.warn("没有从请求头中获取到tenant-id参数，也没有accessToken，无法解析出tenant_id，uri={}", request.getRequestURI());
             }
         } else {
             TenantContextHolder.setTenantId(Long.parseLong(tenantId));

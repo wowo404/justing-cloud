@@ -14,6 +14,8 @@ import java.util.Map;
 import static org.liu.common.core.constants.CommonConstants.*;
 
 /**
+ * 对jwt token的增强
+ *
  * @Author lzs
  * @Date 2022/7/12 17:12
  **/

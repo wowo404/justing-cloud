@@ -22,6 +22,7 @@ public interface RedisCode {
     String WEIXIN_ACCESS_TOKEN = "weixin_access_token";//微信的AccessToken，数据类型：string，保存时间7200
     String WEIXIN_JSAPI_TICKET = "weixin_jsapi_ticket";//微信的JsAPI_Ticket，数据类型：string，保存时间7200
 	String TODAY_QRCODE_CODE = "today_qrcode_code_";//qrCode递增编码，每日从1开始递增
+    String OAUTH2_AUTHORIZATION_CODE = "oauth2_authorization_code";
 
     //有效期
     Duration CODE_EXPIRE_TIME = Duration.ofSeconds(5 * 60L);

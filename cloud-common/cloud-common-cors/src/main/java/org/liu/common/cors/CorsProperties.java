@@ -1,4 +1,4 @@
-package org.liu.zuul.config;
+package org.liu.common.cors;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

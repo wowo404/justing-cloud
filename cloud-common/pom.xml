@@ -15,13 +15,14 @@
     <description>公共聚合模块</description>
 
     <modules>
-        <module>cloud-common-core</module>
-        <module>cloud-common-feign</module>
         <module>cloud-common-cache</module>
         <module>cloud-common-codegenerator</module>
-        <module>cloud-common-service</module>
-        <module>cloud-common-security-resource-server</module>
+        <module>cloud-common-core</module>
+        <module>cloud-common-cors</module>
+        <module>cloud-common-feign</module>
         <module>cloud-common-security-base</module>
+        <module>cloud-common-security-resource-server</module>
+        <module>cloud-common-service</module>
     </modules>
 
 </project>

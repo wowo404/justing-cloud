@@ -178,6 +178,11 @@
 			</dependency>
 			<dependency>
 				<groupId>org.liu</groupId>
+				<artifactId>cloud-common-cors</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liu</groupId>
 				<artifactId>cloud-common-feign</artifactId>
 				<version>${project.version}</version>
 			</dependency>
