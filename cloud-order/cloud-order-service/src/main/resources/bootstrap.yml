@@ -27,6 +27,9 @@ eureka:
   instance:
     lease-expiration-duration-in-seconds: 90 #如果超过90秒eureka没有收到心跳，eureka就认为该服务已停止，并从服务列表移除
     lease-renewal-interval-in-seconds: 30 #每30秒向eureka发送一次心跳信息
+    prefer-ip-address: true
+    ip-address: localhost
+    instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port}
 
 ---
 spring:
@@ -42,6 +45,9 @@ eureka:
   instance:
     lease-expiration-duration-in-seconds: 90
     lease-renewal-interval-in-seconds: 30
+    prefer-ip-address: true
+    ip-address: localhost
+    instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port}
 
 ---
 spring:
@@ -57,3 +63,6 @@ eureka:
   instance:
     lease-expiration-duration-in-seconds: 90
     lease-renewal-interval-in-seconds: 30
+    prefer-ip-address: true
+    ip-address: localhost
+    instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port}

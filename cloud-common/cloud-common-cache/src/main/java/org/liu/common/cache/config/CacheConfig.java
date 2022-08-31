@@ -28,8 +28,10 @@ public class CacheConfig {
     }
 
     @Bean
-    public RedisHelper redisHelper(StringRedisTemplate stringRedisTemplate, @Qualifier("jacksonRedisTemplate") RedisTemplate<String, Object> jacksonRedisTemplate) {
-        return new RedisHelper(stringRedisTemplate, jacksonRedisTemplate);
+    public RedisHelper redisHelper(StringRedisTemplate stringRedisTemplate,
+                                   @Qualifier("jacksonRedisTemplate") RedisTemplate<String, Object> jacksonRedisTemplate,
+                                   RedisTemplate<Object, Object> redisTemplate) {
+        return new RedisHelper(stringRedisTemplate, jacksonRedisTemplate, redisTemplate);
     }
 
 }

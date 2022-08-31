@@ -5,7 +5,12 @@ server:
 spring:
   application:
     name: cloud-eureka
+  profiles:
+    active: dev
 
+---
+spring:
+  profiles: dev
 eureka:
   client:
     service-url:
@@ -13,3 +18,37 @@ eureka:
       defaultZone: http://localhost:7410/eureka
   server:
     eviction-interval-timer-in-ms: 10000 #剔除无效链接的间隔时间，默认60s
+  instance:
+    prefer-ip-address: true
+    ip-address: localhost
+    instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port}
+
+---
+spring:
+  profiles: test
+eureka:
+  client:
+    service-url:
+      #如果要让eureka高可用，部署多个，如部署了ABC三个，则注册方式为A注册到B，B注册到C
+      defaultZone: http://localhost:7410/eureka
+  server:
+    eviction-interval-timer-in-ms: 10000 #剔除无效链接的间隔时间，默认60s
+  instance:
+    prefer-ip-address: true
+    ip-address: localhost
+    instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port}
+
+---
+spring:
+  profiles: prod
+eureka:
+  client:
+    service-url:
+      #如果要让eureka高可用，部署多个，如部署了ABC三个，则注册方式为A注册到B，B注册到C
+      defaultZone: http://localhost:7410/eureka
+  server:
+    eviction-interval-timer-in-ms: 10000 #剔除无效链接的间隔时间，默认60s
+  instance:
+    prefer-ip-address: true
+    ip-address: localhost
+    instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port}

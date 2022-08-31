@@ -3,6 +3,8 @@ server:
   shutdown: graceful
 
 spring:
+  profiles:
+    active: dev
   application:
     name: cloud-config-server
   cloud:
@@ -19,8 +21,51 @@ spring:
           force-pull: true #强制拉取远程配置，覆盖本地，防止本地副本变脏
           delete-untracked-branches: true #删除未跟踪的分支，即远程仓库不存在了，本地也删除
           #详细配置：https://www.jianshu.com/p/a4a834b4b2a3
+#        native: #本地
+#          search-locations:
+#file协议文件路径
+#            - file:E:/work/my/code/spring-cloud-config/
+#配置文件在项目内，用classpath协议
+#            - classpath:/config/
 
+---
+spring:
+  profiles: dev
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:7410/eureka #如果eureka是集群，这里要用逗号分隔开来配置多个
+  instance:
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
+    prefer-ip-address: true
+    ip-address: localhost
+    instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port}
+
+---
+spring:
+  profiles: test
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7410/eureka #如果eureka是集群，这里要用逗号分隔开来配置多个
+  instance:
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
+    prefer-ip-address: true
+    ip-address: localhost
+    instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port}
+
+---
+spring:
+  profiles: prod
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7410/eureka #如果eureka是集群，这里要用逗号分隔开来配置多个
+  instance:
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
+    prefer-ip-address: true
+    ip-address: localhost
+    instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port}

@@ -21,16 +21,7 @@ public class RedisHelper {
 
     private StringRedisTemplate stringRedisTemplate;
     private RedisTemplate<String, Object> jacksonRedisTemplate;
-
-    public void saveOauth2AuthorizationCode(String key, String code, Object obj) {
-        jacksonRedisTemplate.boundHashOps(key).put(code, obj);
-    }
-
-    public Object deleteOauth2AuthorizationCode(String key, String code){
-		Object value = jacksonRedisTemplate.boundHashOps(key).get(code);
-		jacksonRedisTemplate.boundHashOps(key).delete(code);
-		return value;
-	}
+    private RedisTemplate<Object, Object> redisTemplate;
 
     /**
      * 获取锁
@@ -174,4 +165,15 @@ public class RedisHelper {
         String result = stringRedisTemplate.execute(redisScript, keys, RedisCode.TODAY_CODE_EXPIRE_TIME + "");
         return result;
     }
+
+    public void saveOauth2AuthorizationCode(String key, String code, Object obj) {
+        redisTemplate.boundHashOps(key).put(code, obj);
+    }
+
+    public Object deleteOauth2AuthorizationCode(String key, String code) {
+        Object value = redisTemplate.boundHashOps(key).get(code);
+        redisTemplate.boundHashOps(key).delete(code);
+        return value;
+    }
+
 }

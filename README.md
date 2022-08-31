@@ -23,6 +23,8 @@
 7. 引入链路追踪
 8. 引入spring-cloud-starter-netflix-hystrix-dashboard
 9. 完成gateway
+10. 用nacos替换到eureka、config、bus
+11. hystrix官方不再推荐，使用resilience4j或者sentienl代替
 
 # 思考
 1. zuul中需要为每一个微服务添加fallback provider吗？？
@@ -35,7 +37,8 @@
 authorization_code模式下无法收到自定义的参数，通过一通自定义操作后，参数是可以传递过去了，但是仍然无法解决“无法跳回/oauth/authorize请求”问题，
 因为有个前置zuul服务导致session不一致，这个问题和多个认证实现无关，即使保留一个pc端认证，也有这个问题，如何解决？
     - 答1：把auth服务和zuul合并，此方案的缺点：网关服务和认证服务合并，不符合一个微服务只负责一个单一职责的原则
-    - 答2：把zuul服务当作一个client，使用implicit模式
+    - 答2：把zuul服务当作一个client，使用password或implicit模式
+    - 答3：在eureka的每一个client端设置使用IP，而不是默认的hostname-----------这才是正确的配置
 
 # 警告
 - 在业务系统中不要使用user，user这个概念太过宽泛，微信用户，后台用户，供应商用户，商户用户，操作系统用户？？？到底指的是哪一类呢
