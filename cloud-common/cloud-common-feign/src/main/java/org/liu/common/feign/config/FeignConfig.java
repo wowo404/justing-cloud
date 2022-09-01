@@ -3,9 +3,7 @@ package org.liu.common.feign.config;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.util.AntPathMatcher;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -68,10 +66,6 @@ public class FeignConfig implements RequestInterceptor {
 //        }
 //    }
 
-    @Autowired
-    private BaseAuthIgnoreProperties baseAuthIgnoreProperties;
-    private static AntPathMatcher antPathMatcher = new AntPathMatcher();
-
     //TIPS：oauth2有一个实现OAuth2FeignRequestInterceptor
 /*    @Bean
     RequestInterceptor oauth2FeignRequestInterceptor() {
@@ -133,10 +127,6 @@ public class FeignConfig implements RequestInterceptor {
     }
 
     private void setAuthorizationIfExists(HttpServletRequest request, RequestTemplate template) {
-        //这个判断逻辑可以不需要，暂时保留
-        if (isIgnoreUrl(request.getRequestURI())) {
-            return;
-        }
         String authorization = request.getHeader(HEADER_AUTHORIZATION);
         if (!StringUtils.hasText(authorization)) {
             authorization = request.getParameter(HEADER_AUTHORIZATION);
@@ -149,17 +139,4 @@ public class FeignConfig implements RequestInterceptor {
         template.header(HEADER_AUTHORIZATION, authorization);
     }
 
-    private boolean isIgnoreUrl(String requestURI) {
-        boolean empty = baseAuthIgnoreProperties.getUrls().isEmpty();
-        if (empty) {
-            return false;
-        }
-        for (String ignoreAuthorizationUrl : baseAuthIgnoreProperties.getUrls()) {
-            boolean match = antPathMatcher.match(ignoreAuthorizationUrl, requestURI);
-            if (match) {
-                return true;
-            }
-        }
-        return false;
-    }
 }
