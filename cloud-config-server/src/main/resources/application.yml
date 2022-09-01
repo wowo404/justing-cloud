@@ -4,29 +4,45 @@ server:
 
 spring:
   profiles:
-    active: dev
+    #配置文件使用native模式，spring.profiles.active一定要设置为native
+    active: native
   application:
     name: cloud-config-server
   cloud:
     config:
       server:
-        git:
-          uri: git@e.coding.net:wowo404/spring-cloud-config/spring-cloud-config.git #注意：如果git地址第一次在本机上使用，fingerprint还没有加如到~/.ssh/known_hosts文件中，则会访问失败
-          #username: #如果本地是使用ssh访问的可以不用配置，注意：ssh密钥对必须是rsa的，不能是openssh的，即私钥文件内容的第一行是“BEGIN RSA PRIVATE KEY”
-          #password:
-          #default-label: master #配置文件分支
-          #search-paths: config  #配置文件所在根目录
-          #现在这种最简单的配置方式，配置文件访问规则是application.yml是给所有项目公用的且不分环境，application-dev.yml是给所有项目的dev环境公用的
-          refresh-rate: 10 #每隔10s从git仓库拉取一次，不生效，why？
-          force-pull: true #强制拉取远程配置，覆盖本地，防止本地副本变脏
-          delete-untracked-branches: true #删除未跟踪的分支，即远程仓库不存在了，本地也删除
-          #详细配置：https://www.jianshu.com/p/a4a834b4b2a3
-#        native: #本地
-#          search-locations:
+#        git:
+#          uri: git@e.coding.net:wowo404/spring-cloud-config/spring-cloud-config.git #注意：如果git地址第一次在本机上使用，fingerprint还没有加如到~/.ssh/known_hosts文件中，则会访问失败
+#          #username: #如果本地是使用ssh访问的可以不用配置，注意：ssh密钥对必须是rsa的，不能是openssh的，即私钥文件内容的第一行是“BEGIN RSA PRIVATE KEY”
+#          #password:
+#          #default-label: master #配置文件分支
+#          #search-paths: config  #配置文件所在根目录
+#          #现在这种最简单的配置方式，配置文件访问规则是application.yml是给所有项目公用的且不分环境，application-dev.yml是给所有项目的dev环境公用的
+#          refresh-rate: 10 #每隔10s从git仓库拉取一次，不生效，why？
+#          force-pull: true #强制拉取远程配置，覆盖本地，防止本地副本变脏
+#          delete-untracked-branches: true #删除未跟踪的分支，即远程仓库不存在了，本地也删除
+#          #详细配置：https://www.jianshu.com/p/a4a834b4b2a3
+        native: #本地
+          search-locations:
 #file协议文件路径
-#            - file:E:/work/my/code/spring-cloud-config/
+            - file:E:/work/my/code/spring-cloud-config/
 #配置文件在项目内，用classpath协议
 #            - classpath:/config/
+
+---
+spring:
+  profiles: native
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7410/eureka #如果eureka是集群，这里要用逗号分隔开来配置多个
+  instance:
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
+    prefer-ip-address: true
+    ip-address: localhost
+    instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port}
+
 
 ---
 spring:

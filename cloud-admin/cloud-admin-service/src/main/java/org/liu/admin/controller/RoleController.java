@@ -33,7 +33,7 @@ public class RoleController {
      * 详情
      */
     @GetMapping("/{id}")
-    public Response<Long> detail(@PathVariable("id") Long id) {
+    public Response<Role> detail(@PathVariable("id") Long id) {
         return Response.ok(roleService.detail(id));
     }
 

@@ -30,8 +30,8 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     }
 
     @Override
-    public Long detail(Long id) {
-        return null;
+    public Role detail(Long id) {
+        return super.getById(id);
     }
 
     @Override

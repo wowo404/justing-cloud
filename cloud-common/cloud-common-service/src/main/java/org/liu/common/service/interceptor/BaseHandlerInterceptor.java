@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.liu.common.core.constants.CommonConstants;
 import org.liu.common.service.tenant.TenantContextHolder;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.stereotype.Component;
@@ -32,6 +33,7 @@ public class BaseHandlerInterceptor implements HandlerInterceptor {
             //请求头中没有则去accessToken中解析
             String accessToken = request.getHeader(CommonConstants.HEADER_AUTHORIZATION);
             if (StrUtil.isNotBlank(accessToken)) {
+                accessToken = replaceTokenType(accessToken);
                 OAuth2Authentication oAuth2Authentication = tokenStore.readAuthentication(accessToken);
                 Map<String, Object> details = (Map<String, Object>) oAuth2Authentication.getDetails();
                 TenantContextHolder.setTenantId(Long.parseLong(String.valueOf(details.get(CommonConstants.ADDITIONAL_TENANT_ID))));
@@ -44,5 +46,12 @@ public class BaseHandlerInterceptor implements HandlerInterceptor {
         //TODO: 临时使用
         TenantContextHolder.setTenantId(1L);
         return true;
+    }
+
+    private String replaceTokenType(String accessToken) {
+        if (accessToken.startsWith("bearer ")) {
+            accessToken = accessToken.replace("bearer ", "");
+        }
+        return accessToken;
     }
 }

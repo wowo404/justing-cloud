@@ -37,8 +37,11 @@
 authorization_code模式下无法收到自定义的参数，通过一通自定义操作后，参数是可以传递过去了，但是仍然无法解决“无法跳回/oauth/authorize请求”问题，
 因为有个前置zuul服务导致session不一致，这个问题和多个认证实现无关，即使保留一个pc端认证，也有这个问题，如何解决？
     - 答1：把auth服务和zuul合并，此方案的缺点：网关服务和认证服务合并，不符合一个微服务只负责一个单一职责的原则
-    - 答2：把zuul服务当作一个client，使用password或implicit模式
-    - 答3：在eureka的每一个client端设置使用IP，而不是默认的hostname-----------这才是正确的配置
+    - 答2：把zuul服务当作一个client，使用password或implicit模式-----正确配置
+    - 答3：在eureka注册的每一个client设置使用IP，而不是默认的hostname-----------这才是正确的配置
+    - 答4：20220901整合成功，之前有session不一致的问题，是因为在eureka注册使用的hostname，要修改成使用IP，如果使用域名，则要统一在一个顶级域名下
+6. 把oauth2-client整合到zuul服务后，client的运行机制依赖与cookie，这与微服务架构的无状态特性相违背，spring security的RequestCache也是存储到HttpSession中，
+同样依赖cookie，如何解决？
 
 # 警告
 - 在业务系统中不要使用user，user这个概念太过宽泛，微信用户，后台用户，供应商用户，商户用户，操作系统用户？？？到底指的是哪一类呢

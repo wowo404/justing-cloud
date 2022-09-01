@@ -10,7 +10,7 @@ import java.util.List;
 public interface RoleService extends IService<Role> {
     Page<Role> pageList(RoleListReq req);
 
-    Long detail(Long id);
+    Role detail(Long id);
 
     Long add();
 
