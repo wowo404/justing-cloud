@@ -42,6 +42,9 @@ authorization_code模式下无法收到自定义的参数，通过一通自定�
     - 答4：20220901整合成功，之前有session不一致的问题，是因为在eureka注册使用的hostname，要修改成使用IP，如果使用域名，则要统一在一个顶级域名下
 6. 把oauth2-client整合到zuul服务后，client的运行机制依赖与cookie，这与微服务架构的无状态特性相违背，spring security的RequestCache也是存储到HttpSession中，
 同样依赖cookie，如何解决？
+7. session不一致的问题是因为跨域cookie无法获取的原因，把网关服务、授权服务、资源服务的访问都放入一个顶级域名下，这个问题就解决了，那么oauth2-client存在的意义是？
+    - 答1：如果是要自动维护一个accessToken，这样的意义就很小，因为oauth2 client实现自动维护accessToken依赖的是cookie
+    - 答2：从oauth2-client提供的默认实现是authorization_code模式来看，此client实现猜测是给第三方服务使用
 
 # 警告
 - 在业务系统中不要使用user，user这个概念太过宽泛，微信用户，后台用户，供应商用户，商户用户，操作系统用户？？？到底指的是哪一类呢
