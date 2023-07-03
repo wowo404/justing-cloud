@@ -27,6 +27,7 @@
 9. 完成gateway
 10. 用nacos替换到eureka、config、bus
 11. hystrix官方不再推荐，使用resilience4j或者sentienl代替
+12. 加入链路追踪框架ApacheSkyWalking
 
 # 思考
 
