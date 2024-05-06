@@ -17,10 +17,10 @@ import java.lang.reflect.Proxy;
  * 1.使用jdk动态代理创建FallbackFactory的实现类
  * 2.在@FeignClient注解上配置fallbackFactory=DynamicGlobalFallbackFactory.class
  * 3.还可以参考joolun项目中base-common-security模块下的openfeign实现添加targeter实现和使用configuration进行自动配置
- * 4.如果实现了第3点，则在@FeignClient注解上不需要配置fallback或fallbackFactory，只在需要特殊处理进行配置
+ * 4.如果实现了第3点，则在@FeignClient注解上不需要配置fallback或fallbackFactory，只在需要特殊处理进行配置，另外还需要注意包的路径必须跟openfeign包的路径一致
  *
  * 处理方法二：
- * 1.不使用jdk动态代理，使用cglib的增强实现Enhancer
+ * 1.不使用jdk动态代理，使用spring对cglib的增强实现Enhancer
  * 2.参考joolun项目中base-common-security模块下的openfeign实现
  *
  * 处理方法三（不推荐）：
