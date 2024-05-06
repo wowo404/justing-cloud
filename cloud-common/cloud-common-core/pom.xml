@@ -14,7 +14,11 @@
     <dependencies>
         <dependency>
             <groupId>org.justing.commons</groupId>
-            <artifactId>justing-commons-base</artifactId>
+            <artifactId>justing-commons-util</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
         </dependency>
     </dependencies>
 

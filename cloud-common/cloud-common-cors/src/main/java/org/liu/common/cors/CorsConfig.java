@@ -27,8 +27,6 @@ public class CorsConfig {
     /**
      * cors官方文档：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS
      * 如果要携带身份凭证，如cookie，allowedOrigin,allowedHeader,allowedMethod都不能设置为*
-     *
-     * @return
      */
     @Bean
     public UrlBasedCorsConfigurationSource corsConfigurationSource() {

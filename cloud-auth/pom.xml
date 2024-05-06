@@ -54,12 +54,6 @@
             <groupId>org.liu</groupId>
             <artifactId>cloud-wx-feign</artifactId>
         </dependency>
-        <!--跨项目通用模块-->
-        <dependency>
-            <groupId>org.justing.commons</groupId>
-            <artifactId>justing-commons-util</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
         <!--项目内部的基础模块-->
         <dependency>
             <groupId>org.liu</groupId>

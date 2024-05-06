@@ -75,12 +75,8 @@
             <groupId>org.liu</groupId>
             <artifactId>cloud-common-cache</artifactId>
         </dependency>
+        <!--此模块不需要依赖cloud-common-cors模块，因为cors是给-->
         <!--跨项目通用模块-->
-        <dependency>
-            <groupId>org.justing.commons</groupId>
-            <artifactId>justing-commons-util</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
         <dependency>
             <groupId>org.justing.commons</groupId>
             <artifactId>justing-commons-validation</artifactId>

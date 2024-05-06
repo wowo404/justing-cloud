@@ -15,9 +15,9 @@
 # 依赖关系图
 ```mermaid
 graph LR
-    A[common] --> B[common-service] --> C[common-cache]
-                                  B --> D[common-security-resource-server] --> E[common-security-base] --> F[common-core]
-            A --> F[common-feign] --> E
+    A[common] --> B[common-service] --> C[common-cache] --> F[common-core]
+                                  B --> D[common-security-resource-server] --> E[common-security-base] --> F
+            A --> G[common-feign] --> F
 ```
 + 各资源微服务的feign模块--》common-feign
 + 各资源微服务的service模块--》common-service
