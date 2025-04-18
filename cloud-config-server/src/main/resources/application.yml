@@ -17,8 +17,8 @@ spring:
       server:
         native: #本地
           search-locations:
-#file协议文件路径
-            - file:E:/work/my/code/spring-cloud-config/
+            #file协议文件路径
+            - file:D:/work/workspace-idea/spring-cloud-config/
 #配置文件在项目内，用classpath协议
 #            - classpath:/config/
 eureka:
