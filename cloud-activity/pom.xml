@@ -11,6 +11,7 @@
 
     <artifactId>cloud-activity</artifactId>
     <packaging>pom</packaging>
+
     <modules>
         <module>cloud-activity-service</module>
         <module>cloud-activity-feign</module>

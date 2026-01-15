@@ -2,8 +2,10 @@
 
 1. 很多地方还在用httpComponent或者jdk的方式，而没有用okhttp，比如eureka client
 2.
+
 ConfigServicePropertySourceLocator中有用到RestTemplate，但用的jdk的方式，可以跟踪到locate方法看，手动重新注册了ConfigServicePropertySourceLocator，但没有生效
 ConfigServiceBootstrapConfiguration中的自动注册仍然会生效，如果要使自定义的生效，参考https://www.jianshu.com/p/769939eb1fb3
+
 3. http方式远程同步请求可以使用restTemplate，异步请求可以使用asyncRestTemplate，但现在使用了feign，如何做异步，在方法上加@Async注解？
 
 # TODO
@@ -24,10 +26,10 @@ ConfigServiceBootstrapConfiguration中的自动注册仍然会生效，如果要
     - fixed at 20220726，这个疑问在引入oauth2后就不存在了，除网关服务和auth服务外，其他微服务每一个都是资源服务，参考oauth2资源服务
 6. 接入分布式事务框架seata
 7. 引入链路追踪
-8. 引入spring-cloud-starter-netflix-hystrix-dashboard
+8. hystrix-dashboard已不再维护，替换成Micrometer，导出到prometheus
 9. 完成gateway
 10. 用nacos替换到eureka、config、bus
-11. hystrix官方不再推荐，使用resilience4j或者sentienl代替
+11. hystrix官方不再推荐，使用resilience4j或者sentinel代替
 12. 加入链路追踪框架ApacheSkyWalking
 13. 线程池的监控，spring-boot-starter-actuator可以吗？
 
